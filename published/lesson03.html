@@ -356,8 +356,11 @@ T.forEach((t,ti)=>{
 // Quiz
 const QUIZ=C.quiz;
 S.qz=S.qz||{};
-function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz"}
-$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;if(S.qzScore!=null){S.qzScore=null;$("fbQuiz").textContent=""}save();renderQuiz();updateAll()});
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Check again":"Submit quiz"}
+// Re-answering clears only that question's marks: a full re-render would drop every
+// other question's result and scroll the student away from where they were working.
+function unmarkQuestion(i){const f=$("quiz").querySelectorAll("fieldset")[i];if(!f)return;f.querySelectorAll(".opt").forEach(l=>l.classList.remove("ok","no"));f.querySelector(".explain")?.remove()}
+$("quiz").addEventListener("change",e=>{const i=+e.target.name.slice(2);S.qz[i]=+e.target.value;save();if(S.qzScore!=null)unmarkQuestion(i);updateAll()});
 $("quiz").addEventListener("submit",e=>e.preventDefault());
 $("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
   S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};

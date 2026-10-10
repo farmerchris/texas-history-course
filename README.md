@@ -1,5 +1,7 @@
 # Texas History Course
 
+**Live course: <https://farmerchris.github.io/texas-history-course>**
+
 Interactive lesson pages for a 7th-grade Texas History course (18 sessions, 2022 Grade 7 TEKS), plus one combined course page with a lesson picker and progress tracker.
 
 Each lesson page runs Read → Practice → Quiz → Exit claim → Results. Students turn in work by tapping **Copy my answers** and pasting it into a message to a parent, who grades the exit claim. Work saves in the browser.
