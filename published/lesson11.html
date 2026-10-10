@@ -1,0 +1,432 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cotton, Cattle &amp; Railroads Lesson 11</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --bad:#b33a2f; --bad-soft:#f9e3e0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);font-weight:700}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.yr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+a{color:var(--blue)}
+/* step strip */
+.steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding:10px 16px}
+.steps ol{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0;max-width:760px;overflow-x:auto}
+.steps a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.steps a:hover{background:var(--blue-soft);color:var(--ink)}
+.steps .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.steps a.done .dot{background:var(--good);border-color:var(--good)}
+.steps a.done{color:var(--ink)}
+header.hero{display:grid;gap:12px;padding-block:36px 24px}
+.hero .q{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(--ink)}
+.prose{display:grid;gap:14px;max-width:65ch}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0}
+/* timeline ruler */
+.ruler{position:relative;display:grid;gap:0;padding-left:28px}
+.ruler::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--rule)}
+.era{position:relative;display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.era:last-child{border-bottom:0}
+.era::before{content:"";position:absolute;left:-24px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.era .yr{font-size:.8rem;color:var(--blue);padding-top:3px}
+.era b{display:block}
+.era span{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.era{grid-template-columns:1fr}}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.date{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.date .yr{font-size:1.5rem;color:var(--gold)}
+.date p{font-size:.95rem}
+.ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+/* activities */
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task header{display:grid;gap:4px}
+.task header p{color:var(--muted);font-size:.95rem}
+.order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
+.order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
+.order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
+.order li .t{flex:1;min-width:0}
+.order li.ok{border-color:var(--good);background:var(--good-soft)}
+.order li.no{border-color:var(--bad);background:var(--bad-soft)}
+.mv{display:flex;gap:4px}
+button{font:inherit;cursor:pointer}
+.icon{width:44px;height:44px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-size:1rem;line-height:1}
+.icon:disabled{opacity:.35;cursor:default}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.match{display:grid;gap:8px}
+.match label{display:grid;grid-template-columns:4.2rem 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.match label.ok{background:var(--good-soft)} .match label.no{background:var(--bad-soft)}
+.match .yr{font-size:1.15rem}
+select{font:inherit;font-size:.95rem;width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.src{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.src .t{min-width:0}
+.src.ok{border-color:var(--good);background:var(--good-soft)} .src.no{border-color:var(--bad);background:var(--bad-soft)}
+.src .why{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--blue);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--blue);padding:10px 14px;min-height:44px;font-weight:700;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--card)}
+@media (max-width:520px){.src{grid-template-columns:1fr}}
+.chartbox{overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.chartbox .cap{font-size:.8rem;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+legend{font-weight:700;margin-bottom:6px;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;border:1px solid transparent}
+.opt:hover{background:var(--blue-soft)}
+.opt input{margin-top:5px;accent-color:var(--blue)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.no{background:var(--bad-soft);border-color:var(--bad)}
+.explain{font-size:.92rem;color:var(--muted);padding-left:10px;border-left:3px solid var(--rule)}
+.quiz{display:grid;gap:22px;counter-reset:q}
+.quiz fieldset legend::before{counter-increment:q;content:counter(q) ". ";font-family:var(--mono);color:var(--blue)}
+textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start}
+.checks input{margin-top:5px;accent-color:var(--good)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.score div{border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--card);display:grid;gap:2px}
+.score b{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score span{font-size:.85rem;color:var(--muted)}
+.small{font-size:.85rem;color:var(--muted)}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cert{background:var(--card);border:2px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:12px}
+.cert.complete{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.cert-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.stamp{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:2px solid var(--muted);color:var(--muted)}
+.cert.complete .stamp{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.certdate{font-size:.85rem;color:var(--muted)}
+.shot{background:var(--gold-soft);border:2px solid var(--gold);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+@media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
+@media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+
+
+/* Lessons 3-4 additions */
+.excerpt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:10px;max-width:65ch}
+.excerpt p{font-size:1rem}
+.excerpt .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.excerpt p.line{padding-left:12px;border-left:3px solid var(--gold)}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:2px;font-size:.95rem}
+.era em{font-style:normal;color:var(--muted);font-size:.9rem;display:block}
+.dates .date b{font-size:1.05rem}
+/* long words and URLs wrap instead of widening the page */
+.t,.excerpt p,.card p,.callout{overflow-wrap:anywhere}
+</style>
+
+<nav class="steps" aria-label="Lesson steps">
+  <ol>
+    <li><a href="#read" id="nav-read"><span class="dot"></span>1 Read</a></li>
+    <li><a href="#practice" id="nav-practice"><span class="dot"></span>2 Practice</a></li>
+    <li><a href="#check" id="nav-check"><span class="dot"></span>3 Quiz</a></li>
+    <li><a href="#reflect" id="nav-reflect"><span class="dot"></span>4 Exit claim</a></li>
+    <li><a href="#results" id="nav-results"><span class="dot"></span>Results</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">Texas History · Lesson 11 of 17</p>
+  <h1>Cotton, Cattle &amp; Railroads</h1>
+  <p class="q">Big question: <b>How did railroads and the closing frontier remake Texas?</b></p>
+  <div class="meta"><span>About 90 minutes</span><span>TEKS 7.6A, 7.6B, 7.6C, 7.6D, 7.21B</span><span>Your work saves on this device</span></div>
+</header>
+
+<section class="step" id="read">
+  <p class="eyebrow">Step 1 · Read</p>
+  <h2>Texas after the war</h2>
+  <div class="prose">
+    <p>When Reconstruction ended (Lesson 10), Texas was poor but full of two things: land and cattle. Over the next 30 years, cattle drives, railroads, and the end of the open frontier changed where Texans lived and how they made a living. That change came at a terrible cost for American Indians.</p>
+  </div>
+
+  <h3>The cattle drives</h3>
+  <div class="prose"><p>During the war, millions of longhorns ran wild in South Texas. A steer worth a few dollars in Texas could sell for many times more in the North, where cities wanted beef. So from 1866 to the 1880s, cowboys drove herds north to railroad towns in Kansas, where cattle were loaded onto trains.</p></div>
+  <div class="regions">
+    <div class="card"><div class="ctop"><b>Chisholm Trail</b><span class="tag">to Abilene, KS</span></div><p>The most famous route, running north from South Texas through Fort Worth.</p></div>
+    <div class="card"><div class="ctop"><b>Western Trail</b><span class="tag">to Dodge City, KS</span></div><p>Ran farther west as farms and fences filled in the land along the Chisholm.</p></div>
+    <div class="card"><div class="ctop"><b>Goodnight-Loving Trail</b><span class="tag">to New Mexico</span></div><p>Charles Goodnight and Oliver Loving drove herds west and north to forts and mining towns.</p></div>
+  </div>
+  <div class="callout"><b>Who were the cowboys?</b> Many were young men back from the war. Many were African American or Mexican American, and Mexican vaqueros (Lesson 4) had taught the skills they all used. By the late 1880s, barbed wire fences, windmills, and railroads reaching into Texas itself ended the long drives.</div>
+
+  <h3>Railroads remake the map</h3>
+  <div class="prose"><p>In 1870, Texas had only a few hundred miles of railroad track. By 1900 it had nearly 10,000 miles. Railroads let farmers ship cotton and ranchers ship cattle from anywhere along the line, so new towns grew up beside the tracks. Towns the railroad skipped often withered. Railroads also brought settlers to West Texas and the Panhandle.</p></div>
+  <div class="ruler">
+    <div class="era"><span class="yr">1870</span><div><b>A few short lines</b><span>Mostly around Houston and Galveston, carrying cotton to the coast.</span></div></div>
+    <div class="era"><span class="yr">1873</span><div><b>Dallas connects</b><span>Two railroads met in Dallas, which grew into a trading hub.</span></div></div>
+    <div class="era"><span class="yr">1881–83</span><div><b>East meets west</b><span>Lines built across West Texas reached El Paso, linking it to the rest of the country.</span></div></div>
+    <div class="era"><span class="yr">1900</span><div><b>Nearly 10,000 miles</b><span>Tracks crossed most of the state. Abilene, Midland, Amarillo, and many other towns grew up along them.</span></div></div>
+  </div>
+
+  <h3>The end of the open frontier</h3>
+  <div class="regions">
+    <div class="card"><div class="ctop"><b>The bison</b><span class="tag">1870s</span></div><p>Hide hunters killed millions of bison on the Southern Plains in just a few years. The Comanche, Kiowa, and other Plains nations depended on the bison for food, shelter, and tools (Lesson 2).</p></div>
+    <div class="card"><div class="ctop"><b>Buffalo soldiers</b><span class="tag">U.S. Army</span></div><p>African American regiments served at frontier forts such as Fort Concho and Fort Davis. They guarded roads, mapped West Texas, and fought in campaigns against American Indians.</p></div>
+    <div class="card"><div class="ctop"><b>Red River War</b><span class="tag">1874–75</span></div><p>The U.S. Army attacked Comanche, Kiowa, and Cheyenne camps. At Palo Duro Canyon, soldiers destroyed their winter food and killed more than 1,000 horses.</p></div>
+    <div class="card"><div class="ctop"><b>Quanah Parker</b><span class="tag">Comanche leader</span></div><p>The son of a Comanche chief and Cynthia Ann Parker, a captured settler. He led his band onto a reservation in Oklahoma in 1875, then became a respected leader and rancher who worked to protect his people's land and rights.</p></div>
+  </div>
+
+  <h3>Farmers fight back</h3>
+  <div class="prose"><p>Cotton was still king, but many farmers, white and Black, worked land they did not own as tenant farmers or sharecroppers. They complained that railroads charged unfair rates to ship their crops. Farmers organized groups like the Grange and the Farmers' Alliance. In 1890, <b>James Stephen Hogg</b> was elected governor, the first born in Texas. He created the <b>Texas Railroad Commission</b> in 1891 to regulate railroad rates.</p></div>
+
+  <div class="callout"><b>Reading a map pattern (SE 21B).</b> When you compare an 1870 railroad map with a 1900 map, ask: Where are the new lines? Which towns appear along them? What does that tell you about where Texans lived and worked? A pattern is something that repeats across the map, like "new towns appear along the tracks."</div>
+</section>
+
+<section class="step" id="practice">
+  <p class="eyebrow">Step 2 · Practice</p>
+  <h2>Do the work</h2>
+  <div id="practiceTasks" style="display:grid;gap:18px"></div>
+</section>
+
+<section class="step" id="check">
+  <p class="eyebrow">Step 3 · Quiz</p>
+  <h2>Show what you know</h2>
+  <p class="small">10 questions. You can scroll up to review, but try it from memory first.</p>
+  <form class="quiz" id="quiz"></form>
+  <div class="row"><button class="btn" id="submitQuiz">Submit quiz</button><span class="fb" id="fbQuiz" aria-live="polite"></span></div>
+</section>
+
+<section class="step" id="reflect">
+  <p class="eyebrow">Step 4 · Exit claim</p>
+  <h2>Explain the pattern</h2>
+  <div class="prose"><p>Pattern paragraph. In 3 to 5 sentences, answer: <b>What does the railroad map show about where Texans lived by 1900?</b> State the pattern as a claim, give one piece of evidence (a number, a town, or a date), and explain what caused the pattern.</p></div>
+  <label for="claim" class="small">Your answer</label>
+  <textarea id="claim" placeholder="By 1900, the railroad map shows that Texans..."></textarea>
+  <p class="small" id="wc">0 words</p>
+  <div class="checks">
+    <p><b>Check your own work before you finish:</b></p>
+    <label><input type="checkbox" id="ck1"> I stated the <b>pattern</b> as a clear claim.</label>
+    <label><input type="checkbox" id="ck2"> I gave specific <b>evidence</b> (a place, a date, a person, or an event).</label>
+    <label><input type="checkbox" id="ck3"> I explained what <b>caused</b> the pattern.</label>
+  </div>
+</section>
+
+<section class="step" id="results">
+  <p class="eyebrow">Results</p>
+  <h2>Lesson 11 report</h2>
+  <div class="cert" id="cert">
+    <div class="cert-top"><span class="eyebrow">Texas History · Lesson 11</span><span class="stamp" id="stamp">In progress</span></div>
+    <h3 id="certTitle">Cotton, Cattle &amp; Railroads</h3>
+    <div class="score" id="score"></div>
+    <p class="small" id="status"></p>
+    <p class="certdate yr" id="certDate"></p>
+  </div>
+  <div class="shot" id="shot" hidden>
+    <h3>Last step: turn in your work</h3>
+    <ol>
+      <li>Tap <b>Copy my answers</b> below.</li>
+      <li>Paste the answers into a message to your parents.</li>
+      <li>Send it. A parent will read and grade your exit claim.</li>
+    </ol>
+  </div>
+  <div class="row">
+    <button class="btn" id="copy">Copy my answers</button>
+    <span class="fb" id="fbCopy" aria-live="polite"></span>
+  </div>
+  <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
+  <div class="confirm" id="resetBox">
+    <button class="btn ghost" id="reset">Start over</button>
+  </div>
+  <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a>: “Cattle Trailing,” “Railroads,” “Buffalo Soldiers,” “Parker, Quanah,” “Red River War,” “Hogg, James Stephen,” “Railroad Commission”</p>
+</section>
+</main>
+
+<script>
+window.LESSON={"key": "tx-lesson11-v1", "n": 11, "label": "Lesson 11", "title": "Cotton, Cattle & Railroads", "practice": [{"type": "mc", "title": "Read the railroad map", "intro": "Imagine two maps of Texas railroads, one from 1870 and one from 1900. Pick the best answer.", "button": "Check my answers", "word": "correct", "before": "<div class=\"chartbox\"><svg viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Bar chart of Texas railroad miles: a few hundred in 1870, about 2,400 at the end of 1879, about 8,500 in 1890, just under 10,000 in 1900\">\n      <g font-family=\"IBM Plex Mono, monospace\" font-size=\"11\" fill=\"var(--muted)\">\n        <line x1=\"40\" y1=\"140\" x2=\"350\" y2=\"140\" stroke=\"var(--rule)\"/>\n        <text x=\"34\" y=\"144\" text-anchor=\"end\">0<\/text><text x=\"34\" y=\"84\" text-anchor=\"end\">5k<\/text><text x=\"34\" y=\"24\" text-anchor=\"end\">10k<\/text>\n        <line x1=\"40\" y1=\"80\" x2=\"350\" y2=\"80\" stroke=\"var(--rule)\" stroke-dasharray=\"3 3\"/><line x1=\"40\" y1=\"20\" x2=\"350\" y2=\"20\" stroke=\"var(--rule)\" stroke-dasharray=\"3 3\"/>\n      <\/g>\n      <g fill=\"var(--blue)\">\n        <rect x=\"60\" y=\"133\" width=\"50\" height=\"7\"/><rect x=\"135\" y=\"111\" width=\"50\" height=\"29\"/><rect x=\"210\" y=\"38\" width=\"50\" height=\"102\"/><rect x=\"285\" y=\"21\" width=\"50\" height=\"119\"/>\n      <\/g>\n      <g font-family=\"IBM Plex Mono, monospace\" font-size=\"11\" fill=\"var(--ink)\" text-anchor=\"middle\">\n        <text x=\"85\" y=\"158\">1870<\/text><text x=\"160\" y=\"158\">1879<\/text><text x=\"235\" y=\"158\">1890<\/text><text x=\"310\" y=\"158\">1900<\/text>\n      <\/g><\/svg><p class=\"cap\">Approximate miles of railroad track in Texas. Rounded estimates based on the Handbook of Texas, “Railroads,” which says more than 6,000 miles were built in the 1880s alone.<\/p><\/div>", "items": [{"q": "In which decade did the most new track get built?", "o": ["1880s", "1870s", "1890s"], "a": 0, "e": "More than 6,000 miles were built in the 1880s."}, {"q": "Which pattern would you expect on the 1900 map?", "o": ["New towns appear along the tracks", "Towns move away from the tracks", "No new towns appear"], "a": 0, "e": "Railroads created towns like Abilene, Midland, and Amarillo."}, {"q": "What did the railroads mean for the long cattle drives?", "o": ["They made drives longer", "They ended them, because cattle could be shipped from Texas", "Nothing changed"], "a": 1, "e": "Once tracks reached Texas, there was no need to walk herds to Kansas."}]}, {"type": "match", "title": "People and groups", "intro": "Match each clue to the right person or group.", "placeholder": "Choose one…", "button": "Check my matches", "word": "correct", "options": ["Quanah Parker", "Buffalo soldiers", "James Stephen Hogg", "Charles Goodnight", "Farmers' Alliance"], "items": [["Comanche leader who later became a rancher and spokesman for his people", 0], ["African American soldiers at forts like Fort Concho and Fort Davis", 1], ["First Texas-born governor; created the Railroad Commission", 2], ["Rancher who blazed a trail west toward New Mexico", 3], ["Farmers' group that fought high railroad rates", 4]]}, {"type": "sort", "title": "Cause of change", "intro": "Did this help <b>end the cattle drives<\/b> or <b>end the open frontier<\/b> for Plains nations?", "button": "Check my sorting", "word": "sorted correctly", "choices": [["C", "End the cattle drives"], ["F", "End the open frontier"]], "items": [["Barbed wire fences crossed the open range", "C", "Fences blocked the trails."], ["Hide hunters killed millions of bison", "F", "Plains nations lost their main food source."], ["Railroads reached Texas towns", "C", "Ranchers could ship cattle from home."], ["The Army destroyed winter camps at Palo Duro Canyon", "F", "Without food and horses, bands had to surrender."], ["Quanah Parker's band moved to a reservation in 1875", "F", "The last free Comanche band left the Texas plains."], ["Windmills let ranchers fence and water their own pastures", "C", "Ranching moved onto fenced land."]]}, {"type": "order", "title": "Put it in order", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 9, "items": [["Long cattle drives to Kansas begin", "1866"], ["Railroads meet in Dallas", "1873"], ["Red River War and Palo Duro Canyon", "1874"], ["Railroad reaches El Paso", "1881"], ["Hogg creates the Railroad Commission", "1891"], ["Texas has nearly 10,000 miles of track", "1900"]]}], "quiz": [{"q": "Why did Texans drive cattle north after the Civil War?", "o": ["Texas banned cattle", "Cattle sold for much more in the North", "Cattle needed snow", "The Army ordered it"], "a": 1, "e": "Northern cities wanted beef."}, {"q": "The Chisholm Trail led to…", "o": ["El Paso", "Santa Fe", "New Orleans", "Abilene, Kansas"], "a": 3, "e": "There, cattle were loaded onto trains."}, {"q": "Which ended the long cattle drives?", "o": ["Barbed wire, windmills, and railroads in Texas", "The Civil War", "Oil wells", "Hurricanes"], "a": 0, "e": "Fenced ranches and nearby railroads made drives unnecessary."}, {"q": "Who were the buffalo soldiers?", "o": ["Bison hunters", "Comanche warriors", "African American U.S. Army regiments on the frontier", "Cattle buyers"], "a": 2, "e": "They served at forts across West Texas."}, {"q": "Why was the killing of the bison so harmful to Plains nations?", "o": ["Bison were used to pull wagons", "Bison were sacred to settlers", "They depended on bison for food, shelter, and tools", "It was not harmful"], "a": 2, "e": "Losing the bison forced bands onto reservations."}, {"q": "Quanah Parker is known for…", "o": ["Leading a Comanche band, then becoming a leader and rancher on the reservation", "Building railroads", "Founding Dallas", "Being governor"], "a": 0, "e": "He worked to protect his people's interests after 1875."}, {"q": "How did railroads change where Texans lived?", "o": ["People moved to the coast only", "Everyone left Texas", "Nothing changed", "New towns grew up along the tracks"], "a": 3, "e": "Towns without a railroad often faded."}, {"q": "Why did farmers want the Railroad Commission?", "o": ["They wanted free trains", "Railroad shipping rates were too high", "They wanted to ban trains", "To build canals"], "a": 1, "e": "Governor Hogg created it in 1891."}, {"q": "Many Texas farmers who did not own land worked as…", "o": ["Sharecroppers or tenant farmers", "Empresarios", "Buffalo soldiers", "Oil workers"], "a": 0, "e": "They paid with part of their crop or rent."}, {"q": "Which sentence best answers the big question?", "o": ["Texas stayed exactly the same", "Railroads only helped Mexico", "Railroads and the end of the frontier spread towns and farms across Texas, ended the cattle drives, and forced Plains nations onto reservations", "The frontier grew larger"], "a": 2, "e": "Growth for some came at a great cost for others."}], "review": "Review the railroad chart and the frontier cards"};
+(function(){
+const C=window.LESSON;
+const KEY=C.key;
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const strip=s=>String(s).replace(/<[^>]+>/g,"");
+function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${q.q}</legend>${q.o.map((o,j)=>{const c=marks&&ans[i]!=null?(j===q.a?"ok":(String(ans[i])===String(j)?"no":"")):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${o}</span></label>`}).join("")}${marks&&ans[i]!=null?`<p class="explain">${q.e}</p>`:""}</fieldset>`).join("")}
+
+S.p=S.p||{};S.ps=S.ps||{};
+const T=C.practice;
+const total=t=>t.items.length;
+$("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
+
+function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
+function clearScore(ti){if(S.ps[ti]!=null){S.ps[ti]=null;save()}$("fb"+ti).textContent="";updateAll()}
+const scored=ti=>S.ps[ti]!=null;
+
+T.forEach((t,ti)=>{
+  const body=$("body"+ti);
+  if(t.type==="match"){
+    const A=S.p[ti]=S.p[ti]||{};
+    body.innerHTML=t.items.map((c,i)=>`<label id="m${ti}_${i}" for="ms${ti}_${i}"><span class="t">${c[0]}</span><select id="ms${ti}_${i}" data-i="${i}"><option value="">${t.placeholder}</option>${t.options.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+    t.items.forEach((c,i)=>{if(A[i]!=null)$(`ms${ti}_${i}`).value=A[i]});
+    const ok=i=>String(A[i])===String(t.items[i][1]);
+    const mark=on=>t.items.forEach((c,i)=>{$(`m${ti}_${i}`).className=on?(ok(i)?"ok":"no"):""});
+    body.addEventListener("change",e=>{A[e.target.dataset.i]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.filter((c,i)=>ok(i)).length)};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="sort"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=marks=>{body.innerHTML=t.items.map((s,i)=>{const v=A[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+      return `<div class="src ${cls}"><span class="t">${s[0]}</span><span class="seg" role="group" aria-label="${esc(t.choices.map(c=>c[1]).join(" or "))}">${t.choices.map(c=>`<button type="button" data-i="${i}" data-v="${c[0]}" aria-pressed="${v===c[0]}">${c[1]}</button>`).join("")}</span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${s[2]}</span>`:""}</div>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;A[b.dataset.i]=b.dataset.v;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((s,i)=>A[i]===s[1]).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="order"){
+    let A=S.p[ti];
+    if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
+    body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
+    const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
+      return `<li class="${cls}"><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="mc"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=m=>{body.innerHTML=mcHTML(t.items,`c${ti}_`,A,m)};
+    body.addEventListener("change",e=>{A[e.target.name.split("_")[1]]=+e.target.value;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((q,i)=>A[i]===q.a).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+});
+
+// Quiz
+const QUIZ=C.quiz;
+S.qz=S.qz||{};
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("quiz").querySelectorAll("input").forEach(i=>i.disabled=S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz";$("submitQuiz").disabled=S.qzScore!=null}
+$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;save();updateAll()});
+$("quiz").addEventListener("submit",e=>e.preventDefault());
+$("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
+  S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};
+renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
+
+// Exit claim
+$("claim").value=S.claim||"";
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!S[k];$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
+$("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
+
+function report(){
+  const L=[`Texas History ${C.label}: ${C.title}`];
+  T.forEach((t,ti)=>L.push(`${String.fromCharCode(65+ti)}. ${strip(t.title)}: ${S.ps[ti]==null?"not checked yet":S.ps[ti]+"/"+total(t)}`));
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/"+QUIZ.length+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
+  const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
+  const head=L.shift();
+  const pr=$("reflect").querySelector(".prose");
+  const prompt=pr?pr.textContent.replace(/\s+/g," ").trim():"";
+  return [head,
+    S.doneAt?"Completed "+S.doneAt:"Not finished yet",
+    "",
+    "EXIT CLAIM (for a parent to grade)",
+    "Prompt: "+prompt,
+    `Answer (${wc()} words, self-check ${ck}/3):`,
+    S.claim&&S.claim.trim()?S.claim.trim():"(not written yet)",
+    "",
+    "SCORES",
+    ...L].join("\n");
+}
+function updateAll(){
+  const doneP=T.every((t,ti)=>S.ps[ti]!=null);
+  const anyP=T.some((t,ti)=>S.ps[ti]!=null);
+  const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
+  $("nav-read").classList.toggle("done",anyP);
+  $("nav-practice").classList.toggle("done",doneP);
+  $("nav-check").classList.toggle("done",S.qzScore!=null);
+  $("nav-reflect").classList.toggle("done",claimDone);
+  const all=doneP&&S.qzScore!=null&&claimDone;
+  $("nav-results").classList.toggle("done",all);
+  const pTot=T.reduce((a,t)=>a+total(t),0);
+  const pGot=T.reduce((a,t,ti)=>a+(S.ps[ti]||0),0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  const letters="A–"+String.fromCharCode(64+T.length);
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—",`Practice (${letters})`)+cell(S.qzScore!=null?`${S.qzScore}/${QUIZ.length}`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore/QUIZ.length*100)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  const need=Math.ceil(QUIZ.length*0.8);
+  if(all) st=S.qzScore>=need?`Lesson complete. Mastery reached (${need}/${QUIZ.length} or better on the quiz).`:`Lesson complete. ${C.review}, then talk through the missed quiz questions with a parent.`;
+  else{const todo=[];if(!doneP)todo.push(`check all ${T.length===4?"four":T.length} practice activities`);if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
+  if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
+  if(!all&&S.doneAt){S.doneAt=undefined;save()}
+  $("cert").classList.toggle("complete",all);
+  $("stamp").textContent=all?"Lesson complete":"In progress";
+  $("certDate").textContent=all?"Completed "+S.doneAt:"";
+  $("shot").hidden=!all;
+}
+$("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
+function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+  $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+$("reset").onclick=askReset;
+updateAll();
+})();
+
+</script>
+
+</body></html>

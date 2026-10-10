@@ -1,0 +1,491 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Natural Texas Lesson 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --bad:#b33a2f; --bad-soft:#f9e3e0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);font-weight:700}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.yr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+a{color:var(--blue)}
+/* step strip */
+.steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding:10px 16px}
+.steps ol{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0;max-width:760px;overflow-x:auto}
+.steps a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.steps a:hover{background:var(--blue-soft);color:var(--ink)}
+.steps .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.steps a.done .dot{background:var(--good);border-color:var(--good)}
+.steps a.done{color:var(--ink)}
+header.hero{display:grid;gap:12px;padding-block:36px 24px}
+.hero .q{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(--ink)}
+.prose{display:grid;gap:14px;max-width:65ch}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0}
+/* timeline ruler */
+.ruler{position:relative;display:grid;gap:0;padding-left:28px}
+.ruler::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--rule)}
+.era{position:relative;display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.era:last-child{border-bottom:0}
+.era::before{content:"";position:absolute;left:-24px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.era .yr{font-size:.8rem;color:var(--blue);padding-top:3px}
+.era b{display:block}
+.era span{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.era{grid-template-columns:1fr}}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.date{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.date .yr{font-size:1.5rem;color:var(--gold)}
+.date p{font-size:.95rem}
+.ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+/* activities */
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task header{display:grid;gap:4px}
+.task header p{color:var(--muted);font-size:.95rem}
+.order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
+.order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
+.order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
+.order li .t{flex:1;min-width:0}
+.order li.ok{border-color:var(--good);background:var(--good-soft)}
+.order li.no{border-color:var(--bad);background:var(--bad-soft)}
+.mv{display:flex;gap:4px}
+button{font:inherit;cursor:pointer}
+.icon{width:44px;height:44px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-size:1rem;line-height:1}
+.icon:disabled{opacity:.35;cursor:default}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.match{display:grid;gap:8px}
+.match label{display:grid;grid-template-columns:4.2rem 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.match label.ok{background:var(--good-soft)} .match label.no{background:var(--bad-soft)}
+.match .yr{font-size:1.15rem}
+select{font:inherit;font-size:.95rem;width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.src{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.src .t{min-width:0}
+.src.ok{border-color:var(--good);background:var(--good-soft)} .src.no{border-color:var(--bad);background:var(--bad-soft)}
+.src .why{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--blue);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--blue);padding:10px 14px;min-height:44px;font-weight:700;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--card)}
+@media (max-width:520px){.src{grid-template-columns:1fr}}
+.chartbox{overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.chartbox .cap{font-size:.8rem;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+legend{font-weight:700;margin-bottom:6px;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;border:1px solid transparent}
+.opt:hover{background:var(--blue-soft)}
+.opt input{margin-top:5px;accent-color:var(--blue)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.no{background:var(--bad-soft);border-color:var(--bad)}
+.explain{font-size:.92rem;color:var(--muted);padding-left:10px;border-left:3px solid var(--rule)}
+.quiz{display:grid;gap:22px;counter-reset:q}
+.quiz fieldset legend::before{counter-increment:q;content:counter(q) ". ";font-family:var(--mono);color:var(--blue)}
+textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start}
+.checks input{margin-top:5px;accent-color:var(--good)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.score div{border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--card);display:grid;gap:2px}
+.score b{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score span{font-size:.85rem;color:var(--muted)}
+.small{font-size:.85rem;color:var(--muted)}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cert{background:var(--card);border:2px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:12px}
+.cert.complete{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.cert-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.stamp{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:2px solid var(--muted);color:var(--muted)}
+.cert.complete .stamp{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.certdate{font-size:.85rem;color:var(--muted)}
+.shot{background:var(--gold-soft);border:2px solid var(--gold);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+@media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
+@media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+</style>
+
+<nav class="steps" aria-label="Lesson steps">
+  <ol>
+    <li><a href="#read" id="nav-read"><span class="dot"></span>1 Read</a></li>
+    <li><a href="#practice" id="nav-practice"><span class="dot"></span>2 Practice</a></li>
+    <li><a href="#check" id="nav-check"><span class="dot"></span>3 Quiz</a></li>
+    <li><a href="#reflect" id="nav-reflect"><span class="dot"></span>4 Exit claim</a></li>
+    <li><a href="#results" id="nav-results"><span class="dot"></span>Results</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">Texas History · Lesson 2 of 17</p>
+  <h1>Natural Texas and Its People</h1>
+  <p class="q">Big question: <b>How did the land shape the way American Indian groups lived?</b></p>
+  <div class="meta"><span>About 90 minutes</span><span>TEKS 7.2A, 7.8A, 7.8B, 7.8C, 7.9A</span><span>Your work saves on this device</span></div>
+</header>
+
+<section class="step" id="read">
+  <p class="eyebrow">Step 1 · Read</p>
+  <h2>One state, four very different lands</h2>
+  <div class="prose">
+    <p>In Lesson 1 you met the first era of Texas history: <b>Natural Texas and Its People</b>, the thousands of years before Europeans arrived. To understand the people of that era, start with the land itself.</p>
+    <p>Texas is huge, and its land changes a lot from one side to the other. Geographers split it into four <b>physical regions</b>. A region is an area where the land, climate, and plants are alike. The biggest difference between the regions is <b>rain</b>. East Texas gets a lot of it. Far West Texas gets very little.</p>
+    <p>Rain decides what grows. What grows decides what animals live there. And plants and animals decided how people could feed, house, and clothe themselves.</p>
+  </div>
+
+  <h3>From west to east: how much rain falls in a year</h3>
+  <div class="strip" id="strip" aria-label="Average yearly rain from west to east: El Paso 8.8 inches, Lubbock 18.3, Abilene 25.2, Beaumont 65.1."></div>
+
+  <h3>The four physical regions</h3>
+  <div class="regions" id="regionCards"></div>
+
+  <h3>Four ways of life</h3>
+  <div class="prose"><p>Historians group the American Indian peoples of early Texas into four <b>culture groups</b>. People in the same culture group got food, built homes, and moved (or stayed put) in similar ways, because they lived on similar land.</p></div>
+  <div class="regions" id="cultureCards"></div>
+
+  <h3>The geographer's toolkit: adapt or modify?</h3>
+  <div class="ps">
+    <div><b>Adapt</b><p>Change the way <i>you</i> live to fit the land. Following the bison herds is adapting.</p><p class="small">Example: Plains peoples made tipis they could pack up and carry.</p></div>
+    <div><b>Modify</b><p>Change the <i>land</i> to fit what you need. Clearing trees to plant a field is modifying.</p><p class="small">Example: Caddo farmers cleared forest to grow corn.</p></div>
+  </div>
+  <div class="prose"><p>A quick test: <b>Who changed, the people or the land?</b> If the people changed their habits, they adapted. If they changed the land, they modified it. Every group did some of both.</p></div>
+
+  <div class="callout"><b>How do we know?</b> Most of these groups did not leave written records. Archaeologists learn about them from <b>artifacts</b> such as tools, pottery, and the remains of houses. Spanish and French explorers also wrote about them, but those writers were outsiders. Remember Lesson 1: a primary source shows the creator's point of view.</div>
+  <div class="callout"><b>These stories did not end.</b> Many of these nations are still here. The Caddo Nation, Comanche Nation, and Wichita and Affiliated Tribes are based in Oklahoma today. In Texas, the Tigua people of Ysleta del Sur Pueblo live near El Paso, along with two other tribes, the Alabama-Coushatta and the Kickapoo.</div>
+</section>
+
+<section class="step" id="practice">
+  <p class="eyebrow">Step 2 · Practice</p>
+  <h2>Do the work</h2>
+
+  <div class="task" id="taskRegion">
+    <header><h3>A. Name the region</h3><p>Read each clue and pick the region it describes.</p></header>
+    <div class="match wide" id="regionMatch"></div>
+    <div class="row"><button class="btn" id="checkRegion">Check my regions</button><span class="fb" id="fbRegion" aria-live="polite"></span></div>
+  </div>
+
+  <div class="task" id="taskAdapt">
+    <header><h3>B. Adapt or modify?</h3><p>Ask: who changed, the people or the land?</p></header>
+    <div class="sort" id="adaptList"></div>
+    <div class="row"><button class="btn" id="checkAdapt">Check my sorting</button><span class="fb" id="fbAdapt" aria-live="polite"></span></div>
+  </div>
+
+  <div class="task" id="taskCompare">
+    <header><h3>C. Compare two peoples</h3><p>Fill in the chart for the Caddo and the Comanche. Pick the best answer for each box.</p></header>
+    <div class="cmpbox"><table class="cmp" id="cmp"></table></div>
+    <div class="row"><button class="btn" id="checkCompare">Check my chart</button><span class="fb" id="fbCompare" aria-live="polite"></span></div>
+  </div>
+
+  <div class="task" id="taskChart">
+    <header><h3>D. Read a graph</h3><p>This graph shows how much rain falls in a normal year in five Texas cities, listed from west to east.</p></header>
+    <div class="chartbox" id="chart"></div>
+    <div id="chartQs" style="display:grid;gap:18px"></div>
+    <div class="row"><button class="btn" id="checkChart">Check my answers</button><span class="fb" id="fbChart" aria-live="polite"></span></div>
+  </div>
+</section>
+
+<section class="step" id="check">
+  <p class="eyebrow">Step 3 · Quiz</p>
+  <h2>Show what you know</h2>
+  <p class="small">10 questions. You can scroll up to review, but try it from memory first.</p>
+  <form class="quiz" id="quiz"></form>
+  <div class="row"><button class="btn" id="submitQuiz">Submit quiz</button><span class="fb" id="fbQuiz" aria-live="polite"></span></div>
+</section>
+
+<section class="step" id="reflect">
+  <p class="eyebrow">Step 4 · Exit claim</p>
+  <h2>Answer the big question</h2>
+  <div class="prose"><p>In 3 to 5 sentences, answer: <b>How did the land shape the way American Indian groups lived?</b> Make a claim, give one piece of evidence from today's lesson (a region, a group, a food, or a kind of home), and explain how your evidence supports your claim.</p></div>
+  <label for="claim" class="small">Your answer</label>
+  <textarea id="claim" placeholder="The land shaped the way American Indian groups lived because..."></textarea>
+  <p class="small" id="wc">0 words</p>
+  <div class="checks">
+    <p><b>Check your own work before you finish:</b></p>
+    <label><input type="checkbox" id="ck1"> I made a clear <b>claim</b> that answers the question.</label>
+    <label><input type="checkbox" id="ck2"> I gave specific <b>evidence</b> (a region, a group, a food, or a home).</label>
+    <label><input type="checkbox" id="ck3"> I explained <b>how</b> my evidence supports my claim.</label>
+  </div>
+</section>
+
+<section class="step" id="results">
+  <p class="eyebrow">Results</p>
+  <h2>Lesson 2 report</h2>
+  <div class="cert" id="cert">
+    <div class="cert-top"><span class="eyebrow">Texas History · Lesson 2</span><span class="stamp" id="stamp">In progress</span></div>
+    <h3 id="certTitle">Natural Texas and Its People</h3>
+    <div class="score" id="score"></div>
+    <p class="small" id="status"></p>
+    <p class="certdate yr" id="certDate"></p>
+  </div>
+  <div class="shot" id="shot" hidden>
+    <h3>Last step: turn in your work</h3>
+    <ol>
+      <li>Tap <b>Copy my answers</b> below.</li>
+      <li>Paste the answers into a message to your parents.</li>
+      <li>Send it. A parent will read and grade your exit claim.</li>
+    </ol>
+  </div>
+  <div class="row">
+    <button class="btn" id="copy">Copy my answers</button>
+    <span class="fb" id="fbCopy" aria-live="polite"></span>
+  </div>
+  <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
+  <div class="confirm" id="resetBox">
+    <button class="btn ghost" id="reset">Start over</button>
+  </div>
+  <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.texasbeyondhistory.net/" target="_blank" rel="noopener">Texas Beyond History</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a> · Rainfall: NOAA National Centers for Environmental Information, 1991–2020 normals.</p>
+</section>
+</main>
+
+<script>
+(function(){
+const REGIONS=[
+ ["Mountains and Basins","Far West Texas","Mountains, deserts, and dry basins around El Paso and Big Bend. The driest region. Guadalupe Peak, the highest point in Texas (8,751 ft), is here.","Under 20 in. of rain"],
+ ["Great Plains","Panhandle and Hill Country","Flat, high grassland with few trees. Huge herds of bison once grazed here. Amarillo and Lubbock are here today.","About 15–25 in."],
+ ["North Central Plains","Middle of North Texas","Rolling prairies, low hills, and strips of oak woods. Wetter than the Great Plains. Fort Worth, Abilene, and Wichita Falls are here today.","About 25–35 in."],
+ ["Coastal Plains","East and South Texas","Flat, low land along the Gulf of Mexico. Thick pine forests and rich soil in the east (the Piney Woods), bays and marshes on the coast, dry brush country in the south.","Up to 60+ in. in the east"]
+];
+const CULTURES=[
+ ["Gulf","Karankawa, Coahuiltecan","Coastal Plains: Gulf coast and South Texas brush","Fish, shellfish, deer, prickly pear, mesquite beans","Small huts of bent poles covered with hides or woven mats","Moved with the seasons to find food. The Karankawa paddled dugout canoes."],
+ ["Plains","Comanche, Apache, Tonkawa, Kiowa","Great Plains","Bison, hunted on foot and later on horseback","Tipis made of bison hides, easy to pack and move","Followed the herds. Bison also gave them clothing, tools, and tipi covers."],
+ ["Puebloan","Jumano, Tigua","Mountains and Basins, along the Rio Grande","Corn, beans, and squash grown with river water","Adobe houses made of sun-dried mud bricks","Stayed in farming villages. Some Jumano also traveled far to trade."],
+ ["Southeastern","Caddo, Wichita","Coastal Plains (Piney Woods) and the Red River valley","Corn, beans, squash, and sunflowers they farmed","Tall dome houses of wooden poles covered with grass","Lived in permanent villages. The Caddo built large earthen mounds. The word <i>Texas</i> comes from a Caddo word meaning <i>friend</i>."]
+];
+const RAIN=[["El Paso","Mountains and Basins",8.8],["Lubbock","Great Plains",18.3],["Abilene","N. Central Plains",25.2],["Houston","Coastal Plains",55.6],["Beaumont","Coastal Plains",65.1]];
+const RNAMES=REGIONS.map(r=>r[0]);
+const CLUES=[
+ ["Guadalupe Peak, the highest point in Texas",0],
+ ["Flat Panhandle grassland where bison herds once grazed",1],
+ ["Thick pine forests and the most rain in the state",3],
+ ["Rolling prairies and low hills around Fort Worth and Abilene",2],
+ ["The driest region, with deserts and dry basins",0],
+ ["Bays, marshes, and islands along the Gulf of Mexico",3],
+ ["High, flat land around Amarillo and Lubbock with few trees",1],
+ ["Wetter than the Great Plains, drier than the Piney Woods, with strips of oak woods",2]
+];
+const ACTS=[
+ ["The Comanche followed the bison herds across the plains as the herds moved.","A","The people changed where they lived to follow their food."],
+ ["Caddo farmers cleared forest so they could plant fields of corn.","M","They changed the land by removing trees."],
+ ["The Karankawa rubbed oil on their skin to keep mosquitoes away on the coast.","A","They changed their own habits to live with the insects."],
+ ["Puebloan farmers dug ditches to carry Rio Grande water to their crops.","M","They changed the land by moving water to it."],
+ ["The Caddo built large earthen mounds for temples and burials.","M","They reshaped the land itself."],
+ ["Coahuiltecans gathered prickly pear fruit and mesquite beans in the dry brush country.","A","They ate what already grew there."],
+ ["Plains peoples made tipis that could be packed up and carried.","A","They built homes that fit a life of moving."],
+ ["Plains hunters sometimes set grass fires to drive bison or bring up fresh grass.","M","Burning the grass changed the land."]
+];
+const CMP=[
+ {row:"Region",o:["Coastal Plains (Piney Woods)","Great Plains","Mountains and Basins","Gulf coast islands"],a:[0,1]},
+ {row:"Main food",o:["Bison they hunted","Corn, beans, and squash they grew","Fish and shellfish","Prickly pear and mesquite beans"],a:[1,0]},
+ {row:"Homes",o:["Adobe houses","Tipis made of bison hides","Dome houses covered with grass","Huts of poles and woven mats"],a:[2,1]},
+ {row:"Stay or move?",o:["Moved between coast and inland by season","Lived in permanent villages","Moved often to follow the herds"],a:[1,2]}
+];
+const PEOPLES=["Caddo","Comanche"];
+const CHARTQ=[
+ {q:"Which city on the graph gets the least rain in a normal year?",o:["El Paso","Abilene","Beaumont"],a:0,e:"El Paso, in the Mountains and Basins region, gets about 8.8 inches."},
+ {q:"About how many times as much rain does Beaumont get as El Paso?",o:["About twice as much","About 7 times as much","About the same"],a:1,e:"65.1 ÷ 8.8 is about 7.4, so Beaumont gets about 7 times as much rain."},
+ {q:"What pattern does the graph show?",o:["Rain increases from east to west","Rain is about the same everywhere","Rain increases from west to east"],a:2,e:"Each bar is taller than the one before it, moving from west to east."}
+];
+const QUIZ=[
+ {q:"Which physical region is the driest?",o:["Coastal Plains","North Central Plains","Great Plains","Mountains and Basins"],a:3,e:"Far West Texas, the Mountains and Basins region, gets the least rain."},
+ {q:"Guadalupe Peak, the highest point in Texas, is in which region?",o:["Mountains and Basins","Great Plains","North Central Plains","Coastal Plains"],a:0,e:"Guadalupe Peak (8,751 ft) is in the mountains of Far West Texas."},
+ {q:"Which group farmed and lived in permanent villages in the Piney Woods of East Texas?",o:["Comanche","Caddo","Karankawa","Tonkawa"],a:1,e:"The Caddo used the rain and rich soil of East Texas to farm."},
+ {q:"Why did Plains peoples live in tipis?",o:["Tipis kept out the ocean wind","They had no animal hides","Tipis could be packed up and moved as they followed the bison","The law required it"],a:2,e:"Following the herds meant moving often, so homes had to travel too."},
+ {q:"Which is an example of MODIFYING the environment?",o:["Following bison herds","Digging ditches to bring river water to crops","Gathering prickly pear fruit","Moving inland for the summer"],a:1,e:"Digging ditches changes the land. The other choices are people adapting."},
+ {q:"The Karankawa lived mainly…",o:["Along the Gulf coast","In the Panhandle","In the mountains near El Paso","Along the Red River"],a:0,e:"The Karankawa lived along the coast and its islands and fished from dugout canoes."},
+ {q:"Puebloan peoples such as the Jumano and Tigua built homes from…",o:["Bison hides","Grass and poles","Adobe (sun-dried mud bricks)","Stone blocks from the coast"],a:2,e:"Adobe works well in a dry place with little wood."},
+ {q:"In general, as you travel from east to west across Texas, rainfall…",o:["Increases","Decreases","Stays the same","Only changes in winter"],a:1,e:"East Texas is wettest and Far West Texas is driest."},
+ {q:"The word Texas comes from a Caddo word meaning…",o:["Big land","River","Friend","Bison"],a:2,e:"Spanish explorers heard the Caddo word for friend and used it as a name."},
+ {q:"Which sentence best explains how the land shaped American Indian life?",o:["All groups lived the same way","Groups with rain and rich soil could farm and stay put; groups on dry grasslands moved to follow herds","The land did not matter because everyone traded","Only groups near the coast could find food"],a:1,e:"Rain and soil decided whether farming was possible, which decided whether people settled or moved."}
+];
+
+const KEY="tx-lesson2-v1";
+let S={};
+function load(){try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+load();
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+// Reading
+const STRIP=[["Mountains and Basins","El Paso",8.8],["Great Plains","Lubbock",18.3],["North Central Plains","Abilene",25.2],["Coastal Plains","Beaumont",65.1]];
+$("strip").innerHTML=`<div class="band">${STRIP.map((r,i)=>`<div class="seg${i}"><b>${r[0]}</b><span class="yr">${r[2]} in.</span><span class="small">${r[1]}</span></div>`).join("")}</div><div class="axis"><span>West · drier</span><span>East · wetter</span></div>`;
+$("regionCards").innerHTML=REGIONS.map((r,i)=>`<div class="card"><div class="ctop"><b>${r[0]}</b><span class="tag">${r[1]}</span></div><p>${r[2]}</p><p class="yr stat">${r[3]}</p></div>`).join("");
+$("cultureCards").innerHTML=CULTURES.map(c=>`<div class="card"><div class="ctop"><b>${c[0]} culture</b><span class="tag">${c[1]}</span></div><dl><dt>Land</dt><dd>${c[2]}</dd><dt>Food</dt><dd>${c[3]}</dd><dt>Homes</dt><dd>${c[4]}</dd><dt>Life</dt><dd>${c[5]}</dd></dl></div>`).join("");
+
+// A. Regions
+S.reg=S.reg||{};
+$("regionMatch").innerHTML=CLUES.map((c,i)=>`<label id="rl${i}" for="rs${i}"><span class="t">${esc(c[0])}</span><select id="rs${i}" data-i="${i}"><option value="">Choose a region…</option>${RNAMES.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+CLUES.forEach((c,i)=>{if(S.reg[i]!=null)$("rs"+i).value=S.reg[i]});
+$("regionMatch").addEventListener("change",e=>{S.reg[e.target.dataset.i]=e.target.value;S.regScore=undefined;save();markReg(false);$("fbRegion").textContent="";updateAll()});
+function markReg(on){CLUES.forEach((c,i)=>{$("rl"+i).className=on?(String(S.reg[i])===String(c[1])?"ok":"no"):""})}
+$("checkRegion").onclick=()=>{const n=CLUES.filter((c,i)=>String(S.reg[i])===String(c[1])).length;S.regScore=n;save();markReg(true);fb("fbRegion",n,CLUES.length,"correct");updateAll()};
+if(S.regScore!=null){markReg(true);fb("fbRegion",S.regScore,CLUES.length,"correct")}
+
+// B. Adapt or modify
+S.ad=S.ad||{};
+function renderAdapt(marks){
+  $("adaptList").innerHTML=ACTS.map((s,i)=>{const v=S.ad[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+  return `<div class="src ${cls}"><span class="t">${esc(s[0])}</span><span class="seg" role="group" aria-label="Adapt or modify"><button type="button" data-i="${i}" data-v="A" aria-pressed="${v==="A"}">Adapt</button><button type="button" data-i="${i}" data-v="M" aria-pressed="${v==="M"}">Modify</button></span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${esc(s[2])}</span>`:""}</div>`}).join("");
+}
+$("adaptList").addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;S.ad[b.dataset.i]=b.dataset.v;S.adScore=undefined;save();renderAdapt(false);$("fbAdapt").textContent="";updateAll()});
+$("checkAdapt").onclick=()=>{const n=ACTS.filter((s,i)=>S.ad[i]===s[1]).length;S.adScore=n;save();renderAdapt(true);fb("fbAdapt",n,ACTS.length,"sorted correctly");updateAll()};
+renderAdapt(S.adScore!=null);if(S.adScore!=null)fb("fbAdapt",S.adScore,ACTS.length,"sorted correctly");
+
+// C. Compare
+S.cmp=S.cmp||{};
+const CMPN=CMP.length*PEOPLES.length;
+$("cmp").innerHTML=`<thead><tr><th scope="col"></th>${PEOPLES.map(p=>`<th scope="col">${p}</th>`).join("")}</tr></thead><tbody>${CMP.map((r,i)=>`<tr><th scope="row">${r.row}</th>${PEOPLES.map((p,k)=>`<td id="ct${i}_${k}"><select id="cs${i}_${k}" data-k="${i}_${k}" aria-label="${esc(p)}: ${esc(r.row)}"><option value="">Choose…</option>${r.o.map((o,j)=>`<option value="${j}">${esc(o)}</option>`).join("")}</select></td>`).join("")}</tr>`).join("")}</tbody>`;
+Object.keys(S.cmp).forEach(k=>{const el=$("cs"+k);if(el)el.value=S.cmp[k]});
+$("cmp").addEventListener("change",e=>{S.cmp[e.target.dataset.k]=e.target.value;S.cmpScore=undefined;save();markCmp(false);$("fbCompare").textContent="";updateAll()});
+function cmpOK(i,k){return String(S.cmp[i+"_"+k])===String(CMP[i].a[k])}
+function markCmp(on){CMP.forEach((r,i)=>PEOPLES.forEach((p,k)=>{$("ct"+i+"_"+k).className=on?(cmpOK(i,k)?"ok":"no"):""}))}
+$("checkCompare").onclick=()=>{let n=0;CMP.forEach((r,i)=>PEOPLES.forEach((p,k)=>{if(cmpOK(i,k))n++}));S.cmpScore=n;save();markCmp(true);fb("fbCompare",n,CMPN,"correct");updateAll()};
+if(S.cmpScore!=null){markCmp(true);fb("fbCompare",S.cmpScore,CMPN,"correct")}
+
+// D. Chart
+(function(){
+  const W=640,H=320,L=48,R=16,T=24,B=58,max=70,iw=W-L-R,ih=H-T-B,bw=iw/RAIN.length*0.56;
+  let g="";
+  for(let v=0;v<=max;v+=10){const y=T+ih-ih*v/max;g+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--rule)" stroke-width="1"/><text x="${L-8}" y="${y+4}" text-anchor="end" font-size="12" fill="var(--muted)" font-family="IBM Plex Mono, monospace">${v}</text>`}
+  RAIN.forEach((p,i)=>{const cx=L+iw/RAIN.length*(i+.5),h=ih*p[2]/max,y=T+ih-h;
+    g+=`<rect x="${cx-bw/2}" y="${y}" width="${bw}" height="${h}" rx="3" fill="var(--blue)"/><text x="${cx}" y="${y-6}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)" font-family="IBM Plex Mono, monospace">${p[2]}</text><text x="${cx}" y="${H-B+20}" text-anchor="middle" font-size="13" fill="var(--ink)">${p[0]}</text><text x="${cx}" y="${H-B+38}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${p[1]}</text>`});
+  $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart of average yearly rain, west to east: El Paso 8.8 inches, Lubbock 18.3, Abilene 25.2, Houston 55.6, Beaumont 65.1."><text x="${L}" y="12" font-size="12" fill="var(--muted)">Average rain per year (inches)</text>${g}</svg><p class="cap">Source: NOAA National Centers for Environmental Information, 1991–2020 normals. West is on the left, east on the right.</p>`;
+})();
+S.ch=S.ch||{};
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${esc(q.q)}</legend>${q.o.map((o,j)=>{const c=marks&&ans[i]!=null?(j===q.a?"ok":(String(ans[i])===String(j)?"no":"")):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${esc(o)}</span></label>`}).join("")}${marks&&ans[i]!=null?`<p class="explain">${esc(q.e)}</p>`:""}</fieldset>`).join("")}
+function renderChart(m){$("chartQs").innerHTML=mcHTML(CHARTQ,"cq",S.ch,m)}
+$("chartQs").addEventListener("change",e=>{S.ch[e.target.name.slice(2)]=+e.target.value;S.chScore=undefined;save();renderChart(false);$("fbChart").textContent="";updateAll()});
+$("checkChart").onclick=()=>{const n=CHARTQ.filter((q,i)=>S.ch[i]===q.a).length;S.chScore=n;save();renderChart(true);fb("fbChart",n,CHARTQ.length,"correct");updateAll()};
+renderChart(S.chScore!=null);if(S.chScore!=null)fb("fbChart",S.chScore,CHARTQ.length,"correct");
+
+// Quiz
+S.qz=S.qz||{};
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("quiz").querySelectorAll("input").forEach(i=>i.disabled=S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz";$("submitQuiz").disabled=S.qzScore!=null}
+$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;save();updateAll()});
+$("quiz").addEventListener("submit",e=>e.preventDefault());
+$("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
+  S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};
+renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
+
+// Exit claim
+$("claim").value=S.claim||"";
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!(S[k]);$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
+$("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
+
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+
+function report(){
+  const L=["Texas History Lesson 2: Natural Texas and Its People"];
+  const part=(name,s,t)=>L.push(`${name}: ${s==null?"not checked yet":s+"/"+t}`);
+  part("A. Name the region",S.regScore,CLUES.length);part("B. Adapt or modify",S.adScore,ACTS.length);part("C. Caddo vs. Comanche chart",S.cmpScore,CMPN);part("D. Graph reading",S.chScore,CHARTQ.length);
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/10"+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
+  const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
+  const head=L.shift();
+  const pr=$("reflect").querySelector(".prose");
+  const prompt=pr?pr.textContent.replace(/\s+/g," ").trim():"";
+  return [head,
+    S.doneAt?"Completed "+S.doneAt:"Not finished yet",
+    "",
+    "EXIT CLAIM (for a parent to grade)",
+    "Prompt: "+prompt,
+    `Answer (${wc()} words, self-check ${ck}/3):`,
+    S.claim&&S.claim.trim()?S.claim.trim():"(not written yet)",
+    "",
+    "SCORES",
+    ...L].join("\n");
+}
+function updateAll(){
+  const doneP=[S.regScore,S.adScore,S.cmpScore,S.chScore].every(v=>v!=null);
+  const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
+  $("nav-read").classList.toggle("done",doneP||S.regScore!=null);
+  $("nav-practice").classList.toggle("done",doneP);
+  $("nav-check").classList.toggle("done",S.qzScore!=null);
+  $("nav-reflect").classList.toggle("done",claimDone);
+  $("nav-results").classList.toggle("done",doneP&&S.qzScore!=null&&claimDone);
+  const pTot=CLUES.length+ACTS.length+CMPN+CHARTQ.length;
+  const pGot=(S.regScore||0)+(S.adScore||0)+(S.cmpScore||0)+(S.chScore||0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—","Practice (A–D)")+cell(S.qzScore!=null?`${S.qzScore}/10`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore*10)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  if(doneP&&S.qzScore!=null&&claimDone) st=S.qzScore>=8?"Lesson complete. Mastery reached (8/10 or better on the quiz).":"Lesson complete. Review the regions and culture groups, then talk through the missed quiz questions with a parent.";
+  else{const todo=[];if(!doneP)todo.push("check all four practice activities");if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
+  const all=doneP&&S.qzScore!=null&&claimDone;
+  if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
+  if(!all&&S.doneAt){S.doneAt=undefined;save()}
+  $("cert").classList.toggle("complete",all);
+  $("stamp").textContent=all?"Lesson complete":"In progress";
+  $("certDate").textContent=all?"Completed "+S.doneAt:"";
+  $("shot").hidden=!all;
+}
+$("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
+function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+  $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+$("reset").onclick=askReset;
+updateAll();
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,442 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Civil War &amp; Reconstruction Lesson 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --bad:#b33a2f; --bad-soft:#f9e3e0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);font-weight:700}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.yr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+a{color:var(--blue)}
+/* step strip */
+.steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding:10px 16px}
+.steps ol{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0;max-width:760px;overflow-x:auto}
+.steps a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.steps a:hover{background:var(--blue-soft);color:var(--ink)}
+.steps .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.steps a.done .dot{background:var(--good);border-color:var(--good)}
+.steps a.done{color:var(--ink)}
+header.hero{display:grid;gap:12px;padding-block:36px 24px}
+.hero .q{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(--ink)}
+.prose{display:grid;gap:14px;max-width:65ch}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0}
+/* timeline ruler */
+.ruler{position:relative;display:grid;gap:0;padding-left:28px}
+.ruler::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--rule)}
+.era{position:relative;display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.era:last-child{border-bottom:0}
+.era::before{content:"";position:absolute;left:-24px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.era .yr{font-size:.8rem;color:var(--blue);padding-top:3px}
+.era b{display:block}
+.era span{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.era{grid-template-columns:1fr}}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.date{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.date .yr{font-size:1.5rem;color:var(--gold)}
+.date p{font-size:.95rem}
+.ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+/* activities */
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task header{display:grid;gap:4px}
+.task header p{color:var(--muted);font-size:.95rem}
+.order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
+.order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
+.order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
+.order li .t{flex:1;min-width:0}
+.order li.ok{border-color:var(--good);background:var(--good-soft)}
+.order li.no{border-color:var(--bad);background:var(--bad-soft)}
+.mv{display:flex;gap:4px}
+button{font:inherit;cursor:pointer}
+.icon{width:44px;height:44px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-size:1rem;line-height:1}
+.icon:disabled{opacity:.35;cursor:default}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.match{display:grid;gap:8px}
+.match label{display:grid;grid-template-columns:4.2rem 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.match label.ok{background:var(--good-soft)} .match label.no{background:var(--bad-soft)}
+.match .yr{font-size:1.15rem}
+select{font:inherit;font-size:.95rem;width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.src{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.src .t{min-width:0}
+.src.ok{border-color:var(--good);background:var(--good-soft)} .src.no{border-color:var(--bad);background:var(--bad-soft)}
+.src .why{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--blue);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--blue);padding:10px 14px;min-height:44px;font-weight:700;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--card)}
+@media (max-width:520px){.src{grid-template-columns:1fr}}
+.chartbox{overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.chartbox .cap{font-size:.8rem;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+legend{font-weight:700;margin-bottom:6px;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;border:1px solid transparent}
+.opt:hover{background:var(--blue-soft)}
+.opt input{margin-top:5px;accent-color:var(--blue)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.no{background:var(--bad-soft);border-color:var(--bad)}
+.explain{font-size:.92rem;color:var(--muted);padding-left:10px;border-left:3px solid var(--rule)}
+.quiz{display:grid;gap:22px;counter-reset:q}
+.quiz fieldset legend::before{counter-increment:q;content:counter(q) ". ";font-family:var(--mono);color:var(--blue)}
+textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start}
+.checks input{margin-top:5px;accent-color:var(--good)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.score div{border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--card);display:grid;gap:2px}
+.score b{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score span{font-size:.85rem;color:var(--muted)}
+.small{font-size:.85rem;color:var(--muted)}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cert{background:var(--card);border:2px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:12px}
+.cert.complete{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.cert-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.stamp{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:2px solid var(--muted);color:var(--muted)}
+.cert.complete .stamp{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.certdate{font-size:.85rem;color:var(--muted)}
+.shot{background:var(--gold-soft);border:2px solid var(--gold);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+@media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
+@media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+
+
+/* Lessons 3-4 additions */
+.excerpt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:10px;max-width:65ch}
+.excerpt p{font-size:1rem}
+.excerpt .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.excerpt p.line{padding-left:12px;border-left:3px solid var(--gold)}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:2px;font-size:.95rem}
+.era em{font-style:normal;color:var(--muted);font-size:.9rem;display:block}
+.dates .date b{font-size:1.05rem}
+/* long words and URLs wrap instead of widening the page */
+.t,.excerpt p,.card p,.callout{overflow-wrap:anywhere}
+</style>
+
+<nav class="steps" aria-label="Lesson steps">
+  <ol>
+    <li><a href="#read" id="nav-read"><span class="dot"></span>1 Read</a></li>
+    <li><a href="#practice" id="nav-practice"><span class="dot"></span>2 Practice</a></li>
+    <li><a href="#check" id="nav-check"><span class="dot"></span>3 Quiz</a></li>
+    <li><a href="#reflect" id="nav-reflect"><span class="dot"></span>4 Exit claim</a></li>
+    <li><a href="#results" id="nav-results"><span class="dot"></span>Results</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">Texas History · Lesson 10 of 17</p>
+  <h1>Civil War &amp; Reconstruction</h1>
+  <p class="q">Big question: <b>Why did Texas secede, and what changed when the war ended?</b></p>
+  <div class="meta"><span>About 90 minutes</span><span>TEKS 7.1B, 7.5A, 7.5B, 7.5C</span><span>Your work saves on this device</span></div>
+</header>
+
+<div class="callout" style="margin-bottom:8px"><b>For parents:</b> Today's primary source, the 1861 Declaration of Causes, contains openly racist language. The lesson quotes only short lines and treats them as evidence of the convention's own stated reasons. Please preview it and be ready to talk it through.</div>
+
+<section class="step" id="read">
+  <p class="eyebrow">Step 1 · Read</p>
+  <h2>Texas leaves the Union</h2>
+  <div class="prose">
+    <p>In Lesson 9, Texas grew fast, and by 1860 nearly a third of Texans were enslaved. Across the country, North and South argued over whether slavery could spread into new western lands. When Abraham Lincoln, who opposed the spread of slavery, was elected president in November 1860, Southern states began to leave the Union.</p>
+    <p>On February 1, 1861, a Texas convention voted 166 to 8 to secede. The next day it approved a document explaining why: the <b>Declaration of Causes</b>. Voters approved secession about three to one. Governor Sam Houston refused to swear loyalty to the Confederacy and was removed from office.</p>
+  </div>
+
+  <div class="dates">
+    <div class="date"><span class="yr">1861</span><b>Texas secedes and joins the Confederacy</b><p>This is one of your eight required dates. Add it to your timeline.</p></div>
+  </div>
+
+  <h3>Read the source: what the convention said</h3>
+  <div class="excerpt">
+    <span class="who">Texas Declaration of Causes, February 2, 1861 · short excerpts</span>
+    <p class="line">Texas “was received as a commonwealth holding, maintaining and protecting the institution known as negro slavery…”</p>
+    <p class="line">The federal government “has for years almost entirely failed to protect the lives and property of the people of Texas” on the frontier.</p>
+    <p>Words about slavery and slaveholding appear about 18 times in this short document. The convention also listed complaints about frontier defense and Northern states, but it tied nearly all of them back to protecting slavery.</p>
+    <p><b>Think:</b> The convention wrote this to explain itself. What does it tell you about its main reason?</p>
+  </div>
+
+  <h3>The war in Texas</h3>
+  <div class="prose"><p>Tens of thousands of Texans served the Confederacy, most of them fighting far from home. Some Texans, including many German Texans in the Hill Country, opposed the Confederacy, and some paid with their lives. Texas was spared the huge battles fought in the East, but three fights on Texas soil matter.</p></div>
+  <div class="regions">
+    <div class="card"><div class="ctop"><b>Galveston</b><span class="tag">Jan 1, 1863</span></div><p>Confederate forces under John B. Magruder retook the port of Galveston from Union troops, keeping it open for blockade runners.</p></div>
+    <div class="card"><div class="ctop"><b>Sabine Pass</b><span class="tag">Sept 8, 1863</span></div><p>Lt. Dick Dowling and about 46 men in a small fort turned back a Union fleet trying to invade Texas from the Gulf.</p></div>
+    <div class="card"><div class="ctop"><b>Palmito Ranch</b><span class="tag">May 1865</span></div><p>The last land battle of the war, near Brownsville. Confederates won, a month after Lee had already surrendered in Virginia.</p></div>
+  </div>
+
+  <h3>Freedom comes to Texas</h3>
+  <div class="excerpt">
+    <span class="who">General Order No. 3, Galveston, June 19, 1865 · excerpt</span>
+    <p class="line">“The people of Texas are informed that, in accordance with a proclamation from the Executive of the United States, all slaves are free. This involves an absolute equality of personal rights and rights of property between former masters and slaves…”</p>
+    <p>Union General Gordon Granger read this order in Galveston about two and a half years after the Emancipation Proclamation. Freed Texans celebrated June 19 every year as <b>Juneteenth</b>. Texas made it a state holiday in 1980, the first state to do so, and it became a national holiday in 2021.</p>
+  </div>
+
+  <h3>Reconstruction: rebuilding, and a struggle over rights</h3>
+  <div class="ruler">
+    <div class="era"><span class="yr">1865–66</span><div><b>Presidential Reconstruction</b><span>Texas wrote a new constitution and ended slavery, but passed "Black Codes" that limited what freed people could do.</span></div></div>
+    <div class="era"><span class="yr">1867–70</span><div><b>Congressional Reconstruction</b><span>Congress put Texas under army control and required it to accept the 14th and 15th Amendments. The Freedmen's Bureau set up schools and helped with work contracts. Black men voted, and in 1870 the first African American legislators, such as Matthew Gaines and George T. Ruby, took office.</span></div></div>
+    <div class="era"><span class="yr">1870–74</span><div><b>Texas rejoins the Union</b><span>Texas was readmitted in 1870. Governor E. J. Davis built public schools and a state police force, and many white Texans resented his strong government.</span></div></div>
+    <div class="era"><span class="yr">1876</span><div><b>A new constitution</b><span>Reconstruction ended. Texans wrote the Constitution of 1876, which limited the governor's power in reaction to the Davis years. You'll study it in Lesson 16.</span></div></div>
+  </div>
+
+  <div class="callout"><b>What changed?</b> About 182,000 people became free, but most freed families had no land and many ended up as sharecroppers. Violence against freed people was common. The economy was poor, and cotton would take years to recover. The rights won during Reconstruction were real, but many were later taken away by new laws. That struggle comes back in Lesson 14.</div>
+</section>
+
+<section class="step" id="practice">
+  <p class="eyebrow">Step 2 · Practice</p>
+  <h2>Do the work</h2>
+  <div id="practiceTasks" style="display:grid;gap:18px"></div>
+</section>
+
+<section class="step" id="check">
+  <p class="eyebrow">Step 3 · Quiz + Checkpoint 2</p>
+  <h2>Show what you know</h2>
+  <p class="small">15 questions. Questions 11–15 review Lessons 6–9 for Checkpoint 2. You can scroll up to review, but try it from memory first.</p>
+  <form class="quiz" id="quiz"></form>
+  <div class="row"><button class="btn" id="submitQuiz">Submit quiz</button><span class="fb" id="fbQuiz" aria-live="polite"></span></div>
+</section>
+
+<section class="step" id="reflect">
+  <p class="eyebrow">Step 4 · Exit claim</p>
+  <h2>Answer the big question</h2>
+  <div class="prose"><p>Document-based claim for Checkpoint 2. In 3 to 5 sentences, answer: <b>What was the main cause of Texas's secession?</b> Quote or describe a line from the Declaration of Causes as evidence, and explain how it supports your claim. Then add one sentence on <b>one thing that changed</b> when the war ended.</p></div>
+  <label for="claim" class="small">Your answer</label>
+  <textarea id="claim" placeholder="The main cause of Texas's secession was..."></textarea>
+  <p class="small" id="wc">0 words</p>
+  <div class="checks">
+    <p><b>Check your own work before you finish:</b></p>
+    <label><input type="checkbox" id="ck1"> I made a clear <b>claim</b> that answers the question.</label>
+    <label><input type="checkbox" id="ck2"> I used <b>evidence from the Declaration of Causes</b>.</label>
+    <label><input type="checkbox" id="ck3"> I explained how my evidence supports my claim and named one change after the war.</label>
+  </div>
+</section>
+
+<section class="step" id="results">
+  <p class="eyebrow">Results</p>
+  <h2>Lesson 10 report</h2>
+  <div class="cert" id="cert">
+    <div class="cert-top"><span class="eyebrow">Texas History · Lesson 10</span><span class="stamp" id="stamp">In progress</span></div>
+    <h3 id="certTitle">Civil War &amp; Reconstruction</h3>
+    <div class="score" id="score"></div>
+    <p class="small" id="status"></p>
+    <p class="certdate yr" id="certDate"></p>
+  </div>
+  <div class="shot" id="shot" hidden>
+    <h3>Last step: turn in your work</h3>
+    <ol>
+      <li>Tap <b>Copy my answers</b> below.</li>
+      <li>Paste the answers into a message to your parents.</li>
+      <li>Send it. A parent will read and grade your exit claim.</li>
+    </ol>
+  </div>
+  <div class="row">
+    <button class="btn" id="copy">Copy my answers</button>
+    <span class="fb" id="fbCopy" aria-live="polite"></span>
+  </div>
+  <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
+  <div class="confirm" id="resetBox">
+    <button class="btn ghost" id="reset">Start over</button>
+  </div>
+  <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.tsl.texas.gov/ref/abouttx/secession/2feb1861.html" target="_blank" rel="noopener">Declaration of Causes, Feb. 2, 1861</a> (Texas State Library and Archives) · <a href="https://www.archives.gov/news/articles/juneteenth-original-document" target="_blank" rel="noopener">General Order No. 3</a> (National Archives) · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a>: “Reconstruction,” “Secession Convention,” “Sabine Pass, Battle of,” “Palmito Ranch, Battle of,” “Juneteenth”</p>
+</section>
+</main>
+
+<script>
+window.LESSON={"key": "tx-lesson10-v1", "n": 10, "label": "Lesson 10", "title": "Civil War & Reconstruction", "practice": [{"type": "mc", "title": "Highlight the cause", "intro": "Use the Declaration of Causes excerpt. Pick the best answer.", "button": "Check my answers", "word": "correct", "items": [{"q": "According to the convention's own words, what was the main reason Texas seceded?", "o": ["Protecting slavery", "High taxes on tea", "A dispute with Mexico"], "a": 0, "e": "The document comes back to slavery again and again."}, {"q": "The convention also complained that the federal government failed to…", "o": ["Protect people on the frontier", "Build railroads", "Give Texas a navy"], "a": 0, "e": "Frontier defense was a real complaint, but a smaller one."}, {"q": "Why is this document strong evidence about the cause of secession?", "o": ["It was written later by historians", "It is the convention explaining its own reasons at the time", "It is a newspaper ad"], "a": 1, "e": "It's a primary source from the people who made the decision."}]}, {"type": "match", "title": "Locate the battles", "intro": "Match each battle to what happened there.", "placeholder": "Choose a battle…", "button": "Check my battles", "word": "correct", "options": ["Galveston", "Sabine Pass", "Palmito Ranch"], "items": [["Dick Dowling's small force turned back a Union fleet", 1], ["Confederates retook an important port on New Year's Day, 1863", 0], ["The last land battle of the Civil War, near Brownsville", 2], ["Fought after Lee had already surrendered", 2], ["Kept Union troops from landing on the upper Texas coast near Louisiana", 1]]}, {"type": "order", "title": "From secession to the Constitution of 1876", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 8, "items": [["Lincoln is elected president", "1860"], ["Texas secedes", "1861"], ["Battle of Sabine Pass", "1863"], ["General Order No. 3 is read in Galveston", "1865"], ["Texas is readmitted to the Union", "1870"], ["Texans write a new constitution", "1876"]]}, {"type": "sort", "title": "Effects of the war and Reconstruction", "intro": "Was this a <b>political<\/b>, <b>economic<\/b>, or <b>social<\/b> effect?", "button": "Check my sorting", "word": "sorted correctly", "choices": [["P", "Political"], ["E", "Economic"], ["S", "Social"]], "items": [["Black men voted and served in the Legislature", "P", "Voting and office-holding are political."], ["Many freed families became sharecroppers", "E", "Sharecropping was about land, work, and money."], ["Freedmen's Bureau schools opened", "S", "Education changed daily life."], ["The Constitution of 1876 limited the governor's power", "P", "It changed how government worked."], ["Cotton production took years to recover", "E", "Farming was the heart of the economy."], ["Juneteenth celebrations began", "S", "A community tradition is a social effect."]]}], "quiz": [{"q": "What did the Texas Declaration of Causes name as the main reason for secession?", "o": ["Taxes on imports only", "Protecting slavery", "Mexico's threats", "A fight over oil"], "a": 1, "e": "It mentions slavery about 18 times."}, {"q": "What happened to Governor Sam Houston in 1861?", "o": ["He led the Confederate army", "He became president of the U.S.", "He signed the Declaration of Causes", "He refused to swear loyalty to the Confederacy and was removed"], "a": 3, "e": "Houston opposed secession."}, {"q": "Why does the Battle of Sabine Pass matter?", "o": ["A small Confederate force stopped a Union invasion of Texas", "It ended the war", "It freed enslaved people", "It was fought in Virginia"], "a": 0, "e": "Dick Dowling had about 46 men."}, {"q": "What is special about the Battle of Palmito Ranch?", "o": ["It was the first battle of the war", "It was fought at sea", "It was the last land battle, fought after Lee surrendered", "It was in Galveston"], "a": 2, "e": "News traveled slowly to Texas."}, {"q": "What did General Order No. 3 announce on June 19, 1865?", "o": ["Texas was a new republic", "The war would continue", "All enslaved people in Texas were free", "Galveston was closed"], "a": 2, "e": "This is the origin of Juneteenth."}, {"q": "What were Black Codes?", "o": ["Laws that limited freed people's rights", "Laws that gave land to freed people", "Army rules", "Codes for telegraphs"], "a": 0, "e": "Congress pushed back with Congressional Reconstruction."}, {"q": "What did the Freedmen's Bureau do?", "o": ["Ran the Confederate army", "Collected taxes for the Confederacy", "Built oil wells", "Set up schools and helped freed people with work contracts"], "a": 3, "e": "Education was one of its biggest effects."}, {"q": "Why did many white Texans resent Governor E. J. Davis?", "o": ["He was from Mexico", "He built a strong state government with a state police force", "He supported secession", "He closed all schools"], "a": 1, "e": "The Constitution of 1876 limited the governor in response."}, {"q": "What happened in 1861?", "o": ["Texas seceded and joined the Confederacy", "Texas joined the U.S.", "The Alamo fell", "Oil was found"], "a": 0, "e": "1861 is a required date."}, {"q": "Which sentence best answers the big question?", "o": ["Texas seceded over taxes and nothing changed", "Texas never seceded", "Texas seceded to protect slavery; after the war, slavery ended and freed people gained rights during Reconstruction, though many were later taken away", "Reconstruction made Texas richer than ever"], "a": 2, "e": "Use the convention's own words as evidence."}, {"q": "Checkpoint review (Lesson 6): What did the Law of April 6, 1830 do?", "o": ["Gave Texas independence", "Banned immigration from the United States", "Created the Republic", "Ended the Alamo siege"], "a": 1, "e": "It angered settlers and their families back home."}, {"q": "Checkpoint review (Lesson 7): What happened on April 21, 1836?", "o": ["The Alamo fell", "The Declaration of Independence was signed", "Goliad prisoners were executed", "Texas won at San Jacinto"], "a": 3, "e": "The battle lasted about 18 minutes."}, {"q": "Checkpoint review (Lesson 7): Which group fought for Texas independence alongside Anglo settlers?", "o": ["British soldiers", "The French army", "None", "Tejanos such as Juan Seguín"], "a": 3, "e": "Tejanos fought at the Alamo and San Jacinto."}, {"q": "Checkpoint review (Lesson 8): Why did Texans want annexation?", "o": ["To end slavery", "Debt and the need for protection from Mexico", "To join Britain", "To move the capital"], "a": 1, "e": "The Republic could not pay its bills or defend itself."}, {"q": "Checkpoint review (Lesson 9): What did the Compromise of 1850 do for Texas?", "o": ["Set today's borders in exchange for $10 million", "Made Texas a republic again", "Started the Mexican War", "Gave Texas California"], "a": 0, "e": "Texas gave up its claim near Santa Fe."}], "review": "Review both primary sources and the Reconstruction timeline"};
+(function(){
+const C=window.LESSON;
+const KEY=C.key;
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const strip=s=>String(s).replace(/<[^>]+>/g,"");
+function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${q.q}</legend>${q.o.map((o,j)=>{const c=marks&&ans[i]!=null?(j===q.a?"ok":(String(ans[i])===String(j)?"no":"")):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${o}</span></label>`}).join("")}${marks&&ans[i]!=null?`<p class="explain">${q.e}</p>`:""}</fieldset>`).join("")}
+
+S.p=S.p||{};S.ps=S.ps||{};
+const T=C.practice;
+const total=t=>t.items.length;
+$("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
+
+function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
+function clearScore(ti){if(S.ps[ti]!=null){S.ps[ti]=null;save()}$("fb"+ti).textContent="";updateAll()}
+const scored=ti=>S.ps[ti]!=null;
+
+T.forEach((t,ti)=>{
+  const body=$("body"+ti);
+  if(t.type==="match"){
+    const A=S.p[ti]=S.p[ti]||{};
+    body.innerHTML=t.items.map((c,i)=>`<label id="m${ti}_${i}" for="ms${ti}_${i}"><span class="t">${c[0]}</span><select id="ms${ti}_${i}" data-i="${i}"><option value="">${t.placeholder}</option>${t.options.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+    t.items.forEach((c,i)=>{if(A[i]!=null)$(`ms${ti}_${i}`).value=A[i]});
+    const ok=i=>String(A[i])===String(t.items[i][1]);
+    const mark=on=>t.items.forEach((c,i)=>{$(`m${ti}_${i}`).className=on?(ok(i)?"ok":"no"):""});
+    body.addEventListener("change",e=>{A[e.target.dataset.i]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.filter((c,i)=>ok(i)).length)};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="sort"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=marks=>{body.innerHTML=t.items.map((s,i)=>{const v=A[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+      return `<div class="src ${cls}"><span class="t">${s[0]}</span><span class="seg" role="group" aria-label="${esc(t.choices.map(c=>c[1]).join(" or "))}">${t.choices.map(c=>`<button type="button" data-i="${i}" data-v="${c[0]}" aria-pressed="${v===c[0]}">${c[1]}</button>`).join("")}</span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${s[2]}</span>`:""}</div>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;A[b.dataset.i]=b.dataset.v;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((s,i)=>A[i]===s[1]).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="order"){
+    let A=S.p[ti];
+    if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
+    body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
+    const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
+      return `<li class="${cls}"><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="mc"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=m=>{body.innerHTML=mcHTML(t.items,`c${ti}_`,A,m)};
+    body.addEventListener("change",e=>{A[e.target.name.split("_")[1]]=+e.target.value;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((q,i)=>A[i]===q.a).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+});
+
+// Quiz
+const QUIZ=C.quiz;
+S.qz=S.qz||{};
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("quiz").querySelectorAll("input").forEach(i=>i.disabled=S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz";$("submitQuiz").disabled=S.qzScore!=null}
+$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;save();updateAll()});
+$("quiz").addEventListener("submit",e=>e.preventDefault());
+$("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
+  S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};
+renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
+
+// Exit claim
+$("claim").value=S.claim||"";
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!S[k];$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
+$("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
+
+function report(){
+  const L=[`Texas History ${C.label}: ${C.title}`];
+  T.forEach((t,ti)=>L.push(`${String.fromCharCode(65+ti)}. ${strip(t.title)}: ${S.ps[ti]==null?"not checked yet":S.ps[ti]+"/"+total(t)}`));
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/"+QUIZ.length+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
+  const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
+  const head=L.shift();
+  const pr=$("reflect").querySelector(".prose");
+  const prompt=pr?pr.textContent.replace(/\s+/g," ").trim():"";
+  return [head,
+    S.doneAt?"Completed "+S.doneAt:"Not finished yet",
+    "",
+    "EXIT CLAIM (for a parent to grade)",
+    "Prompt: "+prompt,
+    `Answer (${wc()} words, self-check ${ck}/3):`,
+    S.claim&&S.claim.trim()?S.claim.trim():"(not written yet)",
+    "",
+    "SCORES",
+    ...L].join("\n");
+}
+function updateAll(){
+  const doneP=T.every((t,ti)=>S.ps[ti]!=null);
+  const anyP=T.some((t,ti)=>S.ps[ti]!=null);
+  const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
+  $("nav-read").classList.toggle("done",anyP);
+  $("nav-practice").classList.toggle("done",doneP);
+  $("nav-check").classList.toggle("done",S.qzScore!=null);
+  $("nav-reflect").classList.toggle("done",claimDone);
+  const all=doneP&&S.qzScore!=null&&claimDone;
+  $("nav-results").classList.toggle("done",all);
+  const pTot=T.reduce((a,t)=>a+total(t),0);
+  const pGot=T.reduce((a,t,ti)=>a+(S.ps[ti]||0),0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  const letters="A–"+String.fromCharCode(64+T.length);
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—",`Practice (${letters})`)+cell(S.qzScore!=null?`${S.qzScore}/${QUIZ.length}`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore/QUIZ.length*100)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  const need=Math.ceil(QUIZ.length*0.8);
+  if(all) st=S.qzScore>=need?`Lesson complete. Mastery reached (${need}/${QUIZ.length} or better on the quiz).`:`Lesson complete. ${C.review}, then talk through the missed quiz questions with a parent.`;
+  else{const todo=[];if(!doneP)todo.push(`check all ${T.length===4?"four":T.length} practice activities`);if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
+  if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
+  if(!all&&S.doneAt){S.doneAt=undefined;save()}
+  $("cert").classList.toggle("complete",all);
+  $("stamp").textContent=all?"Lesson complete":"In progress";
+  $("certDate").textContent=all?"Completed "+S.doneAt:"";
+  $("shot").hidden=!all;
+}
+$("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
+function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+  $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+$("reset").onclick=askReset;
+updateAll();
+})();
+
+</script>
+
+</body></html>

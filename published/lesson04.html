@@ -1,0 +1,434 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Spanish Colonial Texas Lesson 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --bad:#b33a2f; --bad-soft:#f9e3e0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);font-weight:700}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.yr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+a{color:var(--blue)}
+/* step strip */
+.steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding:10px 16px}
+.steps ol{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0;max-width:760px;overflow-x:auto}
+.steps a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.steps a:hover{background:var(--blue-soft);color:var(--ink)}
+.steps .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.steps a.done .dot{background:var(--good);border-color:var(--good)}
+.steps a.done{color:var(--ink)}
+header.hero{display:grid;gap:12px;padding-block:36px 24px}
+.hero .q{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(--ink)}
+.prose{display:grid;gap:14px;max-width:65ch}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0}
+/* timeline ruler */
+.ruler{position:relative;display:grid;gap:0;padding-left:28px}
+.ruler::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--rule)}
+.era{position:relative;display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.era:last-child{border-bottom:0}
+.era::before{content:"";position:absolute;left:-24px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.era .yr{font-size:.8rem;color:var(--blue);padding-top:3px}
+.era b{display:block}
+.era span{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.era{grid-template-columns:1fr}}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.date{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.date .yr{font-size:1.5rem;color:var(--gold)}
+.date p{font-size:.95rem}
+.ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+/* activities */
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task header{display:grid;gap:4px}
+.task header p{color:var(--muted);font-size:.95rem}
+.order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
+.order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
+.order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
+.order li .t{flex:1;min-width:0}
+.order li.ok{border-color:var(--good);background:var(--good-soft)}
+.order li.no{border-color:var(--bad);background:var(--bad-soft)}
+.mv{display:flex;gap:4px}
+button{font:inherit;cursor:pointer}
+.icon{width:44px;height:44px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-size:1rem;line-height:1}
+.icon:disabled{opacity:.35;cursor:default}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.match{display:grid;gap:8px}
+.match label{display:grid;grid-template-columns:4.2rem 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.match label.ok{background:var(--good-soft)} .match label.no{background:var(--bad-soft)}
+.match .yr{font-size:1.15rem}
+select{font:inherit;font-size:.95rem;width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.src{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.src .t{min-width:0}
+.src.ok{border-color:var(--good);background:var(--good-soft)} .src.no{border-color:var(--bad);background:var(--bad-soft)}
+.src .why{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--blue);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--blue);padding:10px 14px;min-height:44px;font-weight:700;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--card)}
+@media (max-width:520px){.src{grid-template-columns:1fr}}
+.chartbox{overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.chartbox .cap{font-size:.8rem;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+legend{font-weight:700;margin-bottom:6px;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;border:1px solid transparent}
+.opt:hover{background:var(--blue-soft)}
+.opt input{margin-top:5px;accent-color:var(--blue)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.no{background:var(--bad-soft);border-color:var(--bad)}
+.explain{font-size:.92rem;color:var(--muted);padding-left:10px;border-left:3px solid var(--rule)}
+.quiz{display:grid;gap:22px;counter-reset:q}
+.quiz fieldset legend::before{counter-increment:q;content:counter(q) ". ";font-family:var(--mono);color:var(--blue)}
+textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start}
+.checks input{margin-top:5px;accent-color:var(--good)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.score div{border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--card);display:grid;gap:2px}
+.score b{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score span{font-size:.85rem;color:var(--muted)}
+.small{font-size:.85rem;color:var(--muted)}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cert{background:var(--card);border:2px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:12px}
+.cert.complete{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.cert-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.stamp{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:2px solid var(--muted);color:var(--muted)}
+.cert.complete .stamp{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.certdate{font-size:.85rem;color:var(--muted)}
+.shot{background:var(--gold-soft);border:2px solid var(--gold);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+@media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
+@media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+
+
+/* Lessons 3-4 additions */
+.excerpt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:10px;max-width:65ch}
+.excerpt p{font-size:1rem}
+.excerpt .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.excerpt p.line{padding-left:12px;border-left:3px solid var(--gold)}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:2px;font-size:.95rem}
+.era em{font-style:normal;color:var(--muted);font-size:.9rem;display:block}
+.dates .date b{font-size:1.05rem}
+</style>
+
+<nav class="steps" aria-label="Lesson steps">
+  <ol>
+    <li><a href="#read" id="nav-read"><span class="dot"></span>1 Read</a></li>
+    <li><a href="#practice" id="nav-practice"><span class="dot"></span>2 Practice</a></li>
+    <li><a href="#check" id="nav-check"><span class="dot"></span>3 Quiz</a></li>
+    <li><a href="#reflect" id="nav-reflect"><span class="dot"></span>4 Exit claim</a></li>
+    <li><a href="#results" id="nav-results"><span class="dot"></span>Results</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">Texas History · Lesson 4 of 17</p>
+  <h1>Spanish Colonial Texas</h1>
+  <p class="q">Big question: <b>How did Spain try to hold Texas, and what lasted?</b></p>
+  <div class="meta"><span>About 90 minutes</span><span>TEKS 7.1B, 7.2C, 7.6B, 7.18C</span><span>Your work saves on this device</span></div>
+</header>
+
+<section class="step" id="read">
+  <p class="eyebrow">Step 1 · Read</p>
+  <h2>Holding a huge land with very few people</h2>
+  <div class="prose">
+    <p>At the end of Lesson 3, Spain found La Salle's fort in ruins. The French were gone, but the scare worked. Spain decided it had to <b>hold Texas</b> before France or anyone else did.</p>
+    <p>There was a problem. Very few Spaniards wanted to move to a far-off frontier with no gold. So Spain tried a different plan. It built four kinds of places, and it hoped to turn the American Indians who already lived there into Catholic, Spanish-speaking subjects who would help hold the land.</p>
+  </div>
+
+  <h3>The four building blocks of Spanish Texas</h3>
+  <div class="regions">
+    <div class="card"><div class="ctop"><b>Mission</b><span class="tag">misión</span></div><dl><dt>Goal</dt><dd>Convert American Indians to Catholicism and teach them Spanish ways, farming, and trades</dd><dt>Who</dt><dd>Franciscan friars and the Native families who lived there</dd><dt>Ex.</dt><dd>Mission San Antonio de Valero, later called the Alamo</dd></dl></div>
+    <div class="card"><div class="ctop"><b>Presidio</b><span class="tag">fort</span></div><dl><dt>Goal</dt><dd>Protect the missions and the border with soldiers</dd><dt>Who</dt><dd>Soldiers and their families</dd><dt>Ex.</dt><dd>Presidio La Bahía at Goliad</dd></dl></div>
+    <div class="card"><div class="ctop"><b>Town</b><span class="tag">villa · pueblo</span></div><dl><dt>Goal</dt><dd>Bring in settler families who would farm, trade, and stay</dd><dt>Who</dt><dd>Settlers, with a town council to run local affairs</dd><dt>Ex.</dt><dd>San Fernando de Béxar, founded by Canary Islanders</dd></dl></div>
+    <div class="card"><div class="ctop"><b>Ranch</b><span class="tag">rancho</span></div><dl><dt>Goal</dt><dd>Raise cattle and horses on open land to feed missions and towns</dd><dt>Who</dt><dd>Ranch owners and vaqueros, the first cowboys of Texas</dd><dt>Ex.</dt><dd>Mission and private ranches along the San Antonio River</dd></dl></div>
+  </div>
+
+  <h3>How the plan played out</h3>
+  <div class="ruler">
+    <div class="era"><span class="yr">1682</span><div><b>Ysleta, near El Paso</b><span>The first mission in what is now Texas, built for Tigua people who fled south after a revolt in New Mexico. Their descendants still live there.</span></div></div>
+    <div class="era"><span class="yr">1690</span><div><b>San Francisco de los Tejas</b><span>Father Damián Massanet and Alonso de León built a mission among the Caddo in East Texas. Disease and conflict drove the friars out by 1693.</span></div></div>
+    <div class="era"><span class="yr">1716</span><div><b>Back to East Texas</b><span>France was close again, in Louisiana. Spain returned with several missions and a presidio. Father Antonio Margil de Jesús founded some of them.</span></div></div>
+    <div class="era"><span class="yr">1718</span><div><b>San Antonio is founded</b><span>A mission and a presidio went up beside the San Antonio River, halfway between Mexico and East Texas. It became the heart of Spanish Texas.</span></div></div>
+    <div class="era"><span class="yr">1731</span><div><b>Canary Islanders arrive</b><span>About 16 families from the Canary Islands founded San Fernando de Béxar, the first town in Texas with its own town government.</span></div></div>
+    <div class="era"><span class="yr">1772</span><div><b>East Texas abandoned</b><span>Spain now owned Louisiana, so the French threat was gone. Spain pulled settlers out of East Texas and made San Antonio the capital.</span></div></div>
+  </div>
+
+  <div class="dates">
+    <div class="date"><span class="yr">1718</span><b>Founding of San Antonio</b><p>This is one of your eight required dates. Add it to your timeline from Lesson 1.</p></div>
+  </div>
+
+  <div class="callout"><b>A mission looked different depending on who you were.</b> The friars believed they were saving souls. For some Native families, such as the Coahuiltecans, a mission offered food in hard times and protection from Apache and Comanche raids. It also meant hard work, strict rules, giving up old beliefs, and deadly disease spreading through crowded rooms. Many people left, and some came back. Both views belong in the story.</div>
+
+  <div class="callout"><b>Why the plan struggled.</b> Spanish Texas never had many settlers. By 1800 only a few thousand lived there. The Comanche and Apache were strong, and the Comanche controlled much of the plains. Supplies came from far away in Mexico. Spain held San Antonio, Goliad, and Nacogdoches, but most of Texas stayed out of its reach.</div>
+
+  <h3>What lasted</h3>
+  <div class="prose"><p>Spain ruled Texas for over a hundred years. Look around Texas today and you can still see its mark.</p></div>
+  <div class="regions">
+    <div class="card"><div class="ctop"><b>Words</b><span class="tag">language</span></div><p>Rodeo, corral, lasso, ranch, mustang, and bronco all come from Spanish.</p></div>
+    <div class="card"><div class="ctop"><b>Place names</b><span class="tag">maps</span></div><p>San Antonio, El Paso, Amarillo (yellow), the Brazos, the Nueces, and the Rio Grande.</p></div>
+    <div class="card"><div class="ctop"><b>Ranching</b><span class="tag">work</span></div><p>Vaqueros taught later cowboys how to rope and herd from horseback. Longhorn cattle descend from Spanish cattle.</p></div>
+    <div class="card"><div class="ctop"><b>Buildings</b><span class="tag">architecture</span></div><p>The San Antonio missions are a World Heritage Site, the only one in Texas, named in 2015.</p></div>
+  </div>
+</section>
+
+<section class="step" id="practice">
+  <p class="eyebrow">Step 2 · Practice</p>
+  <h2>Do the work</h2>
+  <div id="practiceTasks" style="display:grid;gap:18px"></div>
+</section>
+
+<section class="step" id="check">
+  <p class="eyebrow">Step 3 · Quiz</p>
+  <h2>Show what you know</h2>
+  <p class="small">10 questions. You can scroll up to review, but try it from memory first.</p>
+  <form class="quiz" id="quiz"></form>
+  <div class="row"><button class="btn" id="submitQuiz">Submit quiz</button><span class="fb" id="fbQuiz" aria-live="polite"></span></div>
+</section>
+
+<section class="step" id="reflect">
+  <p class="eyebrow">Step 4 · Exit claim</p>
+  <h2>Answer the big question</h2>
+  <div class="prose"><p>In 3 to 5 sentences, answer: <b>How did Spain try to hold Texas, and what lasted?</b> Make a claim, give one piece of evidence from today's lesson (a place, a date, a person, or a legacy), and explain how your evidence supports your claim.</p></div>
+  <label for="claim" class="small">Your answer</label>
+  <textarea id="claim" placeholder="Spain tried to hold Texas by..."></textarea>
+  <p class="small" id="wc">0 words</p>
+  <div class="checks">
+    <p><b>Check your own work before you finish:</b></p>
+    <label><input type="checkbox" id="ck1"> I made a clear <b>claim</b> that answers the question.</label>
+    <label><input type="checkbox" id="ck2"> I gave specific <b>evidence</b> (a place, a date, a person, or a legacy).</label>
+    <label><input type="checkbox" id="ck3"> I explained <b>how</b> my evidence supports my claim.</label>
+  </div>
+</section>
+
+<section class="step" id="results">
+  <p class="eyebrow">Results</p>
+  <h2>Lesson 4 report</h2>
+  <div class="cert" id="cert">
+    <div class="cert-top"><span class="eyebrow">Texas History · Lesson 4</span><span class="stamp" id="stamp">In progress</span></div>
+    <h3 id="certTitle">Spanish Colonial Texas</h3>
+    <div class="score" id="score"></div>
+    <p class="small" id="status"></p>
+    <p class="certdate yr" id="certDate"></p>
+  </div>
+  <div class="shot" id="shot" hidden>
+    <h3>Last step: turn in your work</h3>
+    <ol>
+      <li>Tap <b>Copy my answers</b> below.</li>
+      <li>Paste the answers into a message to your parents.</li>
+      <li>Send it. A parent will read and grade your exit claim.</li>
+    </ol>
+  </div>
+  <div class="row">
+    <button class="btn" id="copy">Copy my answers</button>
+    <span class="fb" id="fbCopy" aria-live="polite"></span>
+  </div>
+  <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
+  <div class="confirm" id="resetBox">
+    <button class="btn ghost" id="reset">Start over</button>
+  </div>
+  <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a>: “Spanish Missions,” “San Antonio, TX,” “Massanet, Damián,” “Margil de Jesús, Antonio,” “Canary Islanders” · <a href="https://www.nps.gov/saan/" target="_blank" rel="noopener">San Antonio Missions National Historical Park</a>.</p>
+</section>
+</main>
+
+<script>
+window.LESSON={"key": "tx-lesson4-v1", "n": 4, "title": "Spanish Colonial Texas", "practice": [{"type": "match", "title": "Station rotation", "intro": "Read each clue and pick the place it describes: mission, presidio, town, or ranch.", "placeholder": "Choose a place…", "button": "Check my stations", "word": "correct", "options": ["Mission", "Presidio", "Town", "Ranch"], "items": [["Franciscan friars taught prayers, farming, and Spanish", 0], ["Soldiers guarded the frontier", 1], ["Vaqueros rounded up cattle on horseback", 3], ["A town council made local rules for settler families", 2], ["Native families lived and worked beside a stone church", 0], ["Built to protect nearby missions from raids", 1], ["Canary Islanders founded one beside the San Antonio River in 1731", 2], ["Raised cattle and horses to feed missions and towns", 3]]}, {"type": "order", "title": "Put it in order", "intro": "Use the arrows to put these events in order, earliest at the top. Years appear once an event is in the right spot.", "button": "Check my order", "word": "in the right spot", "seed": 2, "items": [["The first mission in Texas is built at Ysleta, near El Paso", "1682"], ["Massanet and de León found a mission among the Caddo", "1690"], ["Spain returns to East Texas with several missions", "1716"], ["A mission and presidio are founded at San Antonio", "1718"], ["Canary Islander families found San Fernando de Béxar", "1731"], ["Spain abandons East Texas and makes San Antonio the capital", "1772"]]}, {"type": "sort", "title": "Spanish legacy?", "intro": "Which of these came to Texas from Spain? Pick <b>From Spain</b> or <b>Not from Spain</b>.", "button": "Check my sorting", "word": "sorted correctly", "choices": [["S", "From Spain"], ["N", "Not from Spain"]], "items": [["The word <i>rodeo</i>", "S", "It comes from the Spanish word for a cattle roundup."], ["Longhorn cattle", "S", "They descend from cattle the Spanish brought to the Americas."], ["The city name Amarillo", "S", "It is the Spanish word for yellow."], ["Tipis made of bison hides", "N", "Plains peoples built these long before Europeans arrived (Lesson 2)."], ["The stone church of the Alamo", "S", "It was built as the church of Mission San Antonio de Valero."], ["Cotton plantations worked by enslaved people", "N", "These came with settlers from the United States, starting in the 1820s (Lesson 5)."], ["Roping cattle from horseback", "S", "Vaqueros developed these skills, and later cowboys learned them."], ["Log cabins", "N", "Settlers from the eastern United States brought log cabins with them."]]}, {"type": "mc", "title": "Two points of view", "intro": "Historians look at a mission from more than one side. Pick the best answer.", "button": "Check my answers", "word": "correct", "items": [{"q": "A Franciscan friar would most likely describe a mission as…", "o": ["A trading post for furs", "A place to save souls and teach a Christian way of life", "A fort for soldiers"], "a": 1, "e": "The friars saw their work as a religious duty."}, {"q": "What is one reason some Coahuiltecan families moved to missions?", "o": ["They wanted to become soldiers", "Food in hard times and protection from Apache raids", "Spain paid them in gold"], "a": 1, "e": "Drought and raids made the mission's food and walls valuable, even with its costs."}, {"q": "Most written records of mission life come from Spanish friars and officials. What does that mean for historians?", "o": ["They have the complete story", "They must look for what those writers left out, like Native views", "Native people did not live at missions"], "a": 1, "e": "Every source has a point of view. Historians use archaeology and other evidence to fill the gaps."}]}], "quiz": [{"q": "Why did Spain start building missions in East Texas in 1690?", "o": ["It found gold there", "It feared France would claim Texas after La Salle", "The Caddo asked Spain to rule them", "It needed a port for Asia"], "a": 1, "e": "The French colony scared Spain into action."}, {"q": "Where was the first mission in what is now Texas?", "o": ["San Antonio", "Goliad", "Ysleta, near El Paso", "Nacogdoches"], "a": 2, "e": "It was built in 1682 for Tigua people."}, {"q": "What happened in 1718?", "o": ["San Antonio was founded", "La Salle landed in Texas", "Mexico won independence", "Spain abandoned East Texas"], "a": 0, "e": "A mission and a presidio went up beside the San Antonio River."}, {"q": "A presidio was…", "o": ["A church", "A ranch", "A fort with soldiers", "A town council"], "a": 2, "e": "Presidios protected missions and the frontier."}, {"q": "What was the main goal of a mission?", "o": ["Mining silver", "Converting American Indians to Catholicism and making them loyal Spanish subjects", "Training soldiers", "Trading with France"], "a": 1, "e": "Spain hoped converts would help it hold the land."}, {"q": "Canary Islander families founded San Fernando de Béxar in 1731. Why was it important?", "o": ["It was the first town in Texas with its own town government", "It was the first mission", "It was a French town", "It was the capital of Mexico"], "a": 0, "e": "It became part of the city of San Antonio."}, {"q": "Which is a Spanish legacy you can still see today?", "o": ["Tipis", "Vaquero skills like roping from horseback", "Cotton plantations", "Log cabins"], "a": 1, "e": "Texas cowboys learned their trade from vaqueros."}, {"q": "Why did Spain abandon East Texas in 1772?", "o": ["Spain now owned Louisiana, so the French threat was gone", "A hurricane destroyed it", "The Caddo moved away", "Gold was found in San Antonio"], "a": 0, "e": "With no French neighbor, Spain pulled back to San Antonio."}, {"q": "What was the biggest problem for Spanish Texas?", "o": ["Too many settlers", "Too few settlers, plus powerful Comanche and Apache nations", "Too much gold to guard", "No rivers"], "a": 1, "e": "Spain never got enough people to move there."}, {"q": "Which sentence best answers the big question?", "o": ["Spain held Texas with a large army and many settlers", "Spain used missions, presidios, towns, and ranches; it never had enough people, but its language, place names, ranching, and buildings lasted", "Spain never built anything in Texas", "Spain only traded with Texas from Mexico"], "a": 1, "e": "The plan only partly worked, but Spain's mark on Texas is everywhere."}], "review": "Review the four building blocks and the timeline"};
+(function(){
+const C=window.LESSON;
+const KEY=C.key;
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const strip=s=>String(s).replace(/<[^>]+>/g,"");
+function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${q.q}</legend>${q.o.map((o,j)=>{const c=marks&&ans[i]!=null?(j===q.a?"ok":(String(ans[i])===String(j)?"no":"")):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${o}</span></label>`}).join("")}${marks&&ans[i]!=null?`<p class="explain">${q.e}</p>`:""}</fieldset>`).join("")}
+
+S.p=S.p||{};S.ps=S.ps||{};
+const T=C.practice;
+const total=t=>t.items.length;
+$("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
+
+function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
+function clearScore(ti){if(S.ps[ti]!=null){S.ps[ti]=null;save()}$("fb"+ti).textContent="";updateAll()}
+const scored=ti=>S.ps[ti]!=null;
+
+T.forEach((t,ti)=>{
+  const body=$("body"+ti);
+  if(t.type==="match"){
+    const A=S.p[ti]=S.p[ti]||{};
+    body.innerHTML=t.items.map((c,i)=>`<label id="m${ti}_${i}" for="ms${ti}_${i}"><span class="t">${c[0]}</span><select id="ms${ti}_${i}" data-i="${i}"><option value="">${t.placeholder}</option>${t.options.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+    t.items.forEach((c,i)=>{if(A[i]!=null)$(`ms${ti}_${i}`).value=A[i]});
+    const ok=i=>String(A[i])===String(t.items[i][1]);
+    const mark=on=>t.items.forEach((c,i)=>{$(`m${ti}_${i}`).className=on?(ok(i)?"ok":"no"):""});
+    body.addEventListener("change",e=>{A[e.target.dataset.i]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.filter((c,i)=>ok(i)).length)};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="sort"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=marks=>{body.innerHTML=t.items.map((s,i)=>{const v=A[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+      return `<div class="src ${cls}"><span class="t">${s[0]}</span><span class="seg" role="group" aria-label="${esc(t.choices.map(c=>c[1]).join(" or "))}">${t.choices.map(c=>`<button type="button" data-i="${i}" data-v="${c[0]}" aria-pressed="${v===c[0]}">${c[1]}</button>`).join("")}</span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${s[2]}</span>`:""}</div>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;A[b.dataset.i]=b.dataset.v;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((s,i)=>A[i]===s[1]).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="order"){
+    let A=S.p[ti];
+    if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
+    body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
+    const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
+      return `<li class="${cls}"><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="mc"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=m=>{body.innerHTML=mcHTML(t.items,`c${ti}_`,A,m)};
+    body.addEventListener("change",e=>{A[e.target.name.split("_")[1]]=+e.target.value;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((q,i)=>A[i]===q.a).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+});
+
+// Quiz
+const QUIZ=C.quiz;
+S.qz=S.qz||{};
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("quiz").querySelectorAll("input").forEach(i=>i.disabled=S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz";$("submitQuiz").disabled=S.qzScore!=null}
+$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;save();updateAll()});
+$("quiz").addEventListener("submit",e=>e.preventDefault());
+$("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
+  S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};
+renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
+
+// Exit claim
+$("claim").value=S.claim||"";
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!S[k];$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
+$("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
+
+function report(){
+  const L=[`Texas History Lesson ${C.n}: ${C.title}`];
+  T.forEach((t,ti)=>L.push(`${String.fromCharCode(65+ti)}. ${strip(t.title)}: ${S.ps[ti]==null?"not checked yet":S.ps[ti]+"/"+total(t)}`));
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/"+QUIZ.length+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
+  const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
+  const head=L.shift();
+  const pr=$("reflect").querySelector(".prose");
+  const prompt=pr?pr.textContent.replace(/\s+/g," ").trim():"";
+  return [head,
+    S.doneAt?"Completed "+S.doneAt:"Not finished yet",
+    "",
+    "EXIT CLAIM (for a parent to grade)",
+    "Prompt: "+prompt,
+    `Answer (${wc()} words, self-check ${ck}/3):`,
+    S.claim&&S.claim.trim()?S.claim.trim():"(not written yet)",
+    "",
+    "SCORES",
+    ...L].join("\n");
+}
+function updateAll(){
+  const doneP=T.every((t,ti)=>S.ps[ti]!=null);
+  const anyP=T.some((t,ti)=>S.ps[ti]!=null);
+  const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
+  $("nav-read").classList.toggle("done",anyP);
+  $("nav-practice").classList.toggle("done",doneP);
+  $("nav-check").classList.toggle("done",S.qzScore!=null);
+  $("nav-reflect").classList.toggle("done",claimDone);
+  const all=doneP&&S.qzScore!=null&&claimDone;
+  $("nav-results").classList.toggle("done",all);
+  const pTot=T.reduce((a,t)=>a+total(t),0);
+  const pGot=T.reduce((a,t,ti)=>a+(S.ps[ti]||0),0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  const letters="A–"+String.fromCharCode(64+T.length);
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—",`Practice (${letters})`)+cell(S.qzScore!=null?`${S.qzScore}/${QUIZ.length}`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore/QUIZ.length*100)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  if(all) st=S.qzScore>=8?"Lesson complete. Mastery reached (8/10 or better on the quiz).":`Lesson complete. ${C.review}, then talk through the missed quiz questions with a parent.`;
+  else{const todo=[];if(!doneP)todo.push(`check all ${T.length===4?"four":T.length} practice activities`);if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
+  if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
+  if(!all&&S.doneAt){S.doneAt=undefined;save()}
+  $("cert").classList.toggle("complete",all);
+  $("stamp").textContent=all?"Lesson complete":"In progress";
+  $("certDate").textContent=all?"Completed "+S.doneAt:"";
+  $("shot").hidden=!all;
+}
+$("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
+function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+  $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+$("reset").onclick=askReset;
+updateAll();
+})();
+
+</script>
+
+</body></html>

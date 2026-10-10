@@ -1,0 +1,177 @@
+{
+ "course_url": "https://claude.ai/artifact/NrYd6qLwfDL2m48m2YZ15L",
+ "title": "Texas History Course",
+ "subtitle": "7th Grade Texas History · 18 sessions",
+ "storage_key": "tx-course-v1",
+ "units": [
+  {
+   "name": "Unit 1 · Land, Peoples, Empires",
+   "lessons": [
+    {
+     "id": "lesson-1",
+     "label": "Lesson 1",
+     "title": "Eras, Dates & the Historian's Toolkit",
+     "page_title": "Texas Eras Lesson 1",
+     "key": "tx-lesson1-v1",
+     "url": "https://claude.ai/code/artifact/aff23c85-4bc3-4b8e-a882-1aeff44fdce0"
+    },
+    {
+     "id": "lesson-2",
+     "label": "Lesson 2",
+     "title": "Natural Texas and Its People",
+     "page_title": "Natural Texas Lesson 2",
+     "key": "tx-lesson2-v1",
+     "url": "https://claude.ai/code/artifact/bb6e7aef-a9b3-4600-b090-421cf70d681c"
+    },
+    {
+     "id": "lesson-3",
+     "label": "Lesson 3",
+     "title": "Age of Contact",
+     "page_title": "Age of Contact Lesson 3",
+     "key": "tx-lesson3-v1",
+     "url": "https://claude.ai/code/artifact/68d11a78-0308-4014-8ef5-db9de38e6912"
+    },
+    {
+     "id": "lesson-4",
+     "label": "Lesson 4",
+     "title": "Spanish Colonial Texas",
+     "page_title": "Spanish Colonial Texas Lesson 4",
+     "key": "tx-lesson4-v1",
+     "url": "https://claude.ai/code/artifact/5ebf6409-afe2-4cbd-b6be-62fc60798340"
+    },
+    {
+     "id": "lesson-5",
+     "label": "Lesson 5",
+     "title": "Mexican National Texas",
+     "page_title": "Mexican Texas Lesson 5",
+     "key": "tx-lesson5-v1",
+     "url": "https://claude.ai/artifact/SCGJ8xxXh9bS8s4F15NgAJ",
+     "tag": "Checkpoint 1"
+    }
+   ]
+  },
+  {
+   "name": "Unit 2 · Revolution to Reunion",
+   "lessons": [
+    {
+     "id": "lesson-6",
+     "label": "Lesson 6",
+     "title": "Road to Revolution",
+     "page_title": "Road to Revolution Lesson 6",
+     "key": "tx-lesson6-v1",
+     "url": "https://claude.ai/artifact/S6dDb2CtHEpJERfwzDmhcb"
+    },
+    {
+     "id": "lesson-7",
+     "label": "Lesson 7",
+     "title": "The Texas Revolution",
+     "page_title": "Texas Revolution Lesson 7",
+     "key": "tx-lesson7-v1",
+     "url": "https://claude.ai/artifact/CTQoPm6CcvhLbCDvJfczg4"
+    },
+    {
+     "id": "lesson-8",
+     "label": "Lesson 8",
+     "title": "The Republic of Texas",
+     "page_title": "Republic of Texas Lesson 8",
+     "key": "tx-lesson8-v1",
+     "url": "https://claude.ai/artifact/5XnJ6QXcxLRanTPbyjpDkt"
+    },
+    {
+     "id": "lesson-9",
+     "label": "Lesson 9",
+     "title": "Early Statehood & the U.S.–Mexican War",
+     "page_title": "Early Statehood Lesson 9",
+     "key": "tx-lesson9-v1",
+     "url": "https://claude.ai/artifact/AKVkP8WbUpwXHUCPfVW23W"
+    },
+    {
+     "id": "lesson-10",
+     "label": "Lesson 10",
+     "title": "Civil War & Reconstruction",
+     "page_title": "Civil War & Reconstruction Lesson 10",
+     "key": "tx-lesson10-v1",
+     "url": "https://claude.ai/artifact/2dqgvnhSYNfZbovF5HwgBq",
+     "tag": "Checkpoint 2"
+    }
+   ]
+  },
+  {
+   "name": "Unit 3 · Building Modern Texas",
+   "lessons": [
+    {
+     "id": "lesson-11",
+     "label": "Lesson 11",
+     "title": "Cotton, Cattle & Railroads",
+     "page_title": "Cotton, Cattle & Railroads Lesson 11",
+     "key": "tx-lesson11-v1",
+     "url": "https://claude.ai/artifact/2vmSGTaqkdCrp9sb8YTBzj"
+    },
+    {
+     "id": "lesson-12",
+     "label": "Lesson 12",
+     "title": "The Age of Oil",
+     "page_title": "Age of Oil Lesson 12",
+     "key": "tx-lesson12-v1",
+     "url": "https://claude.ai/artifact/NDxnXwcJ3zFiAP2tdQ7ivE"
+    },
+    {
+     "id": "lesson-13",
+     "label": "Lesson 13",
+     "title": "Reform, Depression & the World Wars",
+     "page_title": "Reform, Depression & War Lesson 13",
+     "key": "tx-lesson13-v1",
+     "url": "https://claude.ai/artifact/TnHnX6zhEhuPCKXgpwwaRB"
+    },
+    {
+     "id": "lesson-14",
+     "label": "Lesson 14",
+     "title": "Civil Rights & Political Change",
+     "page_title": "Civil Rights in Texas Lesson 14",
+     "key": "tx-lesson14-v1",
+     "url": "https://claude.ai/artifact/R2jwEYyNGHDL22nqAw1Q65"
+    }
+   ]
+  },
+  {
+   "name": "Unit 4 · Texas Today",
+   "lessons": [
+    {
+     "id": "lesson-15",
+     "label": "Lesson 15",
+     "title": "Contemporary Texas",
+     "page_title": "Contemporary Texas Lesson 15",
+     "key": "tx-lesson15-v1",
+     "url": "https://claude.ai/artifact/8vHZKaJB8oj8Bjh7JB6fua"
+    },
+    {
+     "id": "lesson-16",
+     "label": "Lesson 16",
+     "title": "Texas Government & Citizenship",
+     "page_title": "Texas Government Lesson 16",
+     "key": "tx-lesson16-v1",
+     "url": "https://claude.ai/artifact/BupJwZAQ247c2aika88Eu6",
+     "tag": "Checkpoint 3"
+    },
+    {
+     "id": "cfw",
+     "label": "Required",
+     "title": "Celebrate Freedom Week",
+     "page_title": "Celebrate Freedom Week",
+     "key": "tx-cfw-v1",
+     "url": "https://claude.ai/artifact/4QENMUhew6xB21pRqM81pG",
+     "tag": "Required"
+    },
+    {
+     "id": "lesson-17",
+     "label": "Lesson 17",
+     "title": "Capstone: My Texas Story Project",
+     "page_title": "My Texas Story Lesson 17",
+     "key": "tx-lesson17-v1",
+     "url": "https://claude.ai/artifact/GDKbk1BKNeW5sbuNkfsP6Z",
+     "tag": "Capstone"
+    }
+   ]
+  }
+ ]
+}

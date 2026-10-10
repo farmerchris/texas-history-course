@@ -1,0 +1,210 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook palette as the lesson pages. Home = progress strip + unit lists; a lesson opens full-height in a frame under a slim course bar. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --empty:#e6eaf0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --bar:56px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --empty:#263040; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --empty:#263040; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* home */
+#home{padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:760px;margin:0 auto;display:grid;gap:28px}
+header.top{display:grid;gap:8px}
+header.top h1{font-size:clamp(2rem,6vw,2.6rem)}
+header.top p{color:var(--muted)}
+.progress{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:14px}
+.ptop{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.big{font-family:var(--mono);font-size:2rem;font-weight:600;font-variant-numeric:tabular-nums}
+.big small{font-size:1rem;color:var(--muted);font-weight:500}
+.cells{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:3px}
+.cell{height:14px;border-radius:3px;background:var(--empty);border:0;padding:0}
+.cell.started{background:var(--gold)}
+.cell.done{background:var(--good)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--empty)}
+.legend .l-s::before{background:var(--gold)} .legend .l-d::before{background:var(--good)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card);min-height:44px}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.fb{font-size:.9rem;font-weight:700;color:var(--good)}
+.unit{display:grid;gap:8px}
+.unit h2{font-size:1.25rem;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.list{list-style:none;margin:0;padding:0;display:grid}
+.row{width:100%;display:grid;grid-template-columns:5.2rem 1fr auto;align-items:center;gap:4px 12px;padding:12px 4px;background:none;border:0;border-bottom:1px solid var(--rule);text-align:left}
+.row:hover{background:var(--blue-soft)}
+.row .lab{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.row .ttl{font-weight:700;min-width:0}
+.row .ttl .tag{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:0 7px;vertical-align:2px}
+.state{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.8rem;white-space:nowrap}
+.pill{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted)}
+.pill.started{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+.pill.done{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.state .num{color:var(--muted)}
+.note{font-size:.85rem;color:var(--muted)}
+#reportBox{width:100%;min-height:10rem;font:inherit;font-size:.9rem;padding:10px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+@media (max-width:520px){.row{grid-template-columns:1fr auto}.row .lab{grid-column:1/-1}}
+
+/* lesson view */
+#view{height:100%;display:flex;flex-direction:column}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;height:var(--bar);display:flex;align-items:center;gap:8px;padding-inline:8px;background:var(--card);border-bottom:1px solid var(--rule)}
+.bar .back{display:flex;align-items:center;gap:6px;border:0;background:none;font-weight:700;color:var(--blue);padding:8px 10px;border-radius:8px;min-height:44px;white-space:nowrap}
+.bar .back:hover,.bar .nav:hover{background:var(--blue-soft)}
+.bar .where{flex:1;min-width:0;display:grid;line-height:1.2}
+.bar .where b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.95rem}
+.bar .where span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.bar .nav{width:44px;height:44px;border:1px solid var(--rule);border-radius:8px;background:var(--card);font-size:1.4rem;line-height:1}
+.bar .nav:disabled{opacity:.35;cursor:default}
+#frameWrap{flex:1;min-height:0}
+#frameWrap iframe{display:block;width:100%;height:100%;border:0;background:var(--paper)}
+@media (max-width:420px){.bar .back .txt{display:none}}
+</style>
+
+<div id="home">
+  <div class="wrap">
+    <header class="top">
+      <p class="eyebrow" id="sub"></p>
+      <h1 id="h1"></h1>
+      <p>Pick any lesson to open it. Your work saves on this device as you go, and the tracker updates when you come back here.</p>
+    </header>
+
+    <section class="progress" aria-labelledby="progLabel">
+      <div class="ptop">
+        <h2 id="progLabel" style="font-size:1.2rem">Course progress</h2>
+        <p class="big" id="countDone"></p>
+      </div>
+      <div class="cells" id="cells" role="list"></div>
+      <div class="legend"><span>Not started</span><span class="l-s">In progress</span><span class="l-d">Complete</span></div>
+      <div class="actions">
+        <button class="btn" id="continue"></button>
+        <button class="btn ghost" id="copyReport">Copy progress report</button>
+        <span class="fb" id="fbReport" aria-live="polite"></span>
+      </div>
+      <textarea id="reportBox" readonly hidden aria-label="Progress report"></textarea>
+    </section>
+
+    <div id="units" style="display:grid;gap:28px"></div>
+    <p class="note">Progress is stored in this browser for this course page only. Work done on the separate single-lesson pages does not show up here.</p>
+  </div>
+</div>
+
+<div id="view" hidden>
+  <div class="bar">
+    <button class="back" id="back" aria-label="Back to all lessons">← <span class="txt">All lessons</span></button>
+    <div class="where"><span id="vLab"></span><b id="vTitle"></b></div>
+    <button class="nav" id="prev" aria-label="Previous lesson">‹</button>
+    <button class="nav" id="next" aria-label="Next lesson">›</button>
+  </div>
+  <div id="frameWrap"></div>
+</div>
+
+<!--__LESSON_DOCS__-->
+
+<script>
+(function(){
+const C=/*__COURSE__*/null;
+const LS=C.lessons;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function load(key){try{return JSON.parse(localStorage.getItem(key))||{}}catch(e){return {}}}
+function state(L){
+  const S=load(L.key);
+  const filled=o=>o&&typeof o==="object"&&Object.values(o).some(v=>v!=null&&v!=="");
+  const scored=Object.keys(S).some(k=>/Score$/.test(k)&&S[k]!=null);
+  const started=S.doneAt||scored||(S.claim&&S.claim.trim())||filled(S.ps)||filled(S.qz);
+  return {status:S.doneAt?"done":started?"started":"todo",quiz:S.qzScore,done:S.doneAt};
+}
+const words={todo:"Not started",started:"In progress",done:"Complete"};
+
+$("h1").textContent=C.title;$("sub").textContent=C.subtitle;
+document.querySelector(".cells").style.setProperty("--n",LS.length);
+
+// unit lists
+$("units").innerHTML=C.units.map(u=>{
+  const items=LS.filter(L=>L.unit===u);
+  return `<section class="unit"><h2>${esc(u)}</h2><ul class="list">${items.map(L=>`<li><button class="row" data-id="${L.id}"><span class="lab">${esc(L.label)}</span><span class="ttl">${esc(L.title)}${L.tag?`<span class="tag">${esc(L.tag)}</span>`:""}</span><span class="state" id="st-${L.id}"></span></button></li>`).join("")}</ul></section>`}).join("");
+$("units").addEventListener("click",e=>{const b=e.target.closest(".row");if(b)go(b.dataset.id)});
+
+function refresh(){
+  let done=0,next=null;
+  const cells=[];
+  LS.forEach(L=>{
+    const s=state(L);
+    if(s.status==="done")done++;
+    else if(!next)next=L;
+    const q=s.quiz!=null&&L.quiz?`Quiz ${s.quiz}/${L.quiz}`:s.quiz!=null?`Quiz ${s.quiz}`:"";
+    $("st-"+L.id).innerHTML=`<span class="pill ${s.status}">${words[s.status]}</span>${q?`<span class="num">${q}</span>`:""}`;
+    cells.push(`<button class="cell ${s.status}" role="listitem" data-id="${L.id}" title="${esc(L.label+": "+L.title+" · "+words[s.status])}" aria-label="${esc(L.label+": "+L.title+", "+words[s.status])}"></button>`);
+  });
+  $("cells").innerHTML=cells.join("");
+  $("countDone").innerHTML=`${done}<small> of ${LS.length} complete</small>`;
+  const c=$("continue");
+  if(next){c.hidden=false;c.textContent=(state(next).status==="started"?"Continue: ":"Start: ")+next.label;c.dataset.id=next.id}
+  else{c.hidden=true}
+}
+$("cells").addEventListener("click",e=>{const b=e.target.closest(".cell");if(b)go(b.dataset.id)});
+$("continue").onclick=()=>go($("continue").dataset.id);
+
+function report(){
+  const lines=[C.title+": progress report"];
+  let done=0;
+  LS.forEach(L=>{const s=state(L);if(s.status==="done")done++;
+    lines.push(`${L.label} · ${L.title}: ${words[s.status]}${s.quiz!=null?`, quiz ${s.quiz}${L.quiz?"/"+L.quiz:""}`:""}${s.done?` (finished ${s.done})`:""}`)});
+  lines.splice(1,0,`${done} of ${LS.length} complete`,"");
+  return lines.join("\n");
+}
+$("copyReport").onclick=()=>{const t=report();const box=$("reportBox");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbReport").textContent="Select the text below and copy it."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbReport").textContent="Copied. Paste it into a message to a parent."},fallback)}catch(e){fallback()}};
+
+// lesson view
+let current=null;
+function show(id){
+  const i=LS.findIndex(L=>L.id===id);
+  if(i<0){current=null;$("view").hidden=true;$("home").hidden=false;$("frameWrap").innerHTML="";refresh();return}
+  const L=LS[i];current=id;
+  $("home").hidden=true;$("view").hidden=false;
+  $("vLab").textContent=L.label+" · "+L.unit.split("·")[0].trim();$("vTitle").textContent=L.title;
+  $("prev").disabled=i===0;$("next").disabled=i===LS.length-1;
+  const f=document.createElement("iframe");
+  f.title=L.label+": "+L.title;
+  f.setAttribute("allow","clipboard-write");
+  f.srcdoc=JSON.parse($("doc-"+id).textContent);
+  $("frameWrap").replaceChildren(f);
+  document.title=L.title+" · "+C.title;
+  window.scrollTo(0,0);
+}
+function go(id){if(location.hash.slice(1)===id)show(id);else location.hash=id}
+$("back").onclick=()=>go("");
+$("prev").onclick=()=>{const i=LS.findIndex(L=>L.id===current);if(i>0)go(LS[i-1].id)};
+$("next").onclick=()=>{const i=LS.findIndex(L=>L.id===current);if(i<LS.length-1)go(LS[i+1].id)};
+window.addEventListener("hashchange",()=>{show(location.hash.slice(1));if(!current)document.title=C.title});
+window.addEventListener("storage",refresh);
+refresh();
+if(location.hash.length>1)show(location.hash.slice(1));
+})();
+</script>

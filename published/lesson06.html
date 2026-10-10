@@ -1,0 +1,422 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Road to Revolution Lesson 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
+:root{
+  --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
+  --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
+  --good:#1f7a4d; --good-soft:#e1f2e8; --bad:#b33a2f; --bad-soft:#f9e3e0;
+  --display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131820; --card:#1b222d; --ink:#e7ecf3; --muted:#9eabbd; --rule:#2f3a4a;
+  --blue:#8fb2ef; --blue-soft:#22324d; --gold:#e3b45a; --gold-soft:#3a2f19;
+  --good:#6fd29f; --good-soft:#173527; --bad:#f08a7f; --bad-soft:#3d1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);font-weight:700}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.yr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600}
+a{color:var(--blue)}
+/* step strip */
+.steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding:10px 16px}
+.steps ol{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0;max-width:760px;overflow-x:auto}
+.steps a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:700;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.steps a:hover{background:var(--blue-soft);color:var(--ink)}
+.steps .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.steps a.done .dot{background:var(--good);border-color:var(--good)}
+.steps a.done{color:var(--ink)}
+header.hero{display:grid;gap:12px;padding-block:36px 24px}
+.hero .q{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(--ink)}
+.prose{display:grid;gap:14px;max-width:65ch}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 8px 8px 0}
+/* timeline ruler */
+.ruler{position:relative;display:grid;gap:0;padding-left:28px}
+.ruler::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:var(--rule)}
+.era{position:relative;display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.era:last-child{border-bottom:0}
+.era::before{content:"";position:absolute;left:-24px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.era .yr{font-size:.8rem;color:var(--blue);padding-top:3px}
+.era b{display:block}
+.era span{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.era{grid-template-columns:1fr}}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.date{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.date .yr{font-size:1.5rem;color:var(--gold)}
+.date p{font-size:.95rem}
+.ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+/* activities */
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task header{display:grid;gap:4px}
+.task header p{color:var(--muted);font-size:.95rem}
+.order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
+.order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
+.order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
+.order li .t{flex:1;min-width:0}
+.order li.ok{border-color:var(--good);background:var(--good-soft)}
+.order li.no{border-color:var(--bad);background:var(--bad-soft)}
+.mv{display:flex;gap:4px}
+button{font:inherit;cursor:pointer}
+.icon{width:44px;height:44px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-size:1rem;line-height:1}
+.icon:disabled{opacity:.35;cursor:default}
+.btn{border:0;border-radius:8px;padding:10px 18px;font-weight:700;background:var(--blue);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.match{display:grid;gap:8px}
+.match label{display:grid;grid-template-columns:4.2rem 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.match label.ok{background:var(--good-soft)} .match label.no{background:var(--bad-soft)}
+.match .yr{font-size:1.15rem}
+select{font:inherit;font-size:.95rem;width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.src{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.src .t{min-width:0}
+.src.ok{border-color:var(--good);background:var(--good-soft)} .src.no{border-color:var(--bad);background:var(--bad-soft)}
+.src .why{grid-column:1/-1;font-size:.9rem;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--blue);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--blue);padding:10px 14px;min-height:44px;font-weight:700;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--blue);color:var(--card)}
+@media (max-width:520px){.src{grid-template-columns:1fr}}
+.chartbox{overflow-x:auto}
+.chartbox svg{display:block;width:100%;min-width:320px;height:auto}
+.chartbox .cap{font-size:.8rem;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+legend{font-weight:700;margin-bottom:6px;padding:0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;border:1px solid transparent}
+.opt:hover{background:var(--blue-soft)}
+.opt input{margin-top:5px;accent-color:var(--blue)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.no{background:var(--bad-soft);border-color:var(--bad)}
+.explain{font-size:.92rem;color:var(--muted);padding-left:10px;border-left:3px solid var(--rule)}
+.quiz{display:grid;gap:22px;counter-reset:q}
+.quiz fieldset legend::before{counter-increment:q;content:counter(q) ". ";font-family:var(--mono);color:var(--blue)}
+textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);resize:vertical}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start}
+.checks input{margin-top:5px;accent-color:var(--good)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.score div{border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--card);display:grid;gap:2px}
+.score b{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score span{font-size:.85rem;color:var(--muted)}
+.small{font-size:.85rem;color:var(--muted)}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cert{background:var(--card);border:2px solid var(--rule);border-radius:12px;padding:18px;display:grid;gap:12px}
+.cert.complete{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.cert-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.stamp{font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:2px solid var(--muted);color:var(--muted)}
+.cert.complete .stamp{border-color:var(--good);color:var(--good);background:var(--good-soft)}
+.certdate{font-size:.85rem;color:var(--muted)}
+.shot{background:var(--gold-soft);border:2px solid var(--gold);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+@media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
+@media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+
+
+/* Lessons 3-4 additions */
+.excerpt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:10px;max-width:65ch}
+.excerpt p{font-size:1rem}
+.excerpt .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.excerpt p.line{padding-left:12px;border-left:3px solid var(--gold)}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:2px;font-size:.95rem}
+.era em{font-style:normal;color:var(--muted);font-size:.9rem;display:block}
+.dates .date b{font-size:1.05rem}
+/* long words and URLs wrap instead of widening the page */
+.t,.excerpt p,.card p,.callout{overflow-wrap:anywhere}
+</style>
+
+<nav class="steps" aria-label="Lesson steps">
+  <ol>
+    <li><a href="#read" id="nav-read"><span class="dot"></span>1 Read</a></li>
+    <li><a href="#practice" id="nav-practice"><span class="dot"></span>2 Practice</a></li>
+    <li><a href="#check" id="nav-check"><span class="dot"></span>3 Quiz</a></li>
+    <li><a href="#reflect" id="nav-reflect"><span class="dot"></span>4 Exit claim</a></li>
+    <li><a href="#results" id="nav-results"><span class="dot"></span>Results</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">Texas History · Lesson 6 of 17</p>
+  <h1>Road to Revolution</h1>
+  <p class="q">Big question: <b>Was the Texas Revolution inevitable after 1830?</b></p>
+  <div class="meta"><span>About 90 minutes</span><span>TEKS 7.3A, 7.16A, 7.20D</span><span>Your work saves on this device</span></div>
+</header>
+
+<section class="step" id="read">
+  <p class="eyebrow">Step 1 · Read</p>
+  <h2>Trust breaks down, one step at a time</h2>
+  <div class="prose">
+    <p>Lesson 5 ended with a problem. Mexico invited settlers to hold Texas, and now settlers from the United States far outnumbered Tejanos. Between 1826 and 1835, a chain of events turned that worry into open conflict.</p>
+    <p>As you read, ask the historian's question: <b>inevitable</b> means it was bound to happen no matter what. Could anyone have stopped this chain? Look at each step from two sides: the Mexican government's and the Texians' (Anglo settlers in Texas).</p>
+  </div>
+
+  <h3>Five steps toward revolution</h3>
+  <div class="ruler">
+    <div class="era"><span class="yr">1826</span><div><b>Fredonian Rebellion</b><span>Empresario Haden Edwards fought with Mexican officials over land titles in Nacogdoches. His brother declared an independent "Republic of Fredonia." Mexican troops, joined by Stephen F. Austin's militia, ended it quickly in early 1827. Even so, Mexico now suspected Anglo settlers.</span><em>Mexican view: proof settlers might rebel. Texian view: a few hotheads, not the colonies.</em></div></div>
+    <div class="era"><span class="yr">1828</span><div><b>The Terán Report</b><span>General Manuel de Mier y Terán toured Texas. He reported that Anglos far outnumbered Mexicans in East Texas, kept their own schools and customs, and traded mostly with the U.S. He warned that Mexico could lose Texas.</span><em>Mexican view: a warning to act now. Texian view: they hardly knew it existed.</em></div></div>
+    <div class="era"><span class="yr">1830</span><div><b>Law of April 6, 1830</b><span>Mexico banned further immigration from the United States, sent more soldiers, collected taxes on imports, and banned bringing in more enslaved people.</span><em>Mexican view: protecting its border. Texian view: an attack on their families still trying to come, and on their trade.</em></div></div>
+    <div class="era"><span class="yr">1832</span><div><b>Turtle Bayou Resolutions</b><span>After clashes with a Mexican commander at Anahuac, Texians wrote these resolutions. They said they were loyal Mexicans who supported General Santa Anna and the federal Constitution of 1824, and only opposed officials who broke it.</span><em>Mexican view: an armed uprising. Texian view: defending Mexico's own constitution.</em></div></div>
+    <div class="era"><span class="yr">1834</span><div><b>Austin's arrest</b><span>Austin traveled to Mexico City to ask for separate statehood for Texas and repeal of the immigration ban. On his way home he was arrested and held for about a year and a half without a trial.</span><em>Mexican view: punishing a letter that sounded like a threat. Texian view: if even Austin was jailed, peaceful requests had failed.</em></div></div>
+  </div>
+
+  <div class="callout"><b>The final push.</b> In 1834 and 1835, Santa Anna switched sides. He threw out the federal Constitution of 1824 and took power for the central government. When the state of Zacatecas resisted, his army crushed it. Federalists across Mexico, including many Tejanos, were alarmed. Austin came home in 1835 and said war was the only remedy. In October, fighting began at Gonzales.</div>
+
+  <h3>Reading a document: the Turtle Bayou Resolutions</h3>
+  <div class="excerpt">
+    <span class="who">Summary of the main points, June 1832</span>
+    <p class="line">The writers said they were loyal citizens of Mexico.</p>
+    <p class="line">They supported General Santa Anna, who was then fighting for the Constitution of 1824.</p>
+    <p class="line">They said they took up arms only against officials who ignored that constitution.</p>
+    <p><b>Think:</b> Why would Texians stress their loyalty to Mexico in 1832? Who was the audience?</p>
+  </div>
+</section>
+
+<section class="step" id="practice">
+  <p class="eyebrow">Step 2 · Practice</p>
+  <h2>Do the work</h2>
+  <div id="practiceTasks" style="display:grid;gap:18px"></div>
+</section>
+
+<section class="step" id="check">
+  <p class="eyebrow">Step 3 · Quiz</p>
+  <h2>Show what you know</h2>
+  <p class="small">10 questions. You can scroll up to review, but try it from memory first.</p>
+  <form class="quiz" id="quiz"></form>
+  <div class="row"><button class="btn" id="submitQuiz">Submit quiz</button><span class="fb" id="fbQuiz" aria-live="polite"></span></div>
+</section>
+
+<section class="step" id="reflect">
+  <p class="eyebrow">Step 4 · Exit claim</p>
+  <h2>Answer the big question</h2>
+  <div class="prose"><p>In 3 to 5 sentences, answer: <b>What was the single most important cause of the Texas Revolution?</b> Make a claim, give one piece of evidence from today's lesson (an event, a date, a law, or a person), and explain why it mattered more than the others.</p></div>
+  <label for="claim" class="small">Your answer</label>
+  <textarea id="claim" placeholder="The most important cause of the Texas Revolution was..."></textarea>
+  <p class="small" id="wc">0 words</p>
+  <div class="checks">
+    <p><b>Check your own work before you finish:</b></p>
+    <label><input type="checkbox" id="ck1"> I made a clear <b>claim</b> that answers the question.</label>
+    <label><input type="checkbox" id="ck2"> I gave specific <b>evidence</b> (an event, a date, a law, or a person).</label>
+    <label><input type="checkbox" id="ck3"> I explained <b>why</b> my cause mattered more than the others.</label>
+  </div>
+</section>
+
+<section class="step" id="results">
+  <p class="eyebrow">Results</p>
+  <h2>Lesson 6 report</h2>
+  <div class="cert" id="cert">
+    <div class="cert-top"><span class="eyebrow">Texas History · Lesson 6</span><span class="stamp" id="stamp">In progress</span></div>
+    <h3 id="certTitle">Road to Revolution</h3>
+    <div class="score" id="score"></div>
+    <p class="small" id="status"></p>
+    <p class="certdate yr" id="certDate"></p>
+  </div>
+  <div class="shot" id="shot" hidden>
+    <h3>Last step: turn in your work</h3>
+    <ol>
+      <li>Tap <b>Copy my answers</b> below.</li>
+      <li>Paste the answers into a message to your parents.</li>
+      <li>Send it. A parent will read and grade your exit claim.</li>
+    </ol>
+  </div>
+  <div class="row">
+    <button class="btn" id="copy">Copy my answers</button>
+    <span class="fb" id="fbCopy" aria-live="polite"></span>
+  </div>
+  <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
+  <div class="confirm" id="resetBox">
+    <button class="btn ghost" id="reset">Start over</button>
+  </div>
+  <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a>: “Fredonian Rebellion,” “Mier y Terán, Manuel de,” “Law of April 6, 1830,” “Turtle Bayou Resolutions,” “Austin, Stephen Fuller”</p>
+</section>
+</main>
+
+<script>
+window.LESSON={"key": "tx-lesson6-v1", "n": 6, "label": "Lesson 6", "title": "Road to Revolution", "practice": [{"type": "order", "title": "Sequence the event cards", "intro": "Use the arrows to put the events in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 5, "items": [["Fredonian Rebellion in Nacogdoches", "1826"], ["Terán tours Texas and warns Mexico", "1828"], ["Law of April 6 bans U.S. immigration", "1830"], ["Turtle Bayou Resolutions", "1832"], ["Austin is arrested on his way home", "1834"], ["Fighting begins at Gonzales", "1835"]]}, {"type": "sort", "title": "Two points of view", "intro": "Who would most likely say this: a <b>Mexican official<\/b> or a <b>Texian settler<\/b>?", "button": "Check my sorting", "word": "sorted correctly", "choices": [["M", "Mexican official"], ["T", "Texian settler"]], "items": [["“These settlers keep their own language and trade with the United States. We could lose Texas.”", "M", "That is the warning in the Terán Report."], ["“Our relatives back in Tennessee can't join us now. That's unfair.”", "T", "The Law of April 6, 1830 stopped new U.S. immigration."], ["“We need more soldiers and customs houses in Texas.”", "M", "Mexico sent troops and collected taxes to control the border."], ["“We are loyal to the Constitution of 1824, not to officials who break it.”", "T", "That is the message of the Turtle Bayou Resolutions."], ["“Austin's letter suggested Texas might act on its own. He must be held.”", "M", "Officials saw a letter Austin wrote as a threat."], ["“If Austin can be jailed for asking politely, asking doesn't work.”", "T", "Austin's arrest convinced many that peaceful petitions had failed."]]}, {"type": "match", "title": "Rate the tension", "intro": "For each event, how much did it raise tension between Mexico and the Texians? Historians disagree, but each choice below matches the most common view.", "placeholder": "Choose a level…", "button": "Check my ratings", "word": "matching the common view", "options": ["Small: a local fight", "Medium: built distrust", "Large: hit many people at once"], "items": [["Fredonian Rebellion (quickly put down, Austin helped Mexico)", 0], ["Terán Report (a warning most settlers never saw)", 1], ["Law of April 6, 1830 (stopped immigration and added taxes)", 2], ["Austin's arrest (the most trusted settler leader jailed)", 2], ["Santa Anna ends the Constitution of 1824", 2]]}, {"type": "mc", "title": "Inevitable or not?", "intro": "Pick the best answer.", "button": "Check my answers", "word": "correct", "items": [{"q": "Which fact is the best evidence that war was <i>not<\/i> inevitable in 1832?", "o": ["Texians said they were loyal Mexicans who supported Santa Anna", "Fighting began at Gonzales", "Austin was arrested"], "a": 0, "e": "In 1832, Texians still wanted to stay in Mexico."}, {"q": "Which change hurt Tejanos as well as Anglo settlers?", "o": ["The Fredonian Rebellion", "The Terán Report", "Santa Anna ending the federal Constitution of 1824"], "a": 2, "e": "Many Tejano federalists opposed Santa Anna's central rule."}, {"q": "Why do historians look at both Mexican and Texian viewpoints?", "o": ["To decide which side was evil", "Because each side saw the same events very differently, and both views explain what happened", "Because only one side wrote anything down"], "a": 1, "e": "Point of view shapes how people understand the same event (SE 20D)."}]}], "quiz": [{"q": "What was the Fredonian Rebellion?", "o": ["A Comanche raid on San Antonio", "An empresario's failed attempt to create an independent republic around Nacogdoches", "The first battle of the Texas Revolution", "A Mexican army mutiny"], "a": 1, "e": "Haden Edwards's revolt failed, but it made Mexico suspicious."}, {"q": "What did General Mier y Terán report in 1828?", "o": ["That Texas had gold", "That Texas should join the U.S.", "That settlers were very loyal", "That Anglos outnumbered Mexicans in East Texas and Mexico could lose Texas"], "a": 3, "e": "His report led to the Law of April 6, 1830."}, {"q": "Which was part of the Law of April 6, 1830?", "o": ["A ban on immigration from the United States", "Free land for all U.S. citizens", "Texas becoming its own state", "An end to all taxes"], "a": 0, "e": "Mexico also sent troops and taxed imports."}, {"q": "The Turtle Bayou Resolutions said Texians…", "o": ["Wanted independence right away", "Wanted to join France", "Were loyal to Mexico and the Constitution of 1824", "Supported the Law of April 6"], "a": 2, "e": "In 1832, they still hoped to work within Mexico."}, {"q": "Why did Stephen F. Austin go to Mexico City in 1833?", "o": ["To sell land", "To join the army", "To ask for separate statehood and an end to the immigration ban", "To surrender Texas"], "a": 2, "e": "He was arrested on the way home."}, {"q": "How did Santa Anna's actions in 1834–1835 push Texas toward war?", "o": ["He threw out the federal Constitution of 1824 and centralized power", "He gave Texas independence", "He moved to Texas", "He banned the Catholic Church"], "a": 0, "e": "Federalists, Anglo and Tejano, saw their rights taken away."}, {"q": "Where did fighting begin in October 1835?", "o": ["San Jacinto", "El Paso", "Galveston", "Gonzales"], "a": 3, "e": "Lesson 7 starts there."}, {"q": "From the Mexican government's point of view, the Law of April 6, 1830 was…", "o": ["A gift to settlers", "A way to protect its border and keep Texas", "A trade deal with the U.S.", "Meaningless"], "a": 1, "e": "Mexico feared losing Texas to the United States."}, {"q": "Which event shows tension involving slavery?", "o": ["The Law of April 6, 1830 banned bringing in more enslaved people", "The Turtle Bayou Resolutions", "The Terán Report praised slavery", "None; slavery was not an issue"], "a": 0, "e": "Many settlers depended on enslaved labor to grow cotton."}, {"q": "Which claim is best supported by the events in this lesson?", "o": ["War was certain from the day the first settlers arrived", "Mexico wanted war in 1826", "Each step made compromise harder, and Santa Anna's end of the 1824 Constitution made war very likely by 1835", "Texians never tried peaceful petitions"], "a": 2, "e": "A strong claim uses the evidence, including the attempts at peace."}], "review": "Review the five steps and both points of view"};
+(function(){
+const C=window.LESSON;
+const KEY=C.key;
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const strip=s=>String(s).replace(/<[^>]+>/g,"");
+function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${q.q}</legend>${q.o.map((o,j)=>{const c=marks&&ans[i]!=null?(j===q.a?"ok":(String(ans[i])===String(j)?"no":"")):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${o}</span></label>`}).join("")}${marks&&ans[i]!=null?`<p class="explain">${q.e}</p>`:""}</fieldset>`).join("")}
+
+S.p=S.p||{};S.ps=S.ps||{};
+const T=C.practice;
+const total=t=>t.items.length;
+$("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
+
+function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
+function clearScore(ti){if(S.ps[ti]!=null){S.ps[ti]=null;save()}$("fb"+ti).textContent="";updateAll()}
+const scored=ti=>S.ps[ti]!=null;
+
+T.forEach((t,ti)=>{
+  const body=$("body"+ti);
+  if(t.type==="match"){
+    const A=S.p[ti]=S.p[ti]||{};
+    body.innerHTML=t.items.map((c,i)=>`<label id="m${ti}_${i}" for="ms${ti}_${i}"><span class="t">${c[0]}</span><select id="ms${ti}_${i}" data-i="${i}"><option value="">${t.placeholder}</option>${t.options.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+    t.items.forEach((c,i)=>{if(A[i]!=null)$(`ms${ti}_${i}`).value=A[i]});
+    const ok=i=>String(A[i])===String(t.items[i][1]);
+    const mark=on=>t.items.forEach((c,i)=>{$(`m${ti}_${i}`).className=on?(ok(i)?"ok":"no"):""});
+    body.addEventListener("change",e=>{A[e.target.dataset.i]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.filter((c,i)=>ok(i)).length)};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="sort"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=marks=>{body.innerHTML=t.items.map((s,i)=>{const v=A[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+      return `<div class="src ${cls}"><span class="t">${s[0]}</span><span class="seg" role="group" aria-label="${esc(t.choices.map(c=>c[1]).join(" or "))}">${t.choices.map(c=>`<button type="button" data-i="${i}" data-v="${c[0]}" aria-pressed="${v===c[0]}">${c[1]}</button>`).join("")}</span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${s[2]}</span>`:""}</div>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;A[b.dataset.i]=b.dataset.v;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((s,i)=>A[i]===s[1]).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="order"){
+    let A=S.p[ti];
+    if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
+    body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
+    const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
+      return `<li class="${cls}"><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="mc"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=m=>{body.innerHTML=mcHTML(t.items,`c${ti}_`,A,m)};
+    body.addEventListener("change",e=>{A[e.target.name.split("_")[1]]=+e.target.value;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((q,i)=>A[i]===q.a).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+});
+
+// Quiz
+const QUIZ=C.quiz;
+S.qz=S.qz||{};
+function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("quiz").querySelectorAll("input").forEach(i=>i.disabled=S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Quiz submitted":"Submit quiz";$("submitQuiz").disabled=S.qzScore!=null}
+$("quiz").addEventListener("change",e=>{S.qz[e.target.name.slice(2)]=+e.target.value;save();updateAll()});
+$("quiz").addEventListener("submit",e=>e.preventDefault());
+$("submitQuiz").onclick=()=>{const left=QUIZ.length-Object.keys(S.qz).length;if(left>0){$("fbQuiz").className="fb no";$("fbQuiz").textContent=`Answer all questions first (${left} left).`;return}
+  S.qzScore=QUIZ.filter((q,i)=>S.qz[i]===q.a).length;S.qzDate=new Date().toLocaleDateString();save();renderQuiz();fb("fbQuiz",S.qzScore,QUIZ.length,"correct");updateAll()};
+renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
+
+// Exit claim
+$("claim").value=S.claim||"";
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!S[k];$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
+$("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
+
+function report(){
+  const L=[`Texas History ${C.label}: ${C.title}`];
+  T.forEach((t,ti)=>L.push(`${String.fromCharCode(65+ti)}. ${strip(t.title)}: ${S.ps[ti]==null?"not checked yet":S.ps[ti]+"/"+total(t)}`));
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/"+QUIZ.length+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
+  const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
+  const head=L.shift();
+  const pr=$("reflect").querySelector(".prose");
+  const prompt=pr?pr.textContent.replace(/\s+/g," ").trim():"";
+  return [head,
+    S.doneAt?"Completed "+S.doneAt:"Not finished yet",
+    "",
+    "EXIT CLAIM (for a parent to grade)",
+    "Prompt: "+prompt,
+    `Answer (${wc()} words, self-check ${ck}/3):`,
+    S.claim&&S.claim.trim()?S.claim.trim():"(not written yet)",
+    "",
+    "SCORES",
+    ...L].join("\n");
+}
+function updateAll(){
+  const doneP=T.every((t,ti)=>S.ps[ti]!=null);
+  const anyP=T.some((t,ti)=>S.ps[ti]!=null);
+  const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
+  $("nav-read").classList.toggle("done",anyP);
+  $("nav-practice").classList.toggle("done",doneP);
+  $("nav-check").classList.toggle("done",S.qzScore!=null);
+  $("nav-reflect").classList.toggle("done",claimDone);
+  const all=doneP&&S.qzScore!=null&&claimDone;
+  $("nav-results").classList.toggle("done",all);
+  const pTot=T.reduce((a,t)=>a+total(t),0);
+  const pGot=T.reduce((a,t,ti)=>a+(S.ps[ti]||0),0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  const letters="A–"+String.fromCharCode(64+T.length);
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—",`Practice (${letters})`)+cell(S.qzScore!=null?`${S.qzScore}/${QUIZ.length}`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore/QUIZ.length*100)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  const need=Math.ceil(QUIZ.length*0.8);
+  if(all) st=S.qzScore>=need?`Lesson complete. Mastery reached (${need}/${QUIZ.length} or better on the quiz).`:`Lesson complete. ${C.review}, then talk through the missed quiz questions with a parent.`;
+  else{const todo=[];if(!doneP)todo.push(`check all ${T.length===4?"four":T.length} practice activities`);if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
+  if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
+  if(!all&&S.doneAt){S.doneAt=undefined;save()}
+  $("cert").classList.toggle("complete",all);
+  $("stamp").textContent=all?"Lesson complete":"In progress";
+  $("certDate").textContent=all?"Completed "+S.doneAt:"";
+  $("shot").hidden=!all;
+}
+$("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
+  const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
+function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+  $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+$("reset").onclick=askReset;
+updateAll();
+})();
+
+</script>
+
+</body></html>
