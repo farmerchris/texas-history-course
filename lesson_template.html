@@ -350,12 +350,19 @@ T.forEach((t,ti)=>{
     body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
     const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
       return `<li class="${cls}"><span class="grip" aria-hidden="true">⠿</span><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    let sorting=null,dragging=false;
+    const unsort=ms=>{clearTimeout(sorting);sorting=setTimeout(()=>{sorting=null;if(!dragging)$("ol"+ti).classList.remove("sorting")},ms)};
     // Drag to reorder: grab anywhere on a card. The card follows the pointer, the others
     // slide out of the way, and the list is only reordered on drop. On touch a short
     // press-and-hold starts the drag, so an ordinary swipe still scrolls the page.
     (()=>{const ol=$("ol"+ti);let p=null,d=null,hold=null;
       const cancel=()=>{if(hold){clearTimeout(hold);hold=null}p=null};
       function begin(li,y,id){
+        // snap any in-flight arrow animation to its end first, so the rects below are
+        // the settled layout and not positions still gliding into place
+        clearTimeout(sorting);sorting=null;dragging=true;
+        ol.classList.remove("sorting");
+        [...ol.children].forEach(x=>{x.style.transition="";x.style.transform=""});
         const lis=[...ol.children],rects=lis.map(x=>x.getBoundingClientRect()),from=lis.indexOf(li);
         const gap=lis.length>1?rects[1].top-rects[0].bottom:0;
         d={li,lis,rects,from,to:from,y0:y,step:rects[from].height+gap};
@@ -376,7 +383,7 @@ T.forEach((t,ti)=>{
         const land=to===from?0:((to>from?rects[to].bottom-rects[from].height:rects[to].top)-rects[from].top);
         li.style.transition="transform .16s cubic-bezier(.2,.7,.3,1)";
         li.style.transform=`translateY(${land}px)`;
-        setTimeout(()=>{li.style.transition="";ol.classList.remove("sorting");li.classList.remove("drag");
+        setTimeout(()=>{dragging=false;li.style.transition="";ol.classList.remove("sorting");li.classList.remove("drag");
           lis.forEach(x=>x.style.transform="");
           if(to!==from){A.splice(to,0,A.splice(from,1)[0]);save();render(false);clearScore(ti)}},to===from?0:170)}
       ol.addEventListener("pointerdown",e=>{
@@ -405,7 +412,7 @@ T.forEach((t,ti)=>{
         nl[q].style.transform=`translateY(${tops[p]-tops[q]}px)`;
         void ol.offsetHeight;
         ol.classList.add("sorting");nl[p].style.transform="";nl[q].style.transform="";
-        setTimeout(()=>ol.classList.remove("sorting"),220);
+        unsort(220);
       }
       const nb=nl[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else nl[q]?.querySelector("button:not([disabled])")?.focus()});
     $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
