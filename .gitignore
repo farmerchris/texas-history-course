@@ -1,6 +1,4 @@
 out/
-pub/
-artifact-files/
 __pycache__/
 *.png
 .DS_Store

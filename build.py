@@ -1,12 +1,14 @@
-"""Build lesson pages from the Lesson 4 page used as a template.
-Usage: python3 build.py lessons/l05.py [more...]
-  -> out/<slug>.html  full page for local testing
-  -> pub/<slug>.html  page body to publish as an Artifact
+"""Render a lesson content file into a lesson page.
+
+assemble.py calls render() and embeds the result straight into the course page.
+Running this directly writes out/<slug>.html as well, for testing a single lesson:
+
+  python3 build.py lessons/l05.py [more...]   -> out/<slug>.html
 """
-import json, re, sys, os, runpy, math
+import json, sys, os, runpy
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "published", "lesson04.html")  # layout template: the published Lesson 4 page
+SRC = os.path.join(HERE, "lesson_template.html")  # page skeleton, styles and engine
 lines = open(SRC, encoding="utf8").read().split("\n")
 
 def find(prefix):
@@ -25,7 +27,6 @@ engine = engine.replace(
     'if(all) st=S.qzScore>=8?"Lesson complete. Mastery reached (8/10 or better on the quiz).":',
     'const need=Math.ceil(QUIZ.length*0.8);\n  if(all) st=S.qzScore>=need?`Lesson complete. Mastery reached (${need}/${QUIZ.length} or better on the quiz).`:')
 assert "const need=" in engine
-engine = engine.replace('fb("fbQuiz",S.qzScore,QUIZ.length,"correct")', 'fb("fbQuiz",S.qzScore,QUIZ.length,"correct")')
 engine = engine.replace('const L=[`Texas History Lesson ${C.n}: ${C.title}`];', 'const L=[`Texas History ${C.label}: ${C.title}`];')
 assert "C.label" in engine
 
@@ -45,7 +46,8 @@ def spread(qs, offset=0):
         o.insert(tgt, right)
         q["o"], q["a"] = o, tgt
 
-def build(path):
+def render(path):
+    """Content file -> (lesson dict, full page HTML). No files written."""
     L = runpy.run_path(path)["L"]
     spread(L["quiz"])
     for k, t in enumerate(L["practice"]):
@@ -137,17 +139,16 @@ def build(path):
            "practice": L["practice"], "quiz": L["quiz"], "review": L["review"]}
     out.append("window.LESSON=" + json.dumps(cfg, ensure_ascii=False).replace("</", "<\\/") + ";")
     out.append(engine)
-    html = "\n".join(out)
+    check(L, path)
+    return L, "\n".join(out)
+
+
+def build(path):
+    """Write a single lesson page to out/, for testing it on its own."""
+    L, html = render(path)
     os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
     dst = os.path.join(HERE, "out", L["slug"] + ".html")
     open(dst, "w", encoding="utf8").write(html)
-    # publish copy: drop the skeleton the publish step adds back
-    pub = html.split("<body>", 1)[1]
-    pub = pub.rsplit("</body></html>", 1)[0].strip() + "\n"
-    assert pub.startswith("<title>")
-    os.makedirs(os.path.join(HERE, "pub"), exist_ok=True)
-    open(os.path.join(HERE, "pub", L["slug"] + ".html"), "w", encoding="utf8").write(pub)
-    check(L, path)
     print("built", dst, len(html))
 
 def check(L, path):

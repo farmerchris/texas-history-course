@@ -10,44 +10,47 @@ Each lesson page runs Read → Practice → Quiz → Exit claim → Results. Stu
 
 | Path | What it is |
 |---|---|
-| `lessons/*.py` | Content for Lessons 5–17 and Celebrate Freedom Week: reading, practice activities, quiz, exit-claim prompt, sources |
-| `build.py` | Turns a lesson file into a page, using `published/lesson04.html` as the layout template |
-| `published/` | Snapshot of every lesson page as published, including Lessons 1–4, which were made separately and have no file in `lessons/` |
-| `course.json` | Lesson order, units, titles, storage keys, and each page's published URL |
+| `lessons/*.py` | Content for all 18 sessions: reading, practice activities, quiz, exit-claim prompt, sources |
+| `lesson_template.html` | Page skeleton, styles and the lesson engine that every lesson is built with |
+| `build.py` | Renders one lesson file into a lesson page |
+| `course.json` | Lesson order, units, titles and storage keys |
 | `course_template.html` | Shell of the combined course page |
-| `assemble.py` | Bakes every lesson page into `dist/course.html`, plus a standalone `site/index.html` for GitHub Pages |
-| `dist/course.html` | The combined course page, for publishing as a Claude artifact |
+| `assemble.py` | Builds every lesson and bakes them into `dist/course.html`, plus `site/index.html` for GitHub Pages |
+| `dist/course.html` | The combined course page |
 | `.github/workflows/pages.yml` | Rebuilds the course page and deploys it to GitHub Pages on every push to `main` |
-| `tools/check.sh` | Builds all lessons and syntax-checks every page's script |
-| `tools/smoke_test.py` | Headless-browser test: answers each quiz, checks phone width and errors, exercises the course page |
+| `tools/build.sh` | Builds the course page (add `--lessons` to also write a page per lesson) |
+| `tools/test.sh` | Builds everything, then runs every check and test below |
+| `tools/smoke_test.py` | Answers each quiz, checks phone width and page errors, exercises the course page |
+| `tools/practice_test.py` | Solves every practice activity and checks it scores full marks |
+| `tools/drag_test.py` | Checks the reordering activity can be solved by dragging, with a mouse and with touch |
 
-`out/`, `pub/` and `site/` are build output and are ignored by git.
+`out/` and `site/` are build output and are ignored by git. Lessons are matched to
+`course.json` by their storage key, so renaming a lesson's title is safe.
 
 ## Common tasks
 
-**Change a generated lesson (5–17, CFW)**
+**Change a lesson**
 
 ```
 # edit lessons/l07.py
-python3 build.py lessons/l07.py      # out/lesson07.html to test, pub/lesson07.html to publish
-python3 tools/smoke_test.py out/lesson07.html
+tools/build.sh                       # rebuild the course page from source
+tools/test.sh                        # build everything and run all checks
 ```
 
-Publish `pub/lesson07.html` to that lesson's URL in `course.json`, copy the published page into `published/lesson07.html`, then rebuild the course page.
+To look at one lesson on its own, `python3 build.py lessons/l07.py` writes
+`out/lesson07.html`; that file is only for testing, nothing is published from it.
 
 **Rebuild the course page**
 
 ```
-python3 assemble.py --check          # lists every lesson found and its quiz length
-python3 assemble.py                  # writes dist/course.html
-python3 tools/smoke_test.py --course dist/course.html
+python3 assemble.py --check          # list the lessons it will build and their quiz lengths
+python3 assemble.py                  # writes dist/course.html and site/index.html
 ```
 
-Publish `dist/course.html` to `course_url` in `course.json` so the link stays the same. Lessons are matched by their page `<title>` (`page_title` in `course.json`), and the newest copy wins, so keep that field in sync if a lesson is renamed.
+**Change the look or the lesson engine**
 
-**Edit Lessons 1–4**
-
-These have no content file. Edit the published page itself, then save the new version into `published/` and rebuild the course page. Lesson 4 is also the layout template for `build.py`, so rebuild all lessons after changing it (`tools/check.sh`).
+Edit `lesson_template.html` (styles, page skeleton, the JavaScript that runs the
+practice activities, quiz and results), then rebuild. Every lesson picks it up.
 
 ## GitHub Pages
 
@@ -57,7 +60,7 @@ The workflow in `.github/workflows/pages.yml` runs `assemble.py` and publishes `
 2. In the repo, open **Settings → Pages**, and under **Build and deployment** set **Source** to **GitHub Actions**.
 3. Open the **Actions** tab. The first run starts on your next push, or start it with **Run workflow**. When it finishes, the site is at `https://<username>.github.io/<repo>/`.
 
-After that, every push to `main` rebuilds and redeploys the site, so updating a lesson is: replace its page in `published/`, commit, push. To preview locally: `python3 assemble.py`, then `python3 -m http.server -d site` and open http://localhost:8000.
+After that, every push to `main` rebuilds and redeploys the site, so updating a lesson is: edit its file in `lessons/`, commit, push. To preview locally: `python3 assemble.py`, then `python3 -m http.server -d site` and open http://localhost:8000.
 
 Deep links open a lesson directly, e.g. `https://<username>.github.io/<repo>/#lesson-7`.
 

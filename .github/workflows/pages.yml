@@ -1,4 +1,4 @@
-# Rebuild the course page from published/ and deploy it to GitHub Pages on every push to main.
+# Rebuild the course page from lessons/ and deploy it to GitHub Pages on every push to main.
 # One-time setup: repo Settings → Pages → Build and deployment → Source: "GitHub Actions".
 name: Deploy course to GitHub Pages
 
