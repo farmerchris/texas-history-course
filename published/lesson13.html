@@ -63,13 +63,17 @@ section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(-
 .ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
 .ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
 /* activities */
-.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px;min-width:0}
+.task>*{min-width:0}
 .task header{display:grid;gap:4px}
 .task header p{color:var(--muted);font-size:.95rem}
 .order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
 .order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
 .order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
 .order li .t{flex:1;min-width:0}
+.order li .grip{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;color:var(--muted);font-size:1.15rem;line-height:1;padding:6px 2px;margin:-6px 0}
+.order li.dragging{opacity:.9;border-color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.order li.dragging .grip{cursor:grabbing}
 .order li.ok{border-color:var(--good);background:var(--good-soft)}
 .order li.no{border-color:var(--bad);background:var(--bad-soft)}
 .mv{display:flex;gap:4px}
@@ -279,7 +283,7 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
   </div>
   <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
   <div class="confirm" id="resetBox">
-    <button class="btn ghost" id="reset">Start over</button>
+    <button class="btn ghost" id="reset">Start this lesson over</button>
   </div>
   <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a>: “Populism,” “Woman Suffrage,” “Dust Bowl,” “Civilian Conservation Corps,” “Garner, John Nance,” “Rayburn, Samuel Taliaferro,” “World War II,” “Dobie, James Frank,” “Ney, Elisabet,” “Joplin, Scott”</p>
 </section>
@@ -302,7 +306,7 @@ function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>$
 
 S.p=S.p||{};S.ps=S.ps||{};
 const T=C.practice;
-const total=t=>t.items.length;
+const total=t=>t.type==="compare"?t.items.length*t.columns.length:t.items.length;
 $("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
 
 function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
@@ -334,11 +338,39 @@ T.forEach((t,ti)=>{
     if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
     body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
     const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
-      return `<li class="${cls}"><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+      return `<li class="${cls}"><span class="grip" aria-hidden="true">⠿</span><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    // Drag to reorder. Pointer Events cover mouse, touch and pen with one path; the
+    // drag starts on the grip only, so touching the row itself still scrolls the page.
+    (()=>{const ol=$("ol"+ti);let d=null;
+      ol.addEventListener("pointerdown",e=>{const g=e.target.closest(".grip");if(!g)return;
+        const li=g.closest("li");if(!li)return;e.preventDefault();
+        d={li,from:[...ol.children].indexOf(li),id:e.pointerId};
+        li.classList.add("dragging");try{g.setPointerCapture(e.pointerId)}catch(err){}});
+      ol.addEventListener("pointermove",e=>{if(!d||e.pointerId!==d.id)return;e.preventDefault();
+        const other=[...ol.children].filter(x=>x!==d.li);
+        const before=other.find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2});
+        if(before)ol.insertBefore(d.li,before);else ol.appendChild(d.li)});
+      const end=e=>{if(!d||e.pointerId!==d.id)return;
+        const li=d.li,from=d.from,to=[...ol.children].indexOf(li);d=null;
+        li.classList.remove("dragging");
+        if(to<0||to===from){render(scored(ti));return}
+        A.splice(to,0,A.splice(from,1)[0]);save();render(false);clearScore(ti)};
+      ol.addEventListener("pointerup",end);ol.addEventListener("pointercancel",end);})();
     body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
       const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
     $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
     render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="compare"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const cols=t.columns,ph=t.placeholder||"Choose…";
+    const ok=(i,k)=>String(A[i+"_"+k])===String(t.items[i].a[k]);
+    body.innerHTML=`<div class="cmpbox"><table class="cmp"><thead><tr><th scope="col"></th>${cols.map(p=>`<th scope="col">${esc(p)}</th>`).join("")}</tr></thead><tbody>${t.items.map((r,i)=>`<tr><th scope="row">${r.row}</th>${cols.map((p,k)=>`<td id="ct${ti}_${i}_${k}"><select id="cs${ti}_${i}_${k}" data-k="${i}_${k}" aria-label="${esc(p)}: ${esc(strip(r.row))}"><option value="">${esc(ph)}</option>${r.o.map((o,j)=>`<option value="${j}">${esc(o)}</option>`).join("")}</select></td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    t.items.forEach((r,i)=>cols.forEach((p,k)=>{const el=$(`cs${ti}_${i}_${k}`);if(A[i+"_"+k]!=null)el.value=A[i+"_"+k]}));
+    const mark=on=>t.items.forEach((r,i)=>cols.forEach((p,k)=>{$(`ct${ti}_${i}_${k}`).className=on?(ok(i,k)?"ok":"no"):""}));
+    body.addEventListener("change",e=>{A[e.target.dataset.k]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.reduce((n,r,i)=>n+cols.filter((p,k)=>ok(i,k)).length,0))};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
   }
   if(t.type==="mc"){
     const A=S.p[ti]=S.p[ti]||{};
@@ -418,9 +450,9 @@ function updateAll(){
 $("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
   const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
   try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
-function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+function askReset(){$("resetBox").innerHTML=`<span>Erase your answers for this lesson? Your other lessons keep their work.</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase this lesson</button><button class="btn ghost" id="noReset">Keep my work</button>`;
   $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
-  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start this lesson over</button>`;$("reset").onclick=askReset};}
 $("reset").onclick=askReset;
 updateAll();
 })();

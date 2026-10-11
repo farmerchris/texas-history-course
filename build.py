@@ -126,7 +126,7 @@ def build(path):
   </div>
   <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
   <div class="confirm" id="resetBox">
-    <button class="btn ghost" id="reset">Start over</button>
+    <button class="btn ghost" id="reset">Start this lesson over</button>
   </div>
   <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · {L["sources"]}</p>
 </section>
@@ -153,7 +153,7 @@ def build(path):
 def check(L, path):
     errs = []
     for ti, t in enumerate(L["practice"]):
-        assert t["type"] in ("match", "order", "sort", "mc"), path
+        assert t["type"] in ("match", "order", "sort", "mc", "compare"), path
         for k in ("title", "intro", "button", "word", "items"):
             if k not in t: errs.append(f"practice {ti} missing {k}")
         if t["type"] == "match":
@@ -166,6 +166,12 @@ def check(L, path):
         if t["type"] == "mc":
             for q in t["items"]:
                 if not (0 <= q["a"] < len(q["o"])) or "e" not in q: errs.append(f"mc bad {q['q']}")
+        if t["type"] == "compare":
+            for r in t["items"]:
+                if len(r["a"]) != len(t["columns"]):
+                    errs.append(f"compare {r['row']}: {len(r['a'])} answers for {len(t['columns'])} columns")
+                for a in r["a"]:
+                    if not (0 <= a < len(r["o"])): errs.append(f"compare bad idx in {r['row']}")
     for q in L["quiz"]:
         if not (0 <= q["a"] < len(q["o"])) or "e" not in q: errs.append(f"quiz bad {q['q']}")
     # answer-position balance in quiz

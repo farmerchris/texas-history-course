@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: one reading column like a field notebook; a timeline ruler runs through the reading; sticky step strip on top. */
+/* Layout: same field-notebook column as Lesson 1; a west-to-east rain strip and region cards replace the timeline ruler; sticky step strip on top. */
 :root{
   --paper:#f5f7f9; --card:#ffffff; --ink:#1b2433; --muted:#566275; --rule:#d4dbe4;
   --blue:#2f5fb3; --blue-soft:#e3ebf8; --gold:#b9831b; --gold-soft:#f8eed9;
@@ -63,13 +63,17 @@ section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(-
 .ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
 .ps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
 /* activities */
-.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px}
+.task{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px;display:grid;gap:14px;min-width:0}
+.task>*{min-width:0}
 .task header{display:grid;gap:4px}
 .task header p{color:var(--muted);font-size:.95rem}
 .order{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:n}
 .order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
 .order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
 .order li .t{flex:1;min-width:0}
+.order li .grip{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;color:var(--muted);font-size:1.15rem;line-height:1;padding:6px 2px;margin:-6px 0}
+.order li.dragging{opacity:.9;border-color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.order li.dragging .grip{cursor:grabbing}
 .order li.ok{border-color:var(--good);background:var(--good-soft)}
 .order li.no{border-color:var(--bad);background:var(--bad-soft)}
 .mv{display:flex;gap:4px}
@@ -130,6 +134,48 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
 .shot ul,.shot ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
 @media (max-width:520px){body{font-size:16px}.task{padding:14px}.match label{grid-template-columns:3.4rem 1fr}.order li{padding:6px 8px}.btn{width:100%}}
 @media (prefers-reduced-motion:no-preference){.order li,.src,.opt{transition:background .2s,border-color .2s}html{scroll-behavior:smooth}}
+
+
+/* Lesson 2 additions */
+.strip{display:grid;gap:6px}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.band>div{padding:10px;border-radius:6px;display:grid;gap:2px;align-content:start;min-width:0;overflow-wrap:anywhere}
+.band b{font-size:.85rem;line-height:1.2}
+.band .yr{font-size:1.1rem;color:var(--ink)}
+.seg0{background:var(--gold-soft)}
+.seg1{background:color-mix(in srgb,var(--gold-soft) 66%,var(--blue-soft))}
+.seg2{background:color-mix(in srgb,var(--gold-soft) 33%,var(--blue-soft))}
+.seg3{background:var(--blue-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.ctop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stat{font-size:.85rem;color:var(--blue)}
+.card dl{display:grid;grid-template-columns:4rem 1fr;gap:4px 10px;margin:0;font-size:.95rem}
+.card dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
+.card dd{margin:0;min-width:0}
+.match.wide label{grid-template-columns:1fr minmax(0,14rem)}
+.match .t{min-width:0}
+.cmpbox{overflow-x:auto}
+.cmp{border-collapse:collapse;width:100%;min-width:480px}
+.cmp th,.cmp td{padding:6px 8px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-family:var(--display);font-size:1.1rem}
+.cmp tbody th{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.cmp td.ok{background:var(--good-soft)} .cmp td.no{background:var(--bad-soft)}
+@media (max-width:520px){.match.wide label{grid-template-columns:1fr}.band b{font-size:.75rem}.band .yr{font-size:.95rem}}
+
+
+/* Lessons 3-4 additions */
+.excerpt{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:10px;max-width:65ch}
+.excerpt p{font-size:1rem}
+.excerpt .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.excerpt p.line{padding-left:12px;border-left:3px solid var(--gold)}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:2px;font-size:.95rem}
+.era em{font-style:normal;color:var(--muted);font-size:.9rem;display:block}
+.dates .date b{font-size:1.05rem}
+/* long words and URLs wrap instead of widening the page */
+.t,.excerpt p,.card p,.callout{overflow-wrap:anywhere}
 </style>
 
 <nav class="steps" aria-label="Lesson steps">
@@ -152,7 +198,7 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
 
 <section class="step" id="read">
   <p class="eyebrow">Step 1 · Read</p>
-  <h2>Cutting a long story into chapters</h2>
+<h2>Cutting a long story into chapters</h2>
   <div class="prose">
     <p>People have lived in the land we call Texas for more than 13,000 years. That is far too much to study all at once. So historians do what authors do with a long book: they split it into chapters. In history, those chapters are called <b>eras</b>.</p>
     <p>An era is a stretch of time with <b>defining characteristics</b>, things that were true for most of that period. During the Spanish Colonial era, for example, Spain ruled Texas and built missions, forts called presidios, and ranches. When Mexico won its independence in 1821, the rules changed, so a new era began.</p>
@@ -161,10 +207,10 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
   </div>
 
   <h3>The 12 eras of Texas history</h3>
-  <div class="ruler" id="ruler"></div>
+  <div class="ruler" id="ruler"><div class="era"><div class="yr">Before 1519</div><div><b>Natural Texas and Its People</b><span>American Indian groups such as the Caddo, Jumano, and Karankawa adapt to Texas's very different regions.</span></div></div><div class="era"><div class="yr">1519–1689</div><div><b>Age of Contact</b><span>European explorers like Álvarez de Pineda, Cabeza de Vaca, and La Salle reach Texas.</span></div></div><div class="era"><div class="yr">1690–1821</div><div><b>Spanish Colonial</b><span>Spain builds missions, presidios, towns, and ranches to hold Texas.</span></div></div><div class="era"><div class="yr">1821–1835</div><div><b>Mexican National</b><span>Mexico rules Texas and invites settlers, including Stephen F. Austin's colonists.</span></div></div><div class="era"><div class="yr">1835–1845</div><div><b>Revolution and Republic</b><span>Texans fight for independence and run their own country, the Republic of Texas.</span></div></div><div class="era"><div class="yr">1845–1861</div><div><b>Early Statehood</b><span>Texas joins the United States and grows quickly.</span></div></div><div class="era"><div class="yr">1861–1874</div><div><b>Civil War and Reconstruction</b><span>Texas secedes, fights for the Confederacy, and is rebuilt after the war.</span></div></div><div class="era"><div class="yr">1874–1900</div><div><b>Cotton, Cattle, and Railroads</b><span>Cattle drives, cotton farming, and new railroads spread across the state.</span></div></div><div class="era"><div class="yr">1901–1929</div><div><b>Age of Oil</b><span>The Spindletop gusher starts an oil boom that changes the economy.</span></div></div><div class="era"><div class="yr">1929–1945</div><div><b>Great Depression and World War II</b><span>Hard times, the Dust Bowl, and a world war reshape Texas.</span></div></div><div class="era"><div class="yr">1945–1980</div><div><b>Civil Rights and Conservatism</b><span>Texans fight for equal rights, and political loyalties begin to shift.</span></div></div><div class="era"><div class="yr">1980–today</div><div><b>Contemporary Texas</b><span>Big cities, new technology, and fast population growth.</span></div></div></div>
 
   <h3>Eight dates every Texan should know</h3>
-  <div class="dates" id="dateCards"></div>
+  <div class="dates" id="dateCards"><div class="date"><span class="yr">1519</span><p>Álvarez de Pineda maps the Texas coast; Spain founds its first settlement on the North American mainland.</p></div><div class="date"><span class="yr">1718</span><p>San Antonio is founded.</p></div><div class="date"><span class="yr">1821</span><p>Mexico, including Texas, wins independence from Spain.</p></div><div class="date"><span class="yr">1836</span><p>Texas declares independence from Mexico.</p></div><div class="date"><span class="yr">1845</span><p>Texas is annexed and becomes a U.S. state.</p></div><div class="date"><span class="yr">1861</span><p>The Civil War begins; Texas has seceded.</p></div><div class="date"><span class="yr">1876</span><p>Texans adopt the state constitution still used today.</p></div><div class="date"><span class="yr">1901</span><p>Oil gushes at Spindletop near Beaumont.</p></div></div>
 
   <h3>The historian's toolkit: two kinds of sources</h3>
   <div class="ps">
@@ -177,31 +223,7 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
 <section class="step" id="practice">
   <p class="eyebrow">Step 2 · Practice</p>
   <h2>Do the work</h2>
-
-  <div class="task" id="taskOrder">
-    <header><h3>A. Put the eras in order</h3><p>Use the arrows to move each era. Earliest goes at the top.</p></header>
-    <ol class="order" id="orderList"></ol>
-    <div class="row"><button class="btn" id="checkOrder">Check my order</button><span class="fb" id="fbOrder" aria-live="polite"></span></div>
-  </div>
-
-  <div class="task" id="taskDates">
-    <header><h3>B. Match each date to what happened</h3><p>Pick the event for each year.</p></header>
-    <div class="match" id="dateMatch"></div>
-    <div class="row"><button class="btn" id="checkDates">Check my matches</button><span class="fb" id="fbDates" aria-live="polite"></span></div>
-  </div>
-
-  <div class="task" id="taskSources">
-    <header><h3>C. Primary or secondary?</h3><p>Sort each source. Ask: was the creator there at the time?</p></header>
-    <div class="sort" id="sourceList"></div>
-    <div class="row"><button class="btn" id="checkSources">Check my sorting</button><span class="fb" id="fbSources" aria-live="polite"></span></div>
-  </div>
-
-  <div class="task" id="taskChart">
-    <header><h3>D. Read a graph</h3><p>This graph shows how many people lived in Texas in five census years.</p></header>
-    <div class="chartbox" id="chart"></div>
-    <div id="chartQs" style="display:grid;gap:18px"></div>
-    <div class="row"><button class="btn" id="checkChart">Check my answers</button><span class="fb" id="fbChart" aria-live="polite"></span></div>
-  </div>
+  <div id="practiceTasks" style="display:grid;gap:18px"></div>
 </section>
 
 <section class="step" id="check">
@@ -251,136 +273,106 @@ textarea{font:inherit;width:100%;min-height:9rem;padding:12px;border-radius:8px;
   </div>
   <textarea id="reportText" readonly hidden aria-label="Report text"></textarea>
   <div class="confirm" id="resetBox">
-    <button class="btn ghost" id="reset">Start over</button>
+    <button class="btn ghost" id="reset">Start this lesson over</button>
   </div>
   <p class="small">Sources: <a href="https://www.law.cornell.edu/regulations/texas/19-Tex-Admin-Code-SS-113-19" target="_blank" rel="noopener">19 TAC §113.19 (Grade 7 TEKS)</a> · <a href="https://www.thestoryoftexas.com/learn/texas-history-timeline/" target="_blank" rel="noopener">Bullock Museum Texas History Timeline</a> · <a href="https://www.tshaonline.org/handbook" target="_blank" rel="noopener">Handbook of Texas Online</a> · Population: U.S. Census Bureau decennial census counts.</p>
 </section>
 </main>
 
 <script>
+window.LESSON={"key": "tx-lesson1-v1", "n": 1, "label": "Lesson 1", "title": "Eras, Dates & the Historian's Toolkit", "practice": [{"type": "order", "title": "Put the eras in order", "intro": "Use the arrows to move each era. Earliest goes at the top.", "button": "Check my order", "word": "in the right spot", "items": [["Natural Texas and Its People", "Before 1519"], ["Age of Contact", "1519–1689"], ["Spanish Colonial", "1690–1821"], ["Mexican National", "1821–1835"], ["Revolution and Republic", "1835–1845"], ["Early Statehood", "1845–1861"], ["Civil War and Reconstruction", "1861–1874"], ["Cotton, Cattle, and Railroads", "1874–1900"], ["Age of Oil", "1901–1929"], ["Great Depression and World War II", "1929–1945"], ["Civil Rights and Conservatism", "1945–1980"], ["Contemporary Texas", "1980–today"]]}, {"type": "match", "title": "Match each date to what happened", "intro": "Pick the event for each year.", "placeholder": "Choose an event…", "button": "Check my matches", "word": "correct", "options": ["Texas independence", "Annexation to the U.S.", "Pineda maps the coast", "Spindletop oil discovery", "Current constitution adopted", "Civil War begins", "San Antonio is founded", "Independence from Spain"], "items": [["<span class=\"yr\">1519<\/span>", 2], ["<span class=\"yr\">1718<\/span>", 6], ["<span class=\"yr\">1821<\/span>", 7], ["<span class=\"yr\">1836<\/span>", 0], ["<span class=\"yr\">1845<\/span>", 1], ["<span class=\"yr\">1861<\/span>", 5], ["<span class=\"yr\">1876<\/span>", 4], ["<span class=\"yr\">1901<\/span>", 3]]}, {"type": "sort", "title": "Primary or secondary?", "intro": "Sort each source. Ask: was the creator there at the time?", "button": "Check my sorting", "word": "sorted correctly", "choices": [["P", "Primary"], ["S", "Secondary"]], "items": [["William B. Travis's letter asking for help, written at the Alamo in 1836", "P", "Travis wrote it during the siege."], ["A 2020 textbook chapter about the Texas Revolution", "S", "Written about 185 years later."], ["A photograph of the Spindletop gusher taken in January 1901", "P", "The photographer was standing there."], ["An encyclopedia article about Spindletop in the Handbook of Texas", "S", "Written by historians who studied it later."], ["Cabeza de Vaca's own account of his journey across Texas, published in 1542", "P", "He describes what he lived through."], ["A 2015 documentary film about Comanche history", "S", "Made long after the events it describes."], ["A diary kept by a German settler in Fredericksburg in 1847", "P", "Written by someone living there at the time."], ["The Texas Constitution of 1876", "P", "It is the actual document from that time."], ["A biography of Sam Houston written in 1993", "S", "The author studied Houston but never met him."], ["An interview with a World War II veteran, recorded in 1999, about his own service", "P", "Tricky! It was recorded later, but he is an eyewitness telling his own story."]]}, {"type": "mc", "title": "Read a graph", "intro": "This graph shows how many people lived in Texas in five census years.", "button": "Check my answers", "word": "correct", "before": "<div class=\"chartbox\"><svg viewBox=\"0 0 640 300\" role=\"img\" aria-label=\"Bar chart of Texas population: 1850, 0.21 million; 1900, 3.0 million; 1950, 7.7 million; 2000, 20.9 million; 2020, 29.1 million.\"><text x=\"60\" y=\"12\" font-size=\"12\" fill=\"var(--muted)\">People living in Texas (millions)<\/text><line x1=\"60\" x2=\"624\" y1=\"260\" y2=\"260\" stroke=\"var(--rule)\" stroke-width=\"1\"><\/line><text x=\"52\" y=\"264\" text-anchor=\"end\" font-size=\"12\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono, monospace\">0M<\/text><line x1=\"60\" x2=\"624\" y1=\"180\" y2=\"180\" stroke=\"var(--rule)\" stroke-width=\"1\"><\/line><text x=\"52\" y=\"184\" text-anchor=\"end\" font-size=\"12\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono, monospace\">10M<\/text><line x1=\"60\" x2=\"624\" y1=\"100\" y2=\"100\" stroke=\"var(--rule)\" stroke-width=\"1\"><\/line><text x=\"52\" y=\"104\" text-anchor=\"end\" font-size=\"12\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono, monospace\">20M<\/text><line x1=\"60\" x2=\"624\" y1=\"20\" y2=\"20\" stroke=\"var(--rule)\" stroke-width=\"1\"><\/line><text x=\"52\" y=\"24\" text-anchor=\"end\" font-size=\"12\" fill=\"var(--muted)\" font-family=\"IBM Plex Mono, monospace\">30M<\/text><rect x=\"84.816\" y=\"258.299264\" width=\"63.168000000000006\" height=\"1.700736\" rx=\"3\" fill=\"var(--blue)\"><\/rect><text x=\"116.4\" y=\"252.299264\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">0.21M<\/text><text x=\"116.4\" y=\"280\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">1850<\/text><rect x=\"197.61599999999999\" y=\"235.61032\" width=\"63.168000000000006\" height=\"24.38968\" rx=\"3\" fill=\"var(--blue)\"><\/rect><text x=\"229.2\" y=\"229.61032\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">3.0M<\/text><text x=\"229.2\" y=\"280\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">1900<\/text><rect x=\"310.416\" y=\"198.310448\" width=\"63.168000000000006\" height=\"61.689552\" rx=\"3\" fill=\"var(--blue)\"><\/rect><text x=\"342\" y=\"192.310448\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">7.7M<\/text><text x=\"342\" y=\"280\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">1950<\/text><rect x=\"423.216\" y=\"93.18544\" width=\"63.168000000000006\" height=\"166.81456\" rx=\"3\" fill=\"var(--blue)\"><\/rect><text x=\"454.8\" y=\"87.18544\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">20.9M<\/text><text x=\"454.8\" y=\"280\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">2000<\/text><rect x=\"536.0159999999998\" y=\"26.83596\" width=\"63.168000000000006\" height=\"233.16404\" rx=\"3\" fill=\"var(--blue)\"><\/rect><text x=\"567.5999999999999\" y=\"20.83596\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">29.1M<\/text><text x=\"567.5999999999999\" y=\"280\" text-anchor=\"middle\" font-size=\"13\" fill=\"var(--ink)\" font-family=\"IBM Plex Mono, monospace\">2020<\/text><\/svg><p class=\"cap\">Source: U.S. Census Bureau decennial census. M = million.<\/p><\/div>", "items": [{"q": "About how many people lived in Texas in 1900?", "o": ["About 300,000", "About 3 million", "About 30 million"], "a": 1, "e": "The 1900 bar reaches just past 3 million (3,048,710).", "fixed": true}, {"q": "Texas passed 20 million people by 2000. Which era was that?", "o": ["Age of Oil", "Civil Rights and Conservatism", "Contemporary Texas"], "a": 2, "e": "The Contemporary Texas era runs from about 1980 to today.", "fixed": true}, {"q": "Between which two years on the graph did Texas gain the most people?", "o": ["1850 to 1900", "1950 to 2000", "2000 to 2020"], "a": 1, "e": "About 13 million people were added from 1950 to 2000. (That gap is 50 years, longer than 2000 to 2020.)", "fixed": true}]}], "quiz": [{"q": "In what year was San Antonio founded?", "o": ["1690", "1718", "1821", "1836"], "a": 1, "e": "San Antonio was founded in 1718, during the Spanish Colonial era.", "fixed": true}, {"q": "Which era comes right after the Mexican National era?", "o": ["Spanish Colonial", "Early Statehood", "Revolution and Republic", "Age of Contact"], "a": 2, "e": "Mexican rule ended with the Texas Revolution, which began the Revolution and Republic era.", "fixed": true}, {"q": "What happened in 1901?", "o": ["Texas joined the United States", "Oil gushed at Spindletop", "The Civil War began", "San Antonio was founded"], "a": 1, "e": "The Spindletop gusher in 1901 began the Age of Oil.", "fixed": true}, {"q": "What is the main reason historians divide the past into eras?", "o": ["To make history shorter", "To group times that share defining characteristics so change is easier to study", "Because every era lasts exactly 50 years", "Because each era had a different capital city"], "a": 1, "e": "Eras group years that share defining characteristics, which makes change over time easier to see.", "fixed": true}, {"q": "Which of these is a primary source about the Texas Revolution?", "o": ["A 2020 textbook chapter", "A letter written by a soldier in 1836", "A museum website about the Alamo", "A 1990 encyclopedia article"], "a": 1, "e": "The 1836 letter was written by someone who was there at the time.", "fixed": true}, {"q": "What happened in 1845?", "o": ["Texas declared independence", "Texas was annexed to the United States", "Mexico won independence from Spain", "Texas adopted its current constitution"], "a": 1, "e": "Texas became a U.S. state through annexation in 1845.", "fixed": true}, {"q": "In which era did cattle drives and new railroads spread across Texas?", "o": ["Cotton, Cattle, and Railroads", "Age of Contact", "Age of Oil", "Early Statehood"], "a": 0, "e": "That era (about 1874–1900) is named for those three changes.", "fixed": true}, {"q": "In what year did Mexico, including Texas, win independence from Spain?", "o": ["1519", "1718", "1821", "1861"], "a": 2, "e": "Mexico won independence in 1821, starting the Mexican National era.", "fixed": true}, {"q": "The constitution Texas uses today was adopted in which year?", "o": ["1836", "1845", "1876", "1901"], "a": 2, "e": "The current Texas Constitution was adopted in 1876.", "fixed": true}, {"q": "An interview recorded in 1999 with a veteran describing his own World War II service is a…", "o": ["Primary source, because he was an eyewitness", "Secondary source, because it was recorded later", "Neither one", "Secondary source, because it is an interview"], "a": 0, "e": "What matters is whether the person was there. He was, so it is a primary source.", "fixed": true}], "review": "Review the eras and dates"};
 (function(){
-const ERAS=[
- ["Natural Texas and Its People","Before 1519","American Indian groups such as the Caddo, Jumano, and Karankawa adapt to Texas's very different regions."],
- ["Age of Contact","1519–1689","European explorers like Álvarez de Pineda, Cabeza de Vaca, and La Salle reach Texas."],
- ["Spanish Colonial","1690–1821","Spain builds missions, presidios, towns, and ranches to hold Texas."],
- ["Mexican National","1821–1835","Mexico rules Texas and invites settlers, including Stephen F. Austin's colonists."],
- ["Revolution and Republic","1835–1845","Texans fight for independence and run their own country, the Republic of Texas."],
- ["Early Statehood","1845–1861","Texas joins the United States and grows quickly."],
- ["Civil War and Reconstruction","1861–1874","Texas secedes, fights for the Confederacy, and is rebuilt after the war."],
- ["Cotton, Cattle, and Railroads","1874–1900","Cattle drives, cotton farming, and new railroads spread across the state."],
- ["Age of Oil","1901–1929","The Spindletop gusher starts an oil boom that changes the economy."],
- ["Great Depression and World War II","1929–1945","Hard times, the Dust Bowl, and a world war reshape Texas."],
- ["Civil Rights and Conservatism","1945–1980","Texans fight for equal rights, and political loyalties begin to shift."],
- ["Contemporary Texas","1980–today","Big cities, new technology, and fast population growth."]
-];
-const DATES=[
- ["1519","Álvarez de Pineda maps the Texas coast; Spain founds its first settlement on the North American mainland."],
- ["1718","San Antonio is founded."],
- ["1821","Mexico, including Texas, wins independence from Spain."],
- ["1836","Texas declares independence from Mexico."],
- ["1845","Texas is annexed and becomes a U.S. state."],
- ["1861","The Civil War begins; Texas has seceded."],
- ["1876","Texans adopt the state constitution still used today."],
- ["1901","Oil gushes at Spindletop near Beaumont."]
-];
-const SHORT=["Pineda maps the coast","San Antonio is founded","Independence from Spain","Texas independence","Annexation to the U.S.","Civil War begins","Current constitution adopted","Spindletop oil discovery"];
-const SOURCES=[
- ["William B. Travis's letter asking for help, written at the Alamo in 1836","P","Travis wrote it during the siege."],
- ["A 2020 textbook chapter about the Texas Revolution","S","Written about 185 years later."],
- ["A photograph of the Spindletop gusher taken in January 1901","P","The photographer was standing there."],
- ["An encyclopedia article about Spindletop in the Handbook of Texas","S","Written by historians who studied it later."],
- ["Cabeza de Vaca's own account of his journey across Texas, published in 1542","P","He describes what he lived through."],
- ["A 2015 documentary film about Comanche history","S","Made long after the events it describes."],
- ["A diary kept by a German settler in Fredericksburg in 1847","P","Written by someone living there at the time."],
- ["The Texas Constitution of 1876","P","It is the actual document from that time."],
- ["A biography of Sam Houston written in 1993","S","The author studied Houston but never met him."],
- ["An interview with a World War II veteran, recorded in 1999, about his own service","P","Tricky! It was recorded later, but he is an eyewitness telling his own story."]
-];
-const POP=[["1850",212592],["1900",3048710],["1950",7711194],["2000",20851820],["2020",29145505]];
-const CHARTQ=[
- {q:"About how many people lived in Texas in 1900?",o:["About 300,000","About 3 million","About 30 million"],a:1,e:"The 1900 bar reaches just past 3 million (3,048,710)."},
- {q:"Texas passed 20 million people by 2000. Which era was that?",o:["Age of Oil","Civil Rights and Conservatism","Contemporary Texas"],a:2,e:"The Contemporary Texas era runs from about 1980 to today."},
- {q:"Between which two years on the graph did Texas gain the most people?",o:["1850 to 1900","1950 to 2000","2000 to 2020"],a:1,e:"About 13 million people were added from 1950 to 2000. (That gap is 50 years, longer than 2000 to 2020.)"}
-];
-const QUIZ=[
- {q:"In what year was San Antonio founded?",o:["1690","1718","1821","1836"],a:1,e:"San Antonio was founded in 1718, during the Spanish Colonial era."},
- {q:"Which era comes right after the Mexican National era?",o:["Spanish Colonial","Early Statehood","Revolution and Republic","Age of Contact"],a:2,e:"Mexican rule ended with the Texas Revolution, which began the Revolution and Republic era."},
- {q:"What happened in 1901?",o:["Texas joined the United States","Oil gushed at Spindletop","The Civil War began","San Antonio was founded"],a:1,e:"The Spindletop gusher in 1901 began the Age of Oil."},
- {q:"What is the main reason historians divide the past into eras?",o:["To make history shorter","To group times that share defining characteristics so change is easier to study","Because every era lasts exactly 50 years","Because each era had a different capital city"],a:1,e:"Eras group years that share defining characteristics, which makes change over time easier to see."},
- {q:"Which of these is a primary source about the Texas Revolution?",o:["A 2020 textbook chapter","A letter written by a soldier in 1836","A museum website about the Alamo","A 1990 encyclopedia article"],a:1,e:"The 1836 letter was written by someone who was there at the time."},
- {q:"What happened in 1845?",o:["Texas declared independence","Texas was annexed to the United States","Mexico won independence from Spain","Texas adopted its current constitution"],a:1,e:"Texas became a U.S. state through annexation in 1845."},
- {q:"In which era did cattle drives and new railroads spread across Texas?",o:["Cotton, Cattle, and Railroads","Age of Contact","Age of Oil","Early Statehood"],a:0,e:"That era (about 1874–1900) is named for those three changes."},
- {q:"In what year did Mexico, including Texas, win independence from Spain?",o:["1519","1718","1821","1861"],a:2,e:"Mexico won independence in 1821, starting the Mexican National era."},
- {q:"The constitution Texas uses today was adopted in which year?",o:["1836","1845","1876","1901"],a:2,e:"The current Texas Constitution was adopted in 1876."},
- {q:"An interview recorded in 1999 with a veteran describing his own World War II service is a…",o:["Primary source, because he was an eyewitness","Secondary source, because it was recorded later","Neither one","Secondary source, because it is an interview"],a:0,e:"What matters is whether the person was there. He was, so it is a primary source."}
-];
-
-const KEY="tx-lesson1-v1";
+const C=window.LESSON;
+const KEY=C.key;
 let S={};
-function load(){try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}}
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-load();
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-// Reading
-$("ruler").innerHTML=ERAS.map(e=>`<div class="era"><div class="yr">${e[1]}</div><div><b>${esc(e[0])}</b><span>${esc(e[2])}</span></div></div>`).join("");
-$("dateCards").innerHTML=DATES.map(d=>`<div class="date"><span class="yr">${d[0]}</span><p>${esc(d[1])}</p></div>`).join("");
-
-// A. Order
+const strip=s=>String(s).replace(/<[^>]+>/g,"");
 function shuffled(n,seed){const a=[...Array(n).keys()];let s=seed;for(let i=n-1;i>0;i--){s=(s*9301+49297)%233280;const j=Math.floor(s/233280*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-if(!Array.isArray(S.order)||S.order.length!==ERAS.length){S.order=shuffled(ERAS.length,7);if(S.order.every((v,i)=>v===i))S.order.reverse()}
-function renderOrder(marks){
-  $("orderList").innerHTML=S.order.map((ei,pos)=>{
-    const cls=marks?(ei===pos?"ok":"no"):"";
-    return `<li class="${cls}"><span class="t">${esc(ERAS[ei][0])}</span><span class="mv"><button class="icon" data-mv="-1" data-pos="${pos}" aria-label="Move ${esc(ERAS[ei][0])} up" ${pos===0?"disabled":""}>▲</button><button class="icon" data-mv="1" data-pos="${pos}" aria-label="Move ${esc(ERAS[ei][0])} down" ${pos===ERAS.length-1?"disabled":""}>▼</button></span></li>`}).join("");
-}
-$("orderList").addEventListener("click",e=>{
-  const b=e.target.closest("button[data-mv]");if(!b)return;
-  const p=+b.dataset.pos,q=p+ +b.dataset.mv;[S.order[p],S.order[q]]=[S.order[q],S.order[p]];
-  S.orderScore=undefined;save();renderOrder(false);$("fbOrder").textContent="";
-  const btn=$("orderList").querySelectorAll("li")[q].querySelector(`button[data-mv="${b.dataset.mv}"]`)||$("orderList").querySelectorAll("li")[q].querySelector("button");btn&&btn.focus();updateAll();
+function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
+function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${q.q}</legend>${q.o.map((o,j)=>{const c=marks&&String(ans[i])===String(j)?(j===q.a?"ok":"no"):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${o}</span></label>`}).join("")}${marks&&String(ans[i])===String(q.a)?`<p class="explain">${q.e}</p>`:""}</fieldset>`).join("")}
+
+S.p=S.p||{};S.ps=S.ps||{};
+const T=C.practice;
+const total=t=>t.type==="compare"?t.items.length*t.columns.length:t.items.length;
+$("practiceTasks").innerHTML=T.map((t,ti)=>`<div class="task" id="task${ti}"><header><h3>${String.fromCharCode(65+ti)}. ${t.title}</h3><p>${t.intro}</p></header>${t.before||""}<div id="body${ti}" class="${t.type==="match"?"match wide":t.type==="sort"?"sort":""}"${t.type==="mc"?' style="display:grid;gap:18px"':""}></div><div class="row"><button class="btn" id="chk${ti}">${t.button}</button><span class="fb" id="fb${ti}" aria-live="polite"></span></div></div>`).join("");
+
+function setScore(ti,n){S.ps[ti]=n;save();fb("fb"+ti,n,total(T[ti]),T[ti].word);updateAll()}
+function clearScore(ti){if(S.ps[ti]!=null){S.ps[ti]=null;save()}$("fb"+ti).textContent="";updateAll()}
+const scored=ti=>S.ps[ti]!=null;
+
+T.forEach((t,ti)=>{
+  const body=$("body"+ti);
+  if(t.type==="match"){
+    const A=S.p[ti]=S.p[ti]||{};
+    body.innerHTML=t.items.map((c,i)=>`<label id="m${ti}_${i}" for="ms${ti}_${i}"><span class="t">${c[0]}</span><select id="ms${ti}_${i}" data-i="${i}"><option value="">${t.placeholder}</option>${t.options.map((n,j)=>`<option value="${j}">${esc(n)}</option>`).join("")}</select></label>`).join("");
+    t.items.forEach((c,i)=>{if(A[i]!=null)$(`ms${ti}_${i}`).value=A[i]});
+    const ok=i=>String(A[i])===String(t.items[i][1]);
+    const mark=on=>t.items.forEach((c,i)=>{$(`m${ti}_${i}`).className=on?(ok(i)?"ok":"no"):""});
+    body.addEventListener("change",e=>{A[e.target.dataset.i]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.filter((c,i)=>ok(i)).length)};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="sort"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=marks=>{body.innerHTML=t.items.map((s,i)=>{const v=A[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
+      return `<div class="src ${cls}"><span class="t">${s[0]}</span><span class="seg" role="group" aria-label="${esc(t.choices.map(c=>c[1]).join(" or "))}">${t.choices.map(c=>`<button type="button" data-i="${i}" data-v="${c[0]}" aria-pressed="${v===c[0]}">${c[1]}</button>`).join("")}</span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${s[2]}</span>`:""}</div>`}).join("")};
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;A[b.dataset.i]=b.dataset.v;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((s,i)=>A[i]===s[1]).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="order"){
+    let A=S.p[ti];
+    if(!Array.isArray(A)||A.length!==t.items.length){A=shuffled(t.items.length,t.seed||7);if(A.every((v,i)=>v===i))A.reverse();S.p[ti]=A;save()}
+    body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
+    const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
+      return `<li class="${cls}"><span class="grip" aria-hidden="true">⠿</span><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
+    // Drag to reorder. Pointer Events cover mouse, touch and pen with one path; the
+    // drag starts on the grip only, so touching the row itself still scrolls the page.
+    (()=>{const ol=$("ol"+ti);let d=null;
+      ol.addEventListener("pointerdown",e=>{const g=e.target.closest(".grip");if(!g)return;
+        const li=g.closest("li");if(!li)return;e.preventDefault();
+        d={li,from:[...ol.children].indexOf(li),id:e.pointerId};
+        li.classList.add("dragging");try{g.setPointerCapture(e.pointerId)}catch(err){}});
+      ol.addEventListener("pointermove",e=>{if(!d||e.pointerId!==d.id)return;e.preventDefault();
+        const other=[...ol.children].filter(x=>x!==d.li);
+        const before=other.find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2});
+        if(before)ol.insertBefore(d.li,before);else ol.appendChild(d.li)});
+      const end=e=>{if(!d||e.pointerId!==d.id)return;
+        const li=d.li,from=d.from,to=[...ol.children].indexOf(li);d=null;
+        li.classList.remove("dragging");
+        if(to<0||to===from){render(scored(ti));return}
+        A.splice(to,0,A.splice(from,1)[0]);save();render(false);clearScore(ti)};
+      ol.addEventListener("pointerup",end);ol.addEventListener("pointercancel",end);})();
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
+  if(t.type==="compare"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const cols=t.columns,ph=t.placeholder||"Choose…";
+    const ok=(i,k)=>String(A[i+"_"+k])===String(t.items[i].a[k]);
+    body.innerHTML=`<div class="cmpbox"><table class="cmp"><thead><tr><th scope="col"></th>${cols.map(p=>`<th scope="col">${esc(p)}</th>`).join("")}</tr></thead><tbody>${t.items.map((r,i)=>`<tr><th scope="row">${r.row}</th>${cols.map((p,k)=>`<td id="ct${ti}_${i}_${k}"><select id="cs${ti}_${i}_${k}" data-k="${i}_${k}" aria-label="${esc(p)}: ${esc(strip(r.row))}"><option value="">${esc(ph)}</option>${r.o.map((o,j)=>`<option value="${j}">${esc(o)}</option>`).join("")}</select></td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    t.items.forEach((r,i)=>cols.forEach((p,k)=>{const el=$(`cs${ti}_${i}_${k}`);if(A[i+"_"+k]!=null)el.value=A[i+"_"+k]}));
+    const mark=on=>t.items.forEach((r,i)=>cols.forEach((p,k)=>{$(`ct${ti}_${i}_${k}`).className=on?(ok(i,k)?"ok":"no"):""}));
+    body.addEventListener("change",e=>{A[e.target.dataset.k]=e.target.value;save();mark(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{mark(true);setScore(ti,t.items.reduce((n,r,i)=>n+cols.filter((p,k)=>ok(i,k)).length,0))};
+    if(scored(ti)){mark(true);fb("fb"+ti,S.ps[ti],total(t),t.word)}
+  }
+  if(t.type==="mc"){
+    const A=S.p[ti]=S.p[ti]||{};
+    const render=m=>{body.innerHTML=mcHTML(t.items,`c${ti}_`,A,m)};
+    body.addEventListener("change",e=>{A[e.target.name.split("_")[1]]=+e.target.value;save();render(false);clearScore(ti)});
+    $("chk"+ti).onclick=()=>{render(true);setScore(ti,t.items.filter((q,i)=>A[i]===q.a).length)};
+    render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
+  }
 });
-$("checkOrder").onclick=()=>{const n=S.order.filter((v,i)=>v===i).length;S.orderScore=n;save();renderOrder(true);fb("fbOrder",n,ERAS.length,"in the right spot");updateAll()};
-renderOrder(S.orderScore!=null);if(S.orderScore!=null)fb("fbOrder",S.orderScore,ERAS.length,"in the right spot");
-
-// B. Dates
-S.dates=S.dates||{};
-const dateOrder=shuffled(DATES.length,3);
-$("dateMatch").innerHTML=DATES.map((d,i)=>`<label id="dl${i}" for="ds${i}"><span class="yr">${d[0]}</span><select id="ds${i}" data-i="${i}"><option value="">Choose an event…</option>${dateOrder.map(j=>`<option value="${j}">${esc(SHORT[j])}</option>`).join("")}</select></label>`).join("");
-DATES.forEach((d,i)=>{if(S.dates[i]!=null)$("ds"+i).value=S.dates[i]});
-$("dateMatch").addEventListener("change",e=>{S.dates[e.target.dataset.i]=e.target.value;S.datesScore=undefined;save();markDates(false);$("fbDates").textContent="";updateAll()});
-function markDates(on){DATES.forEach((d,i)=>{const l=$("dl"+i);l.className=on?(String(S.dates[i])===String(i)?"ok":"no"):""})}
-$("checkDates").onclick=()=>{const n=DATES.filter((d,i)=>String(S.dates[i])===String(i)).length;S.datesScore=n;save();markDates(true);fb("fbDates",n,DATES.length,"correct");updateAll()};
-if(S.datesScore!=null){markDates(true);fb("fbDates",S.datesScore,DATES.length,"correct")}
-
-// C. Sources
-S.src=S.src||{};
-function renderSources(marks){
-  $("sourceList").innerHTML=SOURCES.map((s,i)=>{const v=S.src[i];const cls=marks&&v?(v===s[1]?"ok":"no"):"";
-  return `<div class="src ${cls}"><span class="t">${esc(s[0])}</span><span class="seg" role="group" aria-label="Source type"><button type="button" data-i="${i}" data-v="P" aria-pressed="${v==="P"}">Primary</button><button type="button" data-i="${i}" data-v="S" aria-pressed="${v==="S"}">Secondary</button></span>${marks&&v?`<span class="why">${v===s[1]?"Correct.":"Not quite."} ${esc(s[2])}</span>`:""}</div>`}).join("");
-}
-$("sourceList").addEventListener("click",e=>{const b=e.target.closest("button[data-v]");if(!b)return;S.src[b.dataset.i]=b.dataset.v;S.srcScore=undefined;save();renderSources(false);$("fbSources").textContent="";updateAll()});
-$("checkSources").onclick=()=>{const n=SOURCES.filter((s,i)=>S.src[i]===s[1]).length;S.srcScore=n;save();renderSources(true);fb("fbSources",n,SOURCES.length,"sorted correctly");updateAll()};
-renderSources(S.srcScore!=null);if(S.srcScore!=null)fb("fbSources",S.srcScore,SOURCES.length,"sorted correctly");
-
-// D. Chart
-(function(){
-  const W=640,H=300,L=60,R=16,T=20,B=40,max=30e6,iw=W-L-R,ih=H-T-B,bw=iw/POP.length*0.56;
-  let g="";
-  for(let v=0;v<=max;v+=10e6){const y=T+ih-ih*v/max;g+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--rule)" stroke-width="1"/><text x="${L-8}" y="${y+4}" text-anchor="end" font-size="12" fill="var(--muted)" font-family="IBM Plex Mono, monospace">${v/1e6}M</text>`}
-  POP.forEach((p,i)=>{const cx=L+iw/POP.length*(i+.5),h=ih*p[1]/max,y=T+ih-h;
-    g+=`<rect x="${cx-bw/2}" y="${y}" width="${bw}" height="${h}" rx="3" fill="var(--blue)"/><text x="${cx}" y="${y-6}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)" font-family="IBM Plex Mono, monospace">${(p[1]/1e6).toFixed(p[1]<1e6?2:1)}M</text><text x="${cx}" y="${H-B+20}" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="IBM Plex Mono, monospace">${p[0]}</text>`});
-  $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart of Texas population: 1850, 0.21 million; 1900, 3.0 million; 1950, 7.7 million; 2000, 20.9 million; 2020, 29.1 million."><text x="${L}" y="12" font-size="12" fill="var(--muted)">People living in Texas (millions)</text>${g}</svg><p class="cap">Source: U.S. Census Bureau decennial census. M = million.</p>`;
-})();
-S.ch=S.ch||{};
-function mcHTML(set,prefix,ans,marks){return set.map((q,i)=>`<fieldset><legend>${esc(q.q)}</legend>${q.o.map((o,j)=>{const c=marks&&String(ans[i])===String(j)?(j===q.a?"ok":"no"):"";return `<label class="opt ${c}"><input type="radio" name="${prefix}${i}" value="${j}" ${String(ans[i])===String(j)?"checked":""}> <span>${esc(o)}</span></label>`}).join("")}${marks&&String(ans[i])===String(q.a)?`<p class="explain">${esc(q.e)}</p>`:""}</fieldset>`).join("")}
-function renderChart(m){$("chartQs").innerHTML=mcHTML(CHARTQ,"cq",S.ch,m)}
-$("chartQs").addEventListener("change",e=>{S.ch[e.target.name.slice(2)]=+e.target.value;S.chScore=undefined;save();renderChart(false);$("fbChart").textContent="";updateAll()});
-$("checkChart").onclick=()=>{const n=CHARTQ.filter((q,i)=>S.ch[i]===q.a).length;S.chScore=n;save();renderChart(true);fb("fbChart",n,CHARTQ.length,"correct");updateAll()};
-renderChart(S.chScore!=null);if(S.chScore!=null)fb("fbChart",S.chScore,CHARTQ.length,"correct");
 
 // Quiz
+const QUIZ=C.quiz;
 S.qz=S.qz||{};
 function renderQuiz(){$("quiz").innerHTML=mcHTML(QUIZ,"qz",S.qz,S.qzScore!=null);$("submitQuiz").textContent=S.qzScore!=null?"Check again":"Submit quiz"}
 // Re-answering clears only that question's marks: a full re-render would drop every
@@ -394,17 +386,14 @@ renderQuiz();if(S.qzScore!=null)fb("fbQuiz",S.qzScore,QUIZ.length,"correct");
 
 // Exit claim
 $("claim").value=S.claim||"";
-["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!(S[k]);$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
+["ck1","ck2","ck3"].forEach(k=>{$(k).checked=!!S[k];$(k).onchange=()=>{S[k]=$(k).checked;save();updateAll()}});
 function wc(){const n=($("claim").value.trim().match(/\S+/g)||[]).length;$("wc").textContent=n+(n===1?" word":" words");return n}
 $("claim").addEventListener("input",()=>{S.claim=$("claim").value;save();wc();updateAll()});wc();
 
-function fb(id,n,t,word){const el=$(id);el.className="fb "+(n===t?"ok":"no");el.textContent=n===t?`All ${t} ${word}. Nice work.`:`${n} of ${t} ${word}. Fix the red ones and check again.`}
-
 function report(){
-  const L=["Texas History Lesson 1: Eras, Dates & the Historian's Toolkit"];
-  const part=(name,s,t)=>L.push(`${name}: ${s==null?"not checked yet":s+"/"+t}`);
-  part("A. Era order",S.orderScore,ERAS.length);part("B. Date matching",S.datesScore,DATES.length);part("C. Primary vs. secondary",S.srcScore,SOURCES.length);part("D. Graph reading",S.chScore,CHARTQ.length);
-  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/10"+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
+  const L=[`Texas History ${C.label}: ${C.title}`];
+  T.forEach((t,ti)=>L.push(`${String.fromCharCode(65+ti)}. ${strip(t.title)}: ${S.ps[ti]==null?"not checked yet":S.ps[ti]+"/"+total(t)}`));
+  L.push(`Quiz: ${S.qzScore==null?"not submitted":S.qzScore+"/"+QUIZ.length+(S.qzDate?" (submitted "+S.qzDate+")":"")}`);
   if(S.qzScore!=null){const miss=QUIZ.map((q,i)=>S.qz[i]===q.a?null:i+1).filter(Boolean);if(miss.length)L.push("Missed quiz questions: "+miss.join(", "))}
   const ck=["ck1","ck2","ck3"].filter(k=>S[k]).length;
   const head=L.shift();
@@ -422,22 +411,25 @@ function report(){
     ...L].join("\n");
 }
 function updateAll(){
-  const doneP=[S.orderScore,S.datesScore,S.srcScore,S.chScore].every(v=>v!=null);
+  const doneP=T.every((t,ti)=>S.ps[ti]!=null);
+  const anyP=T.some((t,ti)=>S.ps[ti]!=null);
   const claimDone=wc()>=20&&["ck1","ck2","ck3"].every(k=>S[k]);
-  $("nav-read").classList.toggle("done",doneP||S.orderScore!=null);
+  $("nav-read").classList.toggle("done",anyP);
   $("nav-practice").classList.toggle("done",doneP);
   $("nav-check").classList.toggle("done",S.qzScore!=null);
   $("nav-reflect").classList.toggle("done",claimDone);
-  $("nav-results").classList.toggle("done",doneP&&S.qzScore!=null&&claimDone);
-  const pTot=ERAS.length+DATES.length+SOURCES.length+CHARTQ.length;
-  const pGot=(S.orderScore||0)+(S.datesScore||0)+(S.srcScore||0)+(S.chScore||0);
-  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
-  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—","Practice (A–D)")+cell(S.qzScore!=null?`${S.qzScore}/10`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore*10)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
-  let st;
-  if(doneP&&S.qzScore!=null&&claimDone) st=S.qzScore>=8?"Lesson complete. Mastery reached (8/10 or better on the quiz).":"Lesson complete. Review the eras and dates, then talk through the missed quiz questions with a parent.";
-  else{const todo=[];if(!doneP)todo.push("check all four practice activities");if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
-  $("status").textContent=st;
   const all=doneP&&S.qzScore!=null&&claimDone;
+  $("nav-results").classList.toggle("done",all);
+  const pTot=T.reduce((a,t)=>a+total(t),0);
+  const pGot=T.reduce((a,t,ti)=>a+(S.ps[ti]||0),0);
+  const cell=(v,l)=>`<div><b>${v}</b><span>${l}</span></div>`;
+  const letters="A–"+String.fromCharCode(64+T.length);
+  $("score").innerHTML=cell(doneP?`${pGot}/${pTot}`:"—",`Practice (${letters})`)+cell(S.qzScore!=null?`${S.qzScore}/${QUIZ.length}`:"—","Quiz")+cell(S.qzScore!=null?Math.round(S.qzScore/QUIZ.length*100)+"%":"—","Quiz percent")+cell(claimDone?"Done":"—","Exit claim");
+  let st;
+  const need=Math.ceil(QUIZ.length*0.8);
+  if(all) st=S.qzScore>=need?`Lesson complete. Mastery reached (${need}/${QUIZ.length} or better on the quiz).`:`Lesson complete. ${C.review}, then talk through the missed quiz questions with a parent.`;
+  else{const todo=[];if(!doneP)todo.push(`check all ${T.length===4?"four":T.length} practice activities`);if(S.qzScore==null)todo.push("submit the quiz");if(!claimDone)todo.push("write the exit claim (20+ words) and tick all three boxes");st="Still to do: "+todo.join(", ")+"."}
+  $("status").textContent=st;
   if(all&&!S.doneAt){S.doneAt=new Date().toLocaleString([], {dateStyle:"medium",timeStyle:"short"});save()}
   if(!all&&S.doneAt){S.doneAt=undefined;save()}
   $("cert").classList.toggle("complete",all);
@@ -448,12 +440,13 @@ function updateAll(){
 $("copy").onclick=()=>{const t=report();const box=$("reportText");box.value=t;
   const fallback=()=>{box.hidden=false;box.focus();box.select();$("fbCopy").className="fb";$("fbCopy").textContent="Select all of the text below and copy it. Then paste the answers into a message to your parents."};
   try{navigator.clipboard.writeText(t).then(()=>{$("fbCopy").className="fb ok";$("fbCopy").textContent="Copied. Now paste the answers into a message to your parents."},fallback)}catch(e){fallback()}};
-function askReset(){$("resetBox").innerHTML=`<span>Erase all answers on this device?</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase and start over</button><button class="btn ghost" id="noReset">Keep my work</button>`;
+function askReset(){$("resetBox").innerHTML=`<span>Erase your answers for this lesson? Your other lessons keep their work.</span><button class="btn" id="yesReset" style="background:var(--bad)">Erase this lesson</button><button class="btn ghost" id="noReset">Keep my work</button>`;
   $("yesReset").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
-  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start over</button>`;$("reset").onclick=askReset};}
+  $("noReset").onclick=()=>{$("resetBox").innerHTML=`<button class="btn ghost" id="reset">Start this lesson over</button>`;$("reset").onclick=askReset};}
 $("reset").onclick=askReset;
 updateAll();
 })();
+
 </script>
 
 </body></html>

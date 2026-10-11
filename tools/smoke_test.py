@@ -13,6 +13,7 @@ ANSWER_QUIZ = """()=>{const C=window.LESSON;if(!C)return "no LESSON config (olde
   document.getElementById('submitQuiz').click();return document.getElementById('fbQuiz').textContent}"""
 
 async def lessons(paths):
+    bad = 0
     async with async_playwright() as p:
         b = await p.chromium.launch()
         for f in paths:
@@ -24,9 +25,12 @@ async def lessons(paths):
             quiz = await pg.evaluate(ANSWER_QUIZ)
             width = await pg.evaluate("document.documentElement.scrollWidth")
             print(f"{f} | quiz: {quiz} | width: {width}{' (TOO WIDE)' if width > 390 else ''} | errors: {errs}")
+            if width > 390 or errs:
+                bad += 1
             await pg.evaluate("localStorage.clear()")
             await pg.close()
         await b.close()
+    return bad
 
 async def course(path):
     async with async_playwright() as p:
@@ -36,7 +40,8 @@ async def course(path):
         pg.on("pageerror", lambda e: errs.append(str(e)))
         await pg.goto("file://" + os.path.abspath(path))
         await pg.wait_for_timeout(400)
-        print("home width:", await pg.evaluate("document.documentElement.scrollWidth"))
+        home_w = await pg.evaluate("document.documentElement.scrollWidth")
+        print("home width:", home_w, "(TOO WIDE)" if home_w > 390 else "")
         await pg.click('button.row[data-id="lesson-5"]')
         await pg.wait_for_timeout(800)
         f = pg.frames[1]
@@ -53,10 +58,12 @@ async def course(path):
         print("errors:", errs)
         await pg.evaluate("localStorage.clear()")
         await b.close()
+    return 1 if (errs or home_w > 390) else 0
 
 if __name__ == "__main__":
     args = sys.argv[1:]
     if args[:1] == ["--course"]:
-        asyncio.run(course(args[1] if len(args) > 1 else "dist/course.html"))
+        rc = asyncio.run(course(args[1] if len(args) > 1 else "dist/course.html"))
     else:
-        asyncio.run(lessons(args))
+        rc = asyncio.run(lessons(args))
+    sys.exit(1 if rc else 0)

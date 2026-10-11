@@ -71,6 +71,7 @@ header.top p{color:var(--muted)}
 
 /* lesson view */
 #view{height:100%;display:flex;flex-direction:column}
+#view[hidden]{display:none}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;height:var(--bar);display:flex;align-items:center;gap:8px;padding-inline:8px;background:var(--card);border-bottom:1px solid var(--rule)}
 .bar .back{display:flex;align-items:center;gap:6px;border:0;background:none;font-weight:700;color:var(--blue);padding:8px 10px;border-radius:8px;min-height:44px;white-space:nowrap}
 .bar .back:hover,.bar .nav:hover{background:var(--blue-soft)}
@@ -108,7 +109,6 @@ header.top p{color:var(--muted)}
     </section>
 
     <div id="units" style="display:grid;gap:28px"></div>
-    <p class="note">Progress is stored in this browser for this course page only. Work done on the separate single-lesson pages does not show up here.</p>
   </div>
 </div>
 
