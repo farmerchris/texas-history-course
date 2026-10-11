@@ -40,7 +40,7 @@ L = dict(
 
   <div class="callout"><b>A promise that grew.</b> In 1776, “all men are created equal” did not include enslaved people, women, or American Indians in practice. The ideas were bigger than the society that wrote them. Over 250 years, Americans used those same words to widen who counted as equal.</div>''',
   practice=[
-    {"type": "order", "title": "Rebuild the passage", "intro": "Use the arrows to put the phrases of the required passage in order. Then practice saying it aloud until you can recite it from memory.", "button": "Check my order", "word": "in the right spot", "seed": 15,
+    {"type": "order", "title": "Rebuild the passage", "intro": "Drag the cards, or use the arrows, to put the phrases of the required passage in order. Then practice saying it aloud until you can recite it from memory.", "button": "Check my order", "word": "in the right spot", "seed": 15,
      "items": [["We hold these truths to be self-evident,", "1"], ["that all men are created equal,", "2"], ["that they are endowed by their Creator with certain unalienable Rights,", "3"], ["that among these are Life, Liberty and the pursuit of Happiness.", "4"], ["That to secure these rights, Governments are instituted among Men,", "5"], ["deriving their just powers from the consent of the governed.", "6"]]},
     {"type": "match", "title": "Which document?", "intro": "Match each description to the right document.", "placeholder": "Choose a document…", "button": "Check my matches", "word": "correct",
      "options": ["Declaration of Independence (1776)", "U.S. Constitution (1787)", "Bill of Rights (1791)", "Texas Declaration of Independence (1836)"],

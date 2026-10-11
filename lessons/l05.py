@@ -50,7 +50,7 @@ L = dict(
 
   <div class="callout"><b>Why the plan backfired.</b> The plan worked too well. By 1830, settlers from the United States far outnumbered Tejanos. Most lived apart from Mexican towns, spoke English, traded with the U.S., and did not follow Mexican customs or laws closely. Mexico had invited people to protect Texas, and now it worried it might lose Texas to them. That worry is where Lesson 6 begins.</div>''',
   practice=[
-    {"type": "order", "title": "Cause chain", "intro": "Use the arrows to put these events in order, earliest at the top. Each one led to the next.", "button": "Check my order", "word": "in the right spot", "seed": 3,
+    {"type": "order", "title": "Cause chain", "intro": "Drag the cards, or use the arrows, to put these events in order, earliest at the top. Each one led to the next.", "button": "Check my order", "word": "in the right spot", "seed": 3,
      "items": [["Father Hidalgo calls for revolt against Spain", "1810"], ["Royal troops crush rebels at the Battle of Medina", "1813"], ["Mexico wins independence; Stephen F. Austin takes over his father's grant", "1821"], ["The Constitution of 1824 creates the state of Coahuila y Tejas", "1824"], ["A colonization law opens Texas to empresarios", "1825"], ["Mexico's president abolishes slavery; Texas wins an exemption", "1829"]]},
     {"type": "match", "title": "Who or what?", "intro": "Match each clue to the right name.", "placeholder": "Choose one…", "button": "Check my matches", "word": "correct",
      "options": ["Stephen F. Austin", "Martín De León", "Erasmo Seguín", "Constitution of 1824", "Empresario", "Battle of Medina"],

@@ -65,7 +65,7 @@ L = dict(
        {"q": "If the county uses a bond, what usually has to happen first?", "o": ["Voters must approve it in an election", "The President must sign it", "Nothing; bonds are automatic"], "a": 0, "e": "A bond is borrowed money, so voters weigh in."},
        {"q": "What is one responsibility of a citizen during this decision?", "o": ["Stay informed and speak at the public meeting or vote", "Ignore it", "Refuse to pay all taxes"], "a": 0, "e": "Meetings are open, and citizens can comment."},
        {"q": "Which principle explains why voters get a say?", "o": ["Popular sovereignty", "Monarchy", "Secession"], "a": 0, "e": "Power comes from the people."}]},
-    {"type": "order", "title": "Texas constitutions in order", "intro": "Use the arrows to put these constitutions in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 14,
+    {"type": "order", "title": "Texas constitutions in order", "intro": "Drag the cards, or use the arrows, to put these constitutions in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 14,
      "items": [["Coahuila y Tejas (Mexican state)", "1827"], ["Republic of Texas", "1836"], ["Statehood", "1845"], ["Confederate Texas", "1861"], ["First Reconstruction constitution", "1866"], ["Today's constitution", "1876"]]}
   ],
   quiz=[

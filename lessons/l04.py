@@ -64,7 +64,7 @@ L = dict(
             ['Raised cattle and horses to feed missions and towns', 3]]},
  {'type': 'order',
   'title': 'Put it in order',
-  'intro': 'Use the arrows to put these events in order, earliest at the top. Years appear once an event is in the '
+  'intro': 'Drag the cards, or use the arrows, to put these events in order, earliest at the top. Years appear once an event is in the '
            'right spot.',
   'button': 'Check my order',
   'word': 'in the right spot',

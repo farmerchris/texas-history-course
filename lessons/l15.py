@@ -63,7 +63,7 @@ L = dict(
     {"type": "match", "title": "Texans in science and business", "intro": "Match each clue to the right answer.", "placeholder": "Choose one…", "button": "Check my matches", "word": "correct",
      "options": ["Michael DeBakey", "Jack Kilby", "Michael Dell", "Johnson Space Center"],
      "items": [["Houston surgeon who pioneered heart devices", 0], ["Helped invent the microchip at Texas Instruments", 1], ["Started a computer company in a college dorm", 2], ["Home of Mission Control", 3]]},
-    {"type": "order", "title": "The decision-making steps", "intro": "Use the arrows to put the six steps in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 13,
+    {"type": "order", "title": "The decision-making steps", "intro": "Drag the cards, or use the arrows, to put the six steps in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 13,
      "items": [["Identify the situation", "1"], ["Gather information", "2"], ["Identify options", "3"], ["Predict consequences", "4"], ["Take action", "5"], ["Evaluate the results", "6"]]},
     {"type": "sort", "title": "Water options: pro or con?", "intro": "A growing county needs more water. Is each statement a <b>pro</b> or a <b>con</b> of the option named?", "button": "Check my sorting", "word": "sorted correctly",
      "choices": [["P", "Pro"], ["C", "Con"]],

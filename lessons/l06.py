@@ -29,7 +29,7 @@ L = dict(
     <p><b>Think:</b> Why would Texians stress their loyalty to Mexico in 1832? Who was the audience?</p>
   </div>''',
   practice=[
-    {"type": "order", "title": "Sequence the event cards", "intro": "Use the arrows to put the events in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 5,
+    {"type": "order", "title": "Sequence the event cards", "intro": "Drag the cards, or use the arrows, to put the events in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 5,
      "items": [["Fredonian Rebellion in Nacogdoches", "1826"], ["Terán tours Texas and warns Mexico", "1828"], ["Law of April 6 bans U.S. immigration", "1830"], ["Turtle Bayou Resolutions", "1832"], ["Austin is arrested on his way home", "1834"], ["Fighting begins at Gonzales", "1835"]]},
     {"type": "sort", "title": "Two points of view", "intro": "Who would most likely say this: a <b>Mexican official</b> or a <b>Texian settler</b>?", "button": "Check my sorting", "word": "sorted correctly",
      "choices": [["M", "Mexican official"], ["T", "Texian settler"]],

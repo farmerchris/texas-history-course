@@ -29,7 +29,7 @@ L = dict(
   <div class="prose"><p>A quick test: <b>Was the creator there when it happened?</b> If yes, it is primary. If they learned about it afterward, it is secondary. Both are useful. Primary sources give you evidence; secondary sources help explain it.</p></div>''',
   practice=[{'type': 'order',
   'title': 'Put the eras in order',
-  'intro': 'Use the arrows to move each era. Earliest goes at the top.',
+  'intro': 'Drag the cards, or use the arrows, to move each era. Earliest goes at the top.',
   'button': 'Check my order',
   'word': 'in the right spot',
   'items': [['Natural Texas and Its People', 'Before 1519'],

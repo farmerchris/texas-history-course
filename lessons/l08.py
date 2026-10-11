@@ -48,7 +48,7 @@ L = dict(
     {"type": "match", "title": "Problems and effects", "intro": "Match each problem to what it led to.", "placeholder": "Choose an effect…", "button": "Check my matches", "word": "correct",
      "options": ["Texans wanted the U.S. to take over the debt and protect them", "Northern leaders blocked annexation for years", "Americans feared Britain gaining a foothold", "Texas saw it needed a stronger protector"],
      "items": [["Paper money became worthless and debt grew", 0], ["Texas allowed slavery", 1], ["Britain showed interest in an independent Texas", 2], ["Mexican armies captured San Antonio in 1842", 3]]},
-    {"type": "order", "title": "Republic timeline", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 6,
+    {"type": "order", "title": "Republic timeline", "intro": "Drag the cards, or use the arrows, to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 6,
      "items": [["Victory at San Jacinto", "1836"], ["The U.S. recognizes Texas but refuses annexation", "1837"], ["Lamar drives out the Cherokee", "1839"], ["The Santa Fe Expedition is captured", "1841"], ["Mexican armies capture San Antonio twice", "1842"], ["Texas becomes the 28th state", "1845"]]},
     {"type": "mc", "title": "Think it through", "intro": "Pick the best answer.", "button": "Check my answers", "word": "correct",
      "items": [

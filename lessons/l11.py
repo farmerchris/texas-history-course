@@ -62,7 +62,7 @@ L = dict(
     {"type": "sort", "title": "Cause of change", "intro": "Did this help <b>end the cattle drives</b> or <b>end the open frontier</b> for Plains nations?", "button": "Check my sorting", "word": "sorted correctly",
      "choices": [["C", "End the cattle drives"], ["F", "End the open frontier"]],
      "items": [["Barbed wire fences crossed the open range", "C", "Fences blocked the trails."], ["Hide hunters killed millions of bison", "F", "Plains nations lost their main food source."], ["Railroads reached Texas towns", "C", "Ranchers could ship cattle from home."], ["The Army destroyed winter camps at Palo Duro Canyon", "F", "Without food and horses, bands had to surrender."], ["Quanah Parker's band moved to a reservation in 1875", "F", "The last free Comanche band left the Texas plains."], ["Windmills let ranchers fence and water their own pastures", "C", "Ranching moved onto fenced land."]]},
-    {"type": "order", "title": "Put it in order", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 9,
+    {"type": "order", "title": "Put it in order", "intro": "Drag the cards, or use the arrows, to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 9,
      "items": [["Long cattle drives to Kansas begin", "1866"], ["Railroads meet in Dallas", "1873"], ["Red River War and Palo Duro Canyon", "1874"], ["Railroad reaches El Paso", "1881"], ["Hogg creates the Railroad Commission", "1891"], ["Texas has nearly 10,000 miles of track", "1900"]]}
   ],
   quiz=[

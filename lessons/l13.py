@@ -40,7 +40,7 @@ L = dict(
     {"type": "match", "title": "Who's who", "intro": "Match each person to the right description.", "placeholder": "Choose a person…", "button": "Check my matches", "word": "correct",
      "options": ["John Nance Garner", "Sam Rayburn", "Minnie Fisher Cunningham", "Chester Nimitz", "J. Frank Dobie", "Doris Miller"],
      "items": [["Texas vice president under Franklin Roosevelt", 0], ["Longest-serving Speaker of the House; pushed rural electrification", 1], ["Led the fight for Texas women's right to vote", 2], ["Commanded the U.S. Pacific Fleet in WWII", 3], ["Writer who retold Texas folk tales", 4], ["Waco sailor honored for heroism at Pearl Harbor", 5]]},
-    {"type": "order", "title": "Put it in order", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 11,
+    {"type": "order", "title": "Put it in order", "intro": "Drag the cards, or use the arrows, to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 11,
      "items": [["Galveston creates commission government", "1901"], ["U.S. enters World War I", "1917"], ["Texas approves the 19th Amendment", "1919"], ["The Great Depression begins", "1929"], ["CCC begins building state parks", "1933"], ["U.S. enters World War II", "1941"]]},
     {"type": "mc", "title": "Cause and effect", "intro": "Pick the best answer.", "button": "Check my answers", "word": "correct",
      "items": [

@@ -58,7 +58,7 @@ L = dict(
     {"type": "match", "title": "Locate the battles", "intro": "Match each battle to what happened there.", "placeholder": "Choose a battle…", "button": "Check my battles", "word": "correct",
      "options": ["Galveston", "Sabine Pass", "Palmito Ranch"],
      "items": [["Dick Dowling's small force turned back a Union fleet", 1], ["Confederates retook an important port on New Year's Day, 1863", 0], ["The last land battle of the Civil War, near Brownsville", 2], ["Fought after Lee had already surrendered", 2], ["Kept Union troops from landing on the upper Texas coast near Louisiana", 1]]},
-    {"type": "order", "title": "From secession to the Constitution of 1876", "intro": "Use the arrows to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 8,
+    {"type": "order", "title": "From secession to the Constitution of 1876", "intro": "Drag the cards, or use the arrows, to put these in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 8,
      "items": [["Lincoln is elected president", "1860"], ["Texas secedes", "1861"], ["Battle of Sabine Pass", "1863"], ["General Order No. 3 is read in Galveston", "1865"], ["Texas is readmitted to the Union", "1870"], ["Texans write a new constitution", "1876"]]},
     {"type": "sort", "title": "Effects of the war and Reconstruction", "intro": "Was this a <b>political</b>, <b>economic</b>, or <b>social</b> effect?", "button": "Check my sorting", "word": "sorted correctly",
      "choices": [["P", "Political"], ["E", "Economic"], ["S", "Social"]],

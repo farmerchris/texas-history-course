@@ -44,7 +44,7 @@ L = dict(
 
   <div class="callout"><b>How did a small army win?</b> The Alamo and Goliad cost lives but bought time and turned anger into recruits. Houston's long retreat, called the Runaway Scrape for the families who fled with it, kept his army alive. Santa Anna split his forces and let his guard down. When Houston finally attacked, surprise did the rest. Independence was declared on March 2 and won on April 21: seven weeks.</div>''',
   practice=[
-    {"type": "order", "title": "Put the map in order", "intro": "Use the arrows to put these places in the order the events happened, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 4,
+    {"type": "order", "title": "Put the map in order", "intro": "Drag the cards, or use the arrows, to put these places in the order the events happened, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 4,
      "items": [["Gonzales: “Come and Take It”", "Oct 1835"], ["Siege of Béxar: San Antonio captured", "Dec 1835"], ["The Alamo is surrounded", "Feb 23, 1836"], ["Convention of 1836 declares independence", "Mar 2, 1836"], ["The Alamo falls", "Mar 6, 1836"], ["Fannin's men are executed at Goliad", "Mar 27, 1836"], ["Victory at San Jacinto", "Apr 21, 1836"]]},
     {"type": "match", "title": "People cards", "intro": "Match each person to their role.", "placeholder": "Choose a person…", "button": "Check my people", "word": "correct",
      "options": ["George Childress", "Lorenzo de Zavala", "James Fannin", "Sam Houston", "Santa Anna", "Juan Seguín", "William B. Travis"],

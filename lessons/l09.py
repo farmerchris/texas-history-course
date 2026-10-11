@@ -35,7 +35,7 @@ L = dict(
 
   <div class="callout"><b>Geography decides.</b> Cotton needs rain, warm weather, and rich soil, so plantations clustered in the wetter east. Ranching works on dry grassland and brush, so it spread south and west. Rivers carried crops to the coast. When you explain where a group lived, look for both the <b>push</b> that made them leave home and the <b>pull</b> of the land in Texas.</div>''',
   practice=[
-    {"type": "order", "title": "From dispute to border", "intro": "Use the arrows to put these events in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 7,
+    {"type": "order", "title": "From dispute to border", "intro": "Drag the cards, or use the arrows, to put these events in order, earliest at the top.", "button": "Check my order", "word": "in the right spot", "seed": 7,
      "items": [["Texas becomes a state", "1845"], ["Taylor's army moves to the Rio Grande; war begins", "1846"], ["The U.S. captures Mexico City", "1847"], ["Treaty of Guadalupe Hidalgo sets the Rio Grande border", "1848"], ["Compromise of 1850 trades land claims for $10 million", "1850"]]},
     {"type": "match", "title": "Why here?", "intro": "Match each group to where most of its members lived in the 1850s.", "placeholder": "Choose a region…", "button": "Check my map", "word": "correct",
      "options": ["Hill Country (New Braunfels, Fredericksburg)", "Central Texas prairies (Fayette County)", "South Texas brush country and San Antonio", "East Texas and river bottoms"],

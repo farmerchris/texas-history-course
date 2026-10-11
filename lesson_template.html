@@ -71,9 +71,12 @@ section.step{display:grid;gap:18px;padding-block:36px;border-top:2px solid var(-
 .order li{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);counter-increment:n}
 .order li::before{content:counter(n);font-family:var(--mono);font-weight:600;color:var(--muted);width:1.6em;text-align:right}
 .order li .t{flex:1;min-width:0}
-.order li .grip{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;color:var(--muted);font-size:1.15rem;line-height:1;padding:6px 2px;margin:-6px 0}
-.order li.dragging{opacity:.9;border-color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.28)}
-.order li.dragging .grip{cursor:grabbing}
+.order li{cursor:grab;user-select:none;-webkit-user-select:none}
+.order li .grip{color:var(--muted);font-size:1.15rem;line-height:1}
+.order li .icon{cursor:pointer}
+.order.sorting li{transition:transform .18s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){.order.sorting li{transition:none}}
+.order.sorting li.drag{transition:none;cursor:grabbing;position:relative;z-index:3;border-color:var(--ink);box-shadow:0 12px 28px rgba(0,0,0,.28)}
 .order li.ok{border-color:var(--good);background:var(--good-soft)}
 .order li.no{border-color:var(--bad);background:var(--bad-soft)}
 .mv{display:flex;gap:4px}
@@ -347,25 +350,64 @@ T.forEach((t,ti)=>{
     body.innerHTML=`<ol class="order" id="ol${ti}"></ol>`;
     const render=marks=>{$("ol"+ti).innerHTML=A.map((idx,pos)=>{const it=t.items[idx];const cls=marks?(idx===pos?"ok":"no"):"";
       return `<li class="${cls}"><span class="grip" aria-hidden="true">⠿</span><span class="t">${it[0]}${marks&&idx===pos?` <span class="yr" style="color:var(--good)">· ${it[1]}</span>`:""}</span><span class="mv"><button type="button" class="icon" data-p="${pos}" data-d="-1" aria-label="Move up: ${esc(strip(it[0]))}" ${pos===0?"disabled":""}>↑</button><button type="button" class="icon" data-p="${pos}" data-d="1" aria-label="Move down: ${esc(strip(it[0]))}" ${pos===A.length-1?"disabled":""}>↓</button></span></li>`}).join("")};
-    // Drag to reorder. Pointer Events cover mouse, touch and pen with one path; the
-    // drag starts on the grip only, so touching the row itself still scrolls the page.
-    (()=>{const ol=$("ol"+ti);let d=null;
-      ol.addEventListener("pointerdown",e=>{const g=e.target.closest(".grip");if(!g)return;
-        const li=g.closest("li");if(!li)return;e.preventDefault();
-        d={li,from:[...ol.children].indexOf(li),id:e.pointerId};
-        li.classList.add("dragging");try{g.setPointerCapture(e.pointerId)}catch(err){}});
-      ol.addEventListener("pointermove",e=>{if(!d||e.pointerId!==d.id)return;e.preventDefault();
-        const other=[...ol.children].filter(x=>x!==d.li);
-        const before=other.find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2});
-        if(before)ol.insertBefore(d.li,before);else ol.appendChild(d.li)});
-      const end=e=>{if(!d||e.pointerId!==d.id)return;
-        const li=d.li,from=d.from,to=[...ol.children].indexOf(li);d=null;
-        li.classList.remove("dragging");
-        if(to<0||to===from){render(scored(ti));return}
-        A.splice(to,0,A.splice(from,1)[0]);save();render(false);clearScore(ti)};
-      ol.addEventListener("pointerup",end);ol.addEventListener("pointercancel",end);})();
-    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;[A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
-      const nb=$("ol"+ti).querySelectorAll("li")[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else $("ol"+ti).querySelectorAll("li")[q]?.querySelector("button:not([disabled])")?.focus()});
+    // Drag to reorder: grab anywhere on a card. The card follows the pointer, the others
+    // slide out of the way, and the list is only reordered on drop. On touch a short
+    // press-and-hold starts the drag, so an ordinary swipe still scrolls the page.
+    (()=>{const ol=$("ol"+ti);let p=null,d=null,hold=null;
+      const cancel=()=>{if(hold){clearTimeout(hold);hold=null}p=null};
+      function begin(li,y,id){
+        const lis=[...ol.children],rects=lis.map(x=>x.getBoundingClientRect()),from=lis.indexOf(li);
+        const gap=lis.length>1?rects[1].top-rects[0].bottom:0;
+        d={li,lis,rects,from,to:from,y0:y,step:rects[from].height+gap};
+        ol.classList.add("sorting");li.classList.add("drag");
+        try{li.setPointerCapture(id)}catch(err){}}
+      function over(y){
+        const dy=y-d.y0;d.li.style.transform=`translateY(${dy}px)`;
+        const c=d.rects[d.from].top+d.rects[d.from].height/2+dy;let to=d.from;
+        d.rects.forEach((r,i)=>{if(i===d.from)return;const mid=r.top+r.height/2;
+          if(i<d.from&&c<mid)to=Math.min(to,i);if(i>d.from&&c>mid)to=Math.max(to,i)});
+        d.to=to;
+        d.lis.forEach((x,i)=>{if(x===d.li)return;
+          const sh=(d.from<to&&i>d.from&&i<=to)?-d.step:(d.from>to&&i>=to&&i<d.from)?d.step:0;
+          x.style.transform=sh?`translateY(${sh}px)`:""})}
+      function drop(){
+        const s=d;d=null;if(!s)return;
+        const {li,lis,rects,from,to}=s;
+        const land=to===from?0:((to>from?rects[to].bottom-rects[from].height:rects[to].top)-rects[from].top);
+        li.style.transition="transform .16s cubic-bezier(.2,.7,.3,1)";
+        li.style.transform=`translateY(${land}px)`;
+        setTimeout(()=>{li.style.transition="";ol.classList.remove("sorting");li.classList.remove("drag");
+          lis.forEach(x=>x.style.transform="");
+          if(to!==from){A.splice(to,0,A.splice(from,1)[0]);save();render(false);clearScore(ti)}},to===from?0:170)}
+      ol.addEventListener("pointerdown",e=>{
+        if(e.button>0)return;const li=e.target.closest("li");
+        if(!li||e.target.closest("button"))return;
+        p={li,x:e.clientX,y:e.clientY,id:e.pointerId,touch:e.pointerType!=="mouse"};
+        if(p.touch)hold=setTimeout(()=>{hold=null;if(p)begin(p.li,p.y,p.id)},180)});
+      ol.addEventListener("pointermove",e=>{
+        if(d){if(p&&e.pointerId===p.id)over(e.clientY);return}
+        if(!p||e.pointerId!==p.id)return;
+        const dx=Math.abs(e.clientX-p.x),dy=Math.abs(e.clientY-p.y);
+        if(p.touch){if(hold&&(dx>8||dy>8))cancel()}
+        else if(dx>3||dy>3)begin(p.li,p.y,p.id)});
+      const up=()=>{if(hold){clearTimeout(hold);hold=null}if(d)drop();p=null};
+      ol.addEventListener("pointerup",up);ol.addEventListener("pointercancel",up);
+      ol.addEventListener("touchmove",e=>{if(d)e.preventDefault()},{passive:false});})();
+    body.addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;
+      const p=+b.dataset.p,q=p+(+b.dataset.d);if(q<0||q>=A.length)return;
+      const ol=$("ol"+ti),tops=[...ol.children].map(x=>x.getBoundingClientRect().top);
+      [A[p],A[q]]=[A[q],A[p]];save();render(false);clearScore(ti);
+      // FLIP: put the two swapped cards back where they were, then let them glide across,
+      // so an arrow press is as easy to follow as a drag.
+      const nl=[...ol.children];
+      if(nl[p]&&nl[q]){
+        nl[p].style.transform=`translateY(${tops[q]-tops[p]}px)`;
+        nl[q].style.transform=`translateY(${tops[p]-tops[q]}px)`;
+        void ol.offsetHeight;
+        ol.classList.add("sorting");nl[p].style.transform="";nl[q].style.transform="";
+        setTimeout(()=>ol.classList.remove("sorting"),220);
+      }
+      const nb=nl[q]?.querySelector(`button[data-d="${b.dataset.d}"]`);if(nb&&!nb.disabled)nb.focus();else nl[q]?.querySelector("button:not([disabled])")?.focus()});
     $("chk"+ti).onclick=()=>{render(true);setScore(ti,A.filter((v,i)=>v===i).length)};
     render(scored(ti));if(scored(ti))fb("fb"+ti,S.ps[ti],total(t),t.word);
   }

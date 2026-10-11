@@ -60,7 +60,7 @@ L = dict(
     {"type": "match", "title": "Fix the citation", "intro": "Match each part of a citation to an example.", "placeholder": "Choose a part…", "button": "Check my matches", "word": "correct",
      "options": ["Author", "Title", "Website or book", "Web address"],
      "items": [["Wooster, Robert", 0], ["“Spindletop Oilfield”", 1], ["Handbook of Texas Online", 2], ["https://www.tshaonline.org/handbook/entries/spindletop-oilfield", 3]]},
-    {"type": "order", "title": "Project steps", "intro": "Use the arrows to put the project steps in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 16,
+    {"type": "order", "title": "Project steps", "intro": "Drag the cards, or use the arrows, to put the project steps in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 16,
      "items": [["Choose a narrow topic", "1"], ["Find one primary and two secondary sources", "2"], ["Take notes and record citations", "3"], ["Write a claim about how it changed Texas", "4"], ["Build and present the project", "5"]]}
   ],
   quiz=[

@@ -45,7 +45,7 @@ L = dict(
   <h3>People change the land</h3>
   <div class="prose"><p>Geographers ask how people adapt to and change their environment. Galveston's seawall, the Ship Channel, and oil derricks covering Spindletop are all examples of people modifying the land to make a living. Some changes helped people, and some, like oil spills and drained fields, caused damage.</p></div>''',
   practice=[
-    {"type": "order", "title": "Boom-and-bust cycle", "intro": "Use the arrows to put the stages of a boom and bust in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 10,
+    {"type": "order", "title": "Boom-and-bust cycle", "intro": "Drag the cards, or use the arrows, to put the stages of a boom and bust in order, first at the top.", "button": "Check my order", "word": "in the right spot", "seed": 10,
      "items": [["Oil is discovered", "1"], ["People and companies rush in; towns grow fast", "2"], ["Too many wells drain the field and flood the market", "3"], ["Prices and production fall", "4"], ["Jobs disappear and people leave", "5"]]},
     {"type": "match", "title": "Spindletop facts", "intro": "Match each clue to the right answer.", "placeholder": "Choose one…", "button": "Check my matches", "word": "correct",
      "options": ["January 10, 1901", "Anthony F. Lucas", "Pattillo Higgins", "About 50,000", "100,000 barrels a day", "Houston Ship Channel"],
